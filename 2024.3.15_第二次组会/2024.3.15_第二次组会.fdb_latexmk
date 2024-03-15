@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1710504139.63904 "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" "2024.3.15_第二次组会.pdf" "2024.3.15_第二次组会" 1710504140.00658 0
-  "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" 1710504139.42906 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
+["pdflatex"] 1710504493.53262 "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" "2024.3.15_第二次组会.pdf" "2024.3.15_第二次组会" 1710504493.8976 0
+  "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" 1710504493.34245 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -38,8 +38,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709737948.25282 5467645 7844745587c65c737e58770674a077d1 ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709737975 8221323 2c51c1ddd03d19701099751fe62edccf ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "2024.3.15_第二次组会.aux" 1710504139.97211 425 483b814850ace8818f1408a2b921d21f "pdflatex"
-  "2024.3.15_第二次组会.tex" 1710504139.42906 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
+  "2024.3.15_第二次组会.aux" 1710504493.86623 425 483b814850ace8818f1408a2b921d21f "pdflatex"
+  "2024.3.15_第二次组会.tex" 1710504493.34245 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
   (generated)
   "2024.3.15_第二次组会.aux"
   "2024.3.15_第二次组会.log"
