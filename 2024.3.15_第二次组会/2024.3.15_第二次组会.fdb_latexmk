@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1710504493.53262 "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" "2024.3.15_第二次组会.pdf" "2024.3.15_第二次组会" 1710504493.8976 0
-  "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" 1710504493.34245 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
+["pdflatex"] 1710506082.10679 "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" "2024.3.15_第二次组会.pdf" "2024.3.15_第二次组会" 1710506082.47949 0
+  "/Users/xiezeyu/Documents/GitHub/Myosotis-Backpropagation-in-Unstable-Neural-Networks/2024.3.15_第二次组会/2024.3.15_第二次组会.tex" 1710506081.90358 1545 1896e50c44789f4286bb4ed3ec4620f6 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -23,8 +23,10 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty" 1686341992 2222 499d61426192c39efd8f410ee1a52b9c ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty" 1686341992 4173 82ac04dfb1256038fad068287fbb4fe6 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty" 1686341992 88371 d84032c0f422c3d1e282266c01bef237 ""
@@ -38,8 +40,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709737948.25282 5467645 7844745587c65c737e58770674a077d1 ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709737975 8221323 2c51c1ddd03d19701099751fe62edccf ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "2024.3.15_第二次组会.aux" 1710504493.86623 425 483b814850ace8818f1408a2b921d21f "pdflatex"
-  "2024.3.15_第二次组会.tex" 1710504493.34245 752 6b492bbb6bb158a1c72e66c76f11eb74 ""
+  "2024.3.15_第二次组会.aux" 1710506082.4445 575 f84d21b3fc3c1d3be94aa8b6e7fe5020 "pdflatex"
+  "2024.3.15_第二次组会.tex" 1710506081.90358 1545 1896e50c44789f4286bb4ed3ec4620f6 ""
   (generated)
   "2024.3.15_第二次组会.aux"
   "2024.3.15_第二次组会.log"

@@ -35,6 +35,38 @@
 % Section 2. Strling Approximation
 \section{Strling Approximation}
 
+According to Mathematical Induction, we can prove \eqref{eq:4}
+
+\begin{equation}\label{eq:4}
+    N! = \int_{0}^{\infty} e^{-x}x^Ndx
+\end{equation}
+
+Laplace approximation: \eqref{eq:5}
+
+\begin{equation}\label{eq:5}
+    \int g(x)dx
+\end{equation}
+
+Let $h(x)=\ln g(x)$ then we have
+
+\begin{equation}\label{eq:6}
+    \int g(x)dx=\int e^{h(x)}dx
+\end{equation}
+
+According to Taylor expansion, we have
+
+\begin{equation}\label{eq:7}
+    \int e^{h(x)}dx = \int \exp(h(x_0)+h'(x_0)(x-x_0)+\frac{1}{2}h''(x_0)(x-x_0)^2)dx
+\end{equation}
+
+If $h'(x_0)=0$ then we have
+
+\begin{equation}\label{eq:8}
+    \begin{aligned}
+        \int e^{h(x)} dx &= \int \exp(h(x_0)+\frac{1}{2}h''(x_0)(x-x_0)^2)dx \\ &= e^{h(x_0)} \int \exp (-\frac{1}{2}\frac{(x-x_0)^2}{-h''(x_0)^{-1}})dx
+    \end{aligned}
+\end{equation}
+
 % Section 3. Energy
 \section{Energy}
 
