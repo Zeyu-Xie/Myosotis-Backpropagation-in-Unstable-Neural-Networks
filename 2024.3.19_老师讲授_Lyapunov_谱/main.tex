@@ -5,6 +5,57 @@
 
 \begin{document}
 
+\section*{Introduction to Lyapunov Spectrum}
+
+The Lyapunov spectrum is a set of numbers used to characterize the stability and chaotic behavior of dynamical systems. Named after the Russian mathematician Aleksandr Lyapunov, it provides insights into how trajectories diverge or converge in phase space over time.
+
+Consider a dynamical system described by a map or flow $f: \mathbb{R}^d \rightarrow \mathbb{R}^d$. Let $x_0$ be a point in the phase space of the system. The Lyapunov spectrum consists of a set of Lyapunov exponents, denoted by $\lambda_i$, which quantify the rate of exponential growth or decay of infinitesimally close trajectories.
+
+For each $i$ from $1$ to $d$, the $i$-th Lyapunov exponent $\lambda_i$ is defined as the limit:
+
+\begin{align}
+    \lambda_i = \lim_{n \to \infty} \frac{1}{n} \log |\text{det}(Df^n(x_0))|
+\end{align}
+
+where $Df^n(x_0)$ represents the Jacobian matrix of $f$ evaluated at $x_0$ after $n$ iterations.
+
+The Lyapunov exponents measure the average rate of expansion or contraction of nearby trajectories along different directions in the phase space. A positive Lyapunov exponent $\lambda_i > 0$ indicates divergence, suggesting chaotic behavior, while a negative exponent $\lambda_i < 0$ suggests convergence towards a stable attractor.
+
+The Lyapunov spectrum provides a comprehensive description of the system's behavior by characterizing the stability along all possible directions in phase space. By analyzing these exponents, researchers can understand the underlying dynamics of complex systems and predict their long-term behavior.
+
+\section*{Example of Lyapunov Spectrum}
+
+The Lyapunov spectrum is a set of numbers used to characterize the stability and chaotic behavior of dynamical systems. Named after the Russian mathematician Aleksandr Lyapunov, it provides insights into how trajectories diverge or converge in phase space over time.
+
+Consider a simple 2-dimensional dynamical system defined by the map:
+
+\begin{align}
+    f(x, y) = (2x - y^2, x + y)
+\end{align}
+
+Let's choose a point in the phase space, $x_0 = (1, 1)$, and calculate the Lyapunov spectrum at this point. The Jacobian matrix of $f$ evaluated at $(1, 1)$ is:
+
+\begin{align}
+    Df(1, 1) = \begin{pmatrix} 2 & -2 \\ 1 & 1 \end{pmatrix}
+\end{align}
+
+To compute the Lyapunov exponents, we iteratively apply $Df$ to a set of initial vectors. Let's start with the initial vector $v_0 = (1, 0)$:
+
+\begin{align}
+    v_1 &= Df(1, 1) \cdot v_0 = \begin{pmatrix} 2 & -2 \\ 1 & 1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}
+\end{align}
+
+The Lyapunov exponent $\lambda_1$ corresponding to the direction of $v_0$ is then:
+
+\begin{align}
+    \lambda_1 &= \lim_{n \to \infty} \frac{1}{n} \log |Df^n(1, 1) \cdot v_0| \\
+    &= \lim_{n \to \infty} \frac{1}{n} \log |\begin{pmatrix} 2 & -2 \\ 1 & 1 \end{pmatrix}^n \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix}|
+\end{align}
+
+Similarly, we can choose another initial vector, say $v_0 = (0, 1)$, and calculate the Lyapunov exponent $\lambda_2$ corresponding to this direction.
+
+By repeating this process for different initial vectors, we can obtain the complete Lyapunov spectrum for the dynamical system.
+
 \section*{Lyapunov Spectrum in Backpropagation}
 
 In the context of backpropagation, we consider the following iterative dynamics:
