@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Lyapunov Spectrum in Backpropagation}
+
+In the context of backpropagation, we consider the following iterative dynamics:
+
+\begin{align}
+    x_{n+1} &= f(x_n) \\
+    v_{n+1} &= Df(x_n)v_n
+\end{align}
+
+where $f: \mathbb{R}^d \rightarrow \mathbb{R}^d$ is a differentiable function and $Df(x_n)$ denotes the Jacobian matrix of $f$ evaluated at $x_n$.
+
+We define a sequence of vector spaces $V_1 \subset V_2 \subset V_3 \subset \cdots \subset T_{x_0}M$, such that for each $x_0$ and $v \in V_i \backslash V_{i-1}$, we have:
+
+\begin{align}
+    \lim_{n \to \infty} \frac{1}{n} \log |Df^n(x_0)v| = \lambda_i
+\end{align}
+
+where $\lambda_i$ represents the $i$-th Lyapunov exponent. The Lyapunov spectrum provides valuable information about the stability and chaotic behavior of the dynamical system described by $f$. Each Lyapunov exponent $\lambda_i$ corresponds to the local exponential growth rate of trajectories along the corresponding direction in the tangent space.
+
+\section*{Calculate Lyapunov Spectrums}
+
+First we choose random $d$ vectors:
+
+\begin{align}
+    [e_{1,0}, e_{2,0}, \cdots, e_{d,0}] = e_0
+\end{align}
+
+where $e_{i,0} \in \mathbb{R}^d$ and $e_{i,0} \neq 0$ for all $i$. Then we calculate $e$ by:
+
+\begin{align}
+    e_{n+1} = Df(x_n)e_{n}
+\end{align}
+
+Suppose for $T$, $e_T=QR$, where $Q$ is an orthogonal matrix and $R$ is an upper triangular matrix. Then we suppose:
+
+\begin{align}
+    Q &= LV_1 \\
+    R &= LE
+\end{align}
+
+where $L$ is a lower triangular matrix, $V_1$ is a diagonal matrix and $E$ is an upper triangular matrix. We can calculate $V_1$ by:
+
+Finally we get
+
+\begin{align}
+    Df^{NA}e &= QR \\
+    &= Q_NR_NR_{N-1}\cdots R_1
+\end{align}
+
+Then we have
+
+\begin{align}
+    L_1V_1 &= Q_N(R_AR_{A-1}\cdots R_1) \\
+    L_1E_1 &\approx \frac{1}{NA}log~diag(R_AR_{A-1}\cdots R_1)
+\end{align}
+
+\section*{A Good Result}
+
+Let $\epsilon_n = Df^T(x_n)\epsilon_{n+1}$, we have
+
+\begin{align}
+    <\epsilon_n | e_n> = <\epsilon_{n+1} | e_{n+1}>
+\end{align}
+
+Hence
+
+\begin{align}
+    \epsilon_0\cdot e_0 = (Df^T)^N \epsilon_N\cdot e_0=\epsilon_N\cdot e_N=\epsilon_N\cdot(Df^N)e_0
+\end{align}
+
+We just consider the several front lines of $\epsilon$ and $e$
+
+\begin{align}
+    1 &= \epsilon_0\cdot e_0 = \epsilon\cdot Df^N(e_0) \\
+    &= |\epsilon_{0,u}\cdot\frac{e_0}{|e_0|}|=|\epsilon_{N,u}\cdot\frac{Df^N(e_{0,u})}{|e_{0,u}|}|=|\epsilon_{N,u}\frac{|Df^N{e_{0,u}}|}{|e_{0,u}|}|
+\end{align}
+
+\end{document}
