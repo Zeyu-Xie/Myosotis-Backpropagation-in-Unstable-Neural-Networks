@@ -3,11 +3,18 @@ import numpy as np
 import os
 from mnist import load_mnist  # Load MNIST
 from PIL import Image
+import pymongo
+import sys
+
+# Connect to MongoDB
+
+client = pymongo.MongoClient("mongodb://acan_read_and_write:020301@localhost:27017/")
+db = client["local"]
+collection = db["data_20240403"]
 
 # Type 1. Basic Functions
 
 # Function - Numerical Differentiation
-
 
 def num_diff(f, x):
     h = 1e-4
@@ -215,6 +222,8 @@ if __name__ == "__main__":
             test_acc_list.append(test_acc)
             print("train acc, test acc | " +
                   str(train_acc) + ", " + str(test_acc))
+        
+        collection.insert_one({"index": i, "W1": network.params["W1"].tolist(), "b1": network.params["b1"].tolist(), "W2": network.params["W2"].tolist(), "b2": network.params["b2"].tolist()})
 
     # 绘制图形
     markers = {'train': 'o', 'test': 's'}
@@ -227,30 +236,30 @@ if __name__ == "__main__":
     plt.legend(loc='lower right')
     plt.savefig("output.png")
 
-    with open("log.txt", "w") as f:
+    # with open("log.txt", "w") as f:
 
-        f.write("=== W1 ===")
-        f.write("\n")
-        for item in network.params["W1"]:
-            f.write(str(item))
-            f.write("\n")
-        f.write("\n")
+    #     f.write("=== W1 ===")
+    #     f.write("\n")
+    #     for item in network.params["W1"]:
+    #         f.write(str(item))
+    #         f.write("\n")
+    #     f.write("\n")
 
-        f.write("=== b1 ===")
-        f.write("\n")
-        f.write(str(network.params["b1"]))
-        f.write("\n\n")
+    #     f.write("=== b1 ===")
+    #     f.write("\n")
+    #     f.write(str(network.params["b1"]))
+    #     f.write("\n\n")
 
-        f.write("=== W2 ===")
-        f.write("\n")
-        for item in network.params["W2"]:
-            f.write(str(item))
-            f.write("\n")
-        f.write("\n")
+    #     f.write("=== W2 ===")
+    #     f.write("\n")
+    #     for item in network.params["W2"]:
+    #         f.write(str(item))
+    #         f.write("\n")
+    #     f.write("\n")
 
-        f.write("=== b2 ===")
-        f.write("\n")
-        f.write(str(network.params["b2"]))
-        f.write("\n\n")
+    #     f.write("=== b2 ===")
+    #     f.write("\n")
+    #     f.write(str(network.params["b2"]))
+    #     f.write("\n\n")
 
-        f.close()
+    #     f.close()
