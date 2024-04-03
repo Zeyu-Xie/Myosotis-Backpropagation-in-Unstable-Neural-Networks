@@ -6,6 +6,7 @@
 | ------------------- | -------- | --------------- | ----------------------- |
 | acan                | 020301   | root            | admin                   |
 | acan_read_and_write | 020301   | readWrite@local | admin                   |
+| acan_read           | 020301   | read@local      | admin                   |
 
 ## Commands
 
