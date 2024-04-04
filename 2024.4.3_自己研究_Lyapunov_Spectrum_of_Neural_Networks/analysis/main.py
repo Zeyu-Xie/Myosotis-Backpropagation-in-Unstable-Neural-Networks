@@ -10,8 +10,9 @@ db = client["local"]
 collection = db["data_20240403"]
 
 rnd = int(sys.argv[1])
+print(f"Processing {rnd*100}th to {rnd*100+100}th data...")
 
-clc = collection.find().skip(rnd*100).limit(101)
+clc = list(collection.find().skip(rnd*100).limit(101))
 
 W1 = []
 W2 = []
@@ -32,7 +33,7 @@ for i in range(101):
 
     print(f"Processing {i+rnd*100}th data...")
 
-    data = clc[i+rnd*100]
+    data = clc[i]
     _W1 = data["W1"]
     _W2 = data["W2"]
     W1.append(np.matrix(_W1))
@@ -54,14 +55,16 @@ tmp_3 = np.array(tmp_3)
 tmp_4 = np.array(tmp_4)
 
 collection_norm = db["N_Form"]
+
+# with open(os.path.join(os.path.dirname(__file__), "logs", "log.txt"), "a") as f:
+#     for i in range(100):
+#         f.write(f"{i+rnd*100} {tmp_1[i]} {tmp_2[i]} {tmp_3[i]} {tmp_4[i]}\n")
+#     f.write("\n")
+#     f.close()
+
 for i in range(100):
-    collection_norm.insert_one({
-        "index": i+rnd*100,
-        "W1": tmp_1[i],
-        "b1": tmp_2[i],
-        "W2": tmp_3[i],
-        "b2": tmp_4[i]
-    })
+    collection_norm.insert_one(
+        {"index": i+rnd*100, "W1": tmp_1[i], "b1": tmp_2[i], "W2": tmp_3[i], "b2": tmp_4[i]})
 
 # fig, axs = plt.subplots(2, 2, figsize=(16, 12))
 # axs[0, 0].plot(tmp_1, label="W1")
