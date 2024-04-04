@@ -194,7 +194,8 @@ if __name__ == "__main__":
         normalize=True, one_hot_label=True)
 
     # Sample Data
-    choice = np.random.choice(x_train.shape[0], sample_size)
+    # choice = np.random.choice(x_train.shape[0], sample_size)
+    choice = np.array(range(60000))
     x_train = x_train[choice]
     t_train = t_train[choice]
     collection_recorder.insert_one(
@@ -202,6 +203,11 @@ if __name__ == "__main__":
 
     # Init Network
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
+
+    print(type(network.params['W1']))
+    print(type(network.params['W2']))
+    print(type(network.params['b1']))
+    print(type(network.params['b2']))
 
     # Set Variables
     iters_num = 114514  # 适当设定循环的次数
@@ -216,7 +222,8 @@ if __name__ == "__main__":
     iter_per_epoch = max(train_size / batch_size, 1)
 
     for i in range(iters_num):
-        batch_mask = np.random.choice(train_size, batch_size)
+        # batch_mask = np.random.choice(train_size, batch_size)
+        batch_mask = np.array(range(60000))
         x_batch = x_train[batch_mask]
         t_batch = t_train[batch_mask]
 
