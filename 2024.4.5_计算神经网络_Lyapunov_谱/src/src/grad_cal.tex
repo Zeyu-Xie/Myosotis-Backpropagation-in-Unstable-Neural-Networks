@@ -54,7 +54,7 @@
 			\end{bmatrix}
 		\end{equation}
 
-	\item 输出层的输入 $A_2 \in \R^{k \times 10}$（$Z_1 = A_2$，是同一个矩阵）
+	\item 输出层的输入 $A_2 \in \R^{k \times 10}$
 
 		\begin{equation}
 			A_2 = \begin{bmatrix}
@@ -286,175 +286,181 @@
 
 \section{Jacobi 矩阵的计算}
 
-\subsection{基本性质}
-
-\subsubsection{sigmoid 函数的 Jacobi 矩阵}
-
-假设 $A \in \R^{n\times m}$ 是同一个矩阵，则 $\frac{\partial (sigmoid(A))}{\partial A}$ 的计算公式为
-
-\begin{equation}
-	\frac{\partial (sigmoid(A))}{\partial A} = diag\{\frac{d (sigmoid(x_1^1))}{d x_1^1}, \frac{d (sigmoid(x_2^1))}{d x_2^1}, \cdots, \frac{d (sigmoid(x_m^n))}{d x_m^n} \}
-\end{equation}
-	
-\subsubsection{softmax 函数的 Jacobi 矩阵}
-
-假设 A 是一个矩阵，则 $\frac{\partial (softmax(A))}{\partial A}$ 的计算公式为
-
-\begin{equation}
-	\frac{\partial (softmax(A))}{\partial A} = softmax(A) \cdot (I - softmax(A))
-\end{equation}
-
 \begin{equation}
 	\begin{aligned}
 		\frac{\partial W_1(t+1)}{\partial W_1(t)} & = \frac{\partial (W_1(t) - \alpha \cdot \frac{\partial L}{\partial W_1(t)})}{\partial W_1(t)} \\
-		& = I - \alpha \frac{\partial^2 L}{\partial W_1 \partial W_1} \\
-		& = I - \alpha \frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial W_1} \right) \\
-		& = I - \alpha \frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial Y} \frac{\partial Y}{\partial A_2} \frac{\partial A_2}{\partial W_1} \right) \\
-		& = I - \alpha \frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial Y} \frac{\partial Y}{\partial A_2} \right) W_2^T Z_1^T \\
-		& = I - \alpha \left( \frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial Y} \right) \frac{\partial Y}{\partial A_2} + \frac{\partial L}{\partial Y} \frac{\partial}{\partial W_1} \left( \frac{\partial Y}{\partial A_2} \right) \right) W_2^T Z_1^T
+		& = I - \alpha \frac{\partial^2 L}{\partial W_1 \partial W_1}
 	\end{aligned}
 \end{equation}
+
+首先，我们有
 
 \begin{equation}
 	\begin{aligned}
-		\frac{\partial {W_1}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right) X
+		\frac{\partial L}{\partial W_1} & = \frac{\partial L}{\partial Y} \frac{\partial Y}{\partial A_2} \frac{\partial A_2}{\partial Z_1} \frac{\partial Z_1}{\partial A_1} \frac{\partial A_1}{\partial W_1} \\
 	\end{aligned}
 \end{equation}
+
+因此
 
 \begin{equation}
 	\begin{aligned}
-		\frac{\partial {W_1}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
-			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
-			\vdots & \vdots & \ddots & \vdots    \\
-			x_1^k  & x_2^k  & \cdots & x_{784}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {W_1}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
+		\frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial W_1} \right) &= \frac{\partial}{\partial W_1} \left( \frac{\partial L}{\partial Y} \frac{\partial Y}{\partial A_2} \frac{\partial A_2}{\partial Z_1} \frac{\partial Z_1}{\partial A_1} \frac{\partial A_1}{\partial W_1} \right) \\
+		&= \frac{\partial L}{\partial Y} \frac{\partial Y}{\partial A_2} \frac{\partial A_2}{\partial Z_1} \frac{\partial Z_1}{\partial A_1} (\frac{\partial}{\partial W_1}(\frac{\partial A_1}{\partial W_1})) \\
+		&= L'(Y) softmax'(A_2) W_2^T sigmoid'(A_1) \frac{\partial X}{\partial W_1} \\
+		&= 0
 	\end{aligned}
+\end{equation}
+
+故
+
+\begin{equation}
+	\frac{\partial W_1(t+1)}{\partial W_1(t)} = I
+\end{equation}
+
+同理可得
+
+\begin{equation}
+	\frac{\partial b_1(t+1)}{\partial b_1(t)} = I
 \end{equation}
 
 \begin{equation}
-	\begin{aligned}
-		\frac{\partial {b_1}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
-			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
-			\vdots & \vdots & \ddots & \vdots    \\
-			x_1^k  & x_2^k  & \cdots & x_{784}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {b_1}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
+	\frac{\partial W_2(t+1)}{\partial W_2(t)} = I
 \end{equation}
 
 \begin{equation}
-	\begin{aligned}
-		\frac{\partial {b_1}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
-			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
-			\vdots & \vdots & \ddots & \vdots    \\
-			x_1^k  & x_2^k  & \cdots & x_{784}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {b_1}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
+	\frac{\partial b_2(t+1)}{\partial b_2(t)} = I
 \end{equation}
 
-\begin{equation}
-	\begin{aligned}
-		\frac{\partial {W_2}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
-			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
-			\vdots & \vdots & \ddots & \vdots   \\
-			a_1^k  & a_2^k  & \cdots & a_{50}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {W_2}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
-\end{equation}
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {W_1}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
+% 			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots    \\
+% 			x_1^k  & x_2^k  & \cdots & x_{784}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {W_1}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
 
-\begin{equation}
-	\begin{aligned}
-		\frac{\partial {W_2}'}{\partial W_2} & = I - \alpha \frac{\partial^2 Y}{\partial W_2 \partial W_2}                                                   \\
-		                                     & = I - \alpha \frac{\partial}{\partial W_2} \left( softmax'(A_2) A_1 \right)                                   \\
-		                                     & = I - \alpha \frac{\partial}{\partial W_2} \left( softmax'(A_2) \right) A_1                                   \\
-		                                     & = I - \alpha \left( \frac{\partial softmax'(A_2)}{\partial A_2} \frac{\partial A_2}{\partial W_2} \right) A_1 \\
-		                                     & = I - \alpha \left( softmax'(A_2) \frac{\partial A_2}{\partial W_2} \right) A_1                               \\
-		                                     & = I - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
-			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
-			\vdots & \vdots & \ddots & \vdots   \\
-			a_1^k  & a_2^k  & \cdots & a_{50}^k
-		\end{bmatrix} \right) A_1
-	\end{aligned}
-\end{equation}
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {b_1}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
+% 			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots    \\
+% 			x_1^k  & x_2^k  & \cdots & x_{784}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {b_1}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
 
-\begin{equation}
-	\begin{aligned}
-		\frac{\partial {W_2}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
-\end{equation}
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {b_1}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			x_1^1  & x_2^1  & \cdots & x_{784}^1 \\
+% 			x_1^2  & x_2^2  & \cdots & x_{784}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots    \\
+% 			x_1^k  & x_2^k  & \cdots & x_{784}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {b_1}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) W_2^T sigmoid'(A_1) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
 
-\begin{equation}
-	\begin{aligned}
-		\frac{\partial {b_2}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
-			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
-			\vdots & \vdots & \ddots & \vdots   \\
-			a_1^k  & a_2^k  & \cdots & a_{50}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {b_2}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
-\end{equation}
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {W_2}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
+% 			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots   \\
+% 			a_1^k  & a_2^k  & \cdots & a_{50}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {W_2}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
 
-\begin{equation}
-	\begin{aligned}
-		\frac{\partial {b_2}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
-			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
-			\vdots & \vdots & \ddots & \vdots   \\
-			a_1^k  & a_2^k  & \cdots & a_{50}^k
-		\end{bmatrix} \right) \\
-		\frac{\partial {b_2}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
-			1      & 1      & \cdots & 1      \\
-			1      & 1      & \cdots & 1      \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1      & 1      & \cdots & 1
-		\end{bmatrix} \right)
-	\end{aligned}
-\end{equation}
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {W_2}'}{\partial W_2} & = I - \alpha \frac{\partial^2 Y}{\partial W_2 \partial W_2}                                                   \\
+% 		                                     & = I - \alpha \frac{\partial}{\partial W_2} \left( softmax'(A_2) A_1 \right)                                   \\
+% 		                                     & = I - \alpha \frac{\partial}{\partial W_2} \left( softmax'(A_2) \right) A_1                                   \\
+% 		                                     & = I - \alpha \left( \frac{\partial softmax'(A_2)}{\partial A_2} \frac{\partial A_2}{\partial W_2} \right) A_1 \\
+% 		                                     & = I - \alpha \left( softmax'(A_2) \frac{\partial A_2}{\partial W_2} \right) A_1                               \\
+% 		                                     & = I - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
+% 			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots   \\
+% 			a_1^k  & a_2^k  & \cdots & a_{50}^k
+% 		\end{bmatrix} \right) A_1
+% 	\end{aligned}
+% \end{equation}
 
-将以上 $4\times 4 = 16$ 个 Jacobi 矩阵计算公式代入 $Df(W_1, b_1, W_2, b_2)$ 的定义，即得到 $Df(W_1, b_1, W_2, b_2)$ 的表达式
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {W_2}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {b_2}'}{\partial W_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
+% 			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots   \\
+% 			a_1^k  & a_2^k  & \cdots & a_{50}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {b_2}'}{\partial b_1} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
+
+% \begin{equation}
+% 	\begin{aligned}
+% 		\frac{\partial {b_2}'}{\partial W_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			a_1^1  & a_2^1  & \cdots & a_{50}^1 \\
+% 			a_1^2  & a_2^2  & \cdots & a_{50}^2 \\
+% 			\vdots & \vdots & \ddots & \vdots   \\
+% 			a_1^k  & a_2^k  & \cdots & a_{50}^k
+% 		\end{bmatrix} \right) \\
+% 		\frac{\partial {b_2}'}{\partial b_2} & = - \alpha \left( softmax'(A_2) \begin{bmatrix}
+% 			1      & 1      & \cdots & 1      \\
+% 			1      & 1      & \cdots & 1      \\
+% 			\vdots & \vdots & \ddots & \vdots \\
+% 			1      & 1      & \cdots & 1
+% 		\end{bmatrix} \right)
+% 	\end{aligned}
+% \end{equation}
+
+% 将以上 $4\times 4 = 16$ 个 Jacobi 矩阵计算公式代入 $Df(W_1, b_1, W_2, b_2)$ 的定义，即得到 $Df(W_1, b_1, W_2, b_2)$ 的表达式
 
 \end{document}
