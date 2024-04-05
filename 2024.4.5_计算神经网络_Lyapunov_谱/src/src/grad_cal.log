@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.3.30)  5 APR 2024 06:39
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.3.30)  5 APR 2024 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1198,37 +1198,31 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 14.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 14.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 14.
+(Font)              <6> on input line 17.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [1]
-Overfull \hbox (48.43727pt too wide) detected at line 107
-[][][][][]
+) [1] [2]
+Overfull \hbox (32.84743pt too wide) detected at line 197
+[][][]\OML/lmm/m/it/12 Z[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 sigmoid\OT1/lmr/m
+/n/12 (\OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 sigmoid\OT1/lmr
+/m/n/12 ([]) = []
  []
 
+[3]
+Overfull \hbox (14.51375pt too wide) detected at line 223
+[][][]\OML/lmm/m/it/12 Y \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 softmax\OT1/lmr/m/n
+/12 (\OML/lmm/m/it/12 A[]\OT1/lmr/m/n/12 ) = \OML/lmm/m/it/12 softmax\OT1/lmr/m
+/n/12 ([]) = []
+ []
 
-Underfull \vbox (badness 2707) has occurred while \output is active []
-
- [2]
-Underfull \vbox (badness 1242) has occurred while \output is active []
-
- [3]
-[4]
-Underfull \vbox (badness 1057) has occurred while \output is active []
-
- [5]
-[6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-[8] (./grad_cal.aux)
+[4] [5] [6] [7] [8] (./grad_cal.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1238,15 +1232,15 @@ L3 programming layer <2022/07/14>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `grad_cal.out' has not changed.
-(rerunfilecheck)             Checksum: 4C4000530C9486B2B0F20417D765D7FA;364.
+(rerunfilecheck)             Checksum: 3E215500D4B7EF274452E9DFCA3FB327;1937.
  ) 
 Here is how much of TeX's memory you used:
- 25522 strings out of 474878
- 514124 string characters out of 5762516
- 1951627 words of memory out of 5000000
- 46979 multiletter control sequences out of 15000+600000
- 607070 words of font info for 96 fonts, out of 8000000 for 9000
+ 25602 strings out of 474878
+ 517580 string characters out of 5762516
+ 1948627 words of memory out of 5000000
+ 47056 multiletter control sequences out of 15000+600000
+ 614332 words of font info for 99 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 101i,16n,145p,1014b,529s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,16n,145p,1014b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ./grad_cal.pdf (8 pages).
