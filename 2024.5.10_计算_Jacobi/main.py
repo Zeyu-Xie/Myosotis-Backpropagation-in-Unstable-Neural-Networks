@@ -147,57 +147,85 @@ class TwoLayerNet:
 
         return grads
 
+(x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
+
+def _f(params, learning_rate=0.1, batch_size=100):
+    
+    global x_train, t_train
+    
+    # 将参数映射到原有的参数集合中
+    W1, b1, W2, b2 = (
+        params['W1'], params['b1'], 
+        params['W2'], params['b2']
+    )
+    
+    # 计算梯度
+    network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
+    network.params['W1'] = W1
+    network.params['b1'] = b1
+    network.params['W2'] = W2
+    network.params['b2'] = b2
+    grad = network.gradient(x_train, t_train)
+    
+    # 更新参数
+    W1 -= learning_rate * grad['W1']
+    b1 -= learning_rate * grad['b1']
+    W2 -= learning_rate * grad['W2']
+    b2 -= learning_rate * grad['b2']
+    
+    # 返回更新后的参数集合
+    updated_params = {'W1': W1, 'b1': b1, 'W2': W2, 'b2': b2}
+    return updated_params
+
+def f(params):
+
+    global x_train, t_train
+
+    params_W1 = params[0:784*50].reshape(784, 50)
+    params_b1 = params[784*50:784*50+50]
+    params_W2 = params[784*50+50:784*50+50+50*10].reshape(50, 10)
+    params_b2 = params[784*50+50+50*10:]
+
+    network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
+    network.params['W1'] = params_W1
+    network.params['b1'] = params_b1
+    network.params['W2'] = params_W2
+    network.params['b2'] = params_b2
+
+    _params = _f(network.params, learning_rate=0.1, batch_size=100)
+
+    _params_flatten = _params['W1'].flatten()
+    _params_flatten = np.append(_params_flatten, _params['b1'].flatten())
+    _params_flatten = np.append(_params_flatten, _params['W2'].flatten())
+    _params_flatten = np.append(_params_flatten, _params['b2'].flatten())
+
+    return _params_flatten
+
+# 定义Jacobi矩阵的计算函数
+def jacobi_matrix(f, x):
+    n = len(f(x))  # 函数f的维度
+    m = len(x)     # 变量x的维度
+    J = np.zeros((n, m))
+    h = 1e-5  # 用于计算偏导数的微小增量
+
+    for i in range(n):
+        for j in range(m):
+            x_plus_h = x.copy()
+            x_plus_h[j] += h
+            J[i, j] = (f(x_plus_h)[i] - f(x)[i]) / h
+
+    return J
+
 # Main
 if __name__ == "__main__":
-
-    # Get Data
-    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
 
     # Init Network
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
-    # Set Variables
-    iters_num = 10000  # 适当设定循环的次数
-    train_size = x_train.shape[0]
-    batch_size = 100
-    learning_rate = 0.1
+    params_flatten = network.params['W1'].flatten()
+    params_flatten = np.append(params_flatten, network.params['b1'].flatten())
+    params_flatten = np.append(params_flatten, network.params['W2'].flatten())
+    params_flatten = np.append(params_flatten, network.params['b2'].flatten())
+    v = params_flatten
 
-    train_loss_list = []
-    train_acc_list = []
-    test_acc_list = []
-
-    iter_per_epoch = max(train_size / batch_size, 1)
-
-    for i in range(iters_num):
-        batch_mask = np.random.choice(train_size, batch_size)
-        x_batch = x_train[batch_mask]
-        t_batch = t_train[batch_mask]
-        
-        # 计算梯度
-        # grad = network.num_gradient(x_batch, t_batch)
-        grad = network.gradient(x_batch, t_batch)
-        
-        # 更新参数
-        for key in ('W1', 'b1', 'W2', 'b2'):
-            network.params[key] -= learning_rate * grad[key]
-        
-        loss = network.loss(x_batch, t_batch)
-        train_loss_list.append(loss)
-        
-        if i % iter_per_epoch == 0:
-            train_acc = network.accuracy(x_train, t_train)
-            test_acc = network.accuracy(x_test, t_test)
-            train_acc_list.append(train_acc)
-            test_acc_list.append(test_acc)
-            print("train acc, test acc | " + str(train_acc) + ", " + str(test_acc))
-
-    # 绘制图形
-    markers = {'train': 'o', 'test': 's'}
-    x = np.arange(len(train_acc_list))
-    plt.plot(x, train_acc_list, label='train acc')
-    plt.plot(x, test_acc_list, label='test acc', linestyle='--')
-    plt.xlabel("epochs")
-    plt.ylabel("accuracy")
-    plt.ylim(0, 1.0)
-    plt.legend(loc='lower right')
-    plt.savefig("output.png")
+    print(jacobi_matrix(f, v))
