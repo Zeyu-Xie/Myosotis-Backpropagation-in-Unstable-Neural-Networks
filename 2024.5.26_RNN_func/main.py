@@ -4,82 +4,78 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch import nn
 
-# 设置超参数
-TIME_STEP = 10
-INPUT_SIZE = 1
-HIDDEN_SIZE = 32
-NUM_LAYERS = 1
-LR = 0.02
-
-# 设置随机种子
-torch.manual_seed(3416)
-
+# 定义RNN模型(可以类别下方RNN简单测试代码理解)
 class Rnn(nn.Module):
-    def __init__(self, input_size, hidden_size, num_layers, time_step, lr, initial_h_state=None):
+    def __init__(self, input_size):
         super(Rnn, self).__init__()
-        self.time_step = time_step  # 添加time_step属性
+        # 定义RNN网络
+        ## hidden_size是自己设置的，貌似取值都是32,64,128这样来取值
+        ## num_layers是隐藏层数量，超过2层那就是深度循环神经网络了
         self.rnn = nn.RNN(
-            input_size=input_size,
-            hidden_size=hidden_size,
-            num_layers=num_layers,
-            batch_first=True
-        )
-        self.out = nn.Linear(hidden_size, 1)
-        self.loss_func = nn.MSELoss()
-        self.optimizer = torch.optim.Adam(self.parameters(), lr=lr)
-        self.h_state = initial_h_state
+                input_size=input_size,
+                hidden_size=32,
+                num_layers=1,
+                batch_first=True  # 输入形状为[批量大小, 数据序列长度, 特征维度]
+                )
+        # 定义全连接层
+        self.out = nn.Linear(32, 1)
 
+    # 定义前向传播函数
     def forward(self, x, h_0):
         r_out, h_n = self.rnn(x, h_0)
+        # print("数据输出结果；隐藏层数据结果", r_out, h_n)
+        # print("r_out.size()， h_n.size()", r_out.size(), h_n.size())
         outs = []
-        for time in range(r_out.size(1)):
-            outs.append(self.out(r_out[:, time, :]))
-        return torch.stack(outs, dim=1), h_n
+        # r_out.size=[1,10,32]即将一个长度为10的序列的每个元素都映射到隐藏层上
+        for time in range(r_out.size(1)):  
+            # print("映射", r_out[:, time, :])
+            # 依次抽取序列中每个单词,将之通过全连接层并输出.r_out[:, 0, :].size()=[1,32] -> [1,1]
+            outs.append(self.out(r_out[:, time, :])) 
+            # print("outs", outs)
+        # stack函数在dim=1上叠加:10*[1,1] -> [1,10,1] 同时h_n已经被更新
+        return torch.stack(outs, dim=1), h_n 
 
-    def train(self, steps):
-        for step in range(steps):
-            start, end = step * np.pi, (step + 1) * np.pi
-            steps = np.linspace(start, end, self.time_step, dtype=np.float32)
-            x_np = np.sin(steps)
-            y_np = np.cos(steps)
+TIME_STEP = 10
+INPUT_SIZE = 1
+LR = 0.02
+model = Rnn(INPUT_SIZE)
+print(model)
 
-            x = torch.from_numpy(x_np[np.newaxis, :, np.newaxis])
-            y = torch.from_numpy(y_np[np.newaxis, :, np.newaxis])
+# 此处使用的是均方误差损失
+loss_func = nn.MSELoss()  
+optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
-            prediction, self.h_state = self(x, self.h_state)
-            self.h_state = self.h_state.data
+h_state = None  # 初始化h_state为None
 
-            loss = self.loss_func(prediction, y)
-            self.optimizer.zero_grad()
-            loss.backward()
-            self.optimizer.step()
+for step in range(300):
+    # 人工生成输入和输出,输入x.size=[1,10,1],输出y.size=[1,10,1]
+    start, end = step * np.pi, (step + 1)*np.pi
+    # np.linspace生成一个指定大小，指定数据区间的均匀分布序列，TIME_STEP是生成数量
+    steps = np.linspace(start, end, TIME_STEP, dtype=np.float32) 
+    # print("steps", steps)
+    x_np = np.sin(steps)
+    y_np = np.cos(steps)
+    # print("x_np,y_np", x_np, y_np)
+    # 从numpy.ndarray创建一个张量 np.newaxis增加新的维度
+    x = torch.from_numpy(x_np[np.newaxis, :, np.newaxis])
+    y = torch.from_numpy(y_np[np.newaxis, :, np.newaxis])
+    # print("x,y", x,y)
 
-        return steps, y_np, prediction
+    # 将x通过网络,长度为10的序列通过网络得到最终隐藏层状态h_state和长度为10的输出prediction:[1,10,1]
+    prediction, h_state = model(x, h_state)
+    h_state = h_state.data  
+    # 这一步只取了h_state.data.因为h_state包含.data和.grad 舍弃了梯度
+    # print("precision, h_state.data", prediction, h_state)
+    # print("prediction.size(), h_state.size()", prediction.size(), h_state.size())
+    
+    # 反向传播
+    loss = loss_func(prediction, y)
+    optimizer.zero_grad()
+    loss.backward()
+    # 更新优化器参数
+    optimizer.step()
 
-    def plot(self, steps, y_np, prediction):
-        plt.plot(steps, y_np.flatten(), 'r-')
-        plt.plot(steps, prediction.data.numpy().flatten(), 'b-')
-        plt.show()
-
-# 输入一个初始的h_state，返回最终的h_state
-def func(initial_h_state):
-
-    tmp = torch.zeros(1, 1, 32)
-    tmp[0, 0] = initial_h_state
-    model = Rnn(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS, TIME_STEP, LR, tmp)
-    steps, y_np, prediction = model.train(300)
-    # model.plot(steps, y_np, prediction)
-    return model.h_state[0, 0]
-
-
-if __name__ == '__main__':
-
-    initial_h_state = torch.tensor([0.2007,  0.0051,  0.4154,  0.4034,  0.3125, -0.0950, -0.8950,
-            -0.7195, -0.0895,  0.3049,  0.9229, -0.3494,  0.2028, -0.7477,
-            -0.2891,  0.0730, -0.9841, -0.1823, -0.8008,  0.3737, -0.4704,
-            0.6192, -0.0636,  0.0086,  0.8629,  0.2117,  0.4237, -0.2888,
-            0.0315,  0.6691, -0.7257, -0.7713])
-    print(f"initial_h_state: {initial_h_state}")
-
-    final_h_state = func(initial_h_state)
-    print(f"final_h_state: {final_h_state}")
+# 对最后一次的结果作图查看网络的预测效果
+plt.plot(steps, y_np.flatten(), 'r-')
+plt.plot(steps, prediction.data.numpy().flatten(), 'b-')
+plt.show()
