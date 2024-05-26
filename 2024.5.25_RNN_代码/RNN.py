@@ -4,21 +4,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch import nn
 
+# 设置随机种子
+torch.manual_seed(3416)
 
 class Rnn(nn.Module):
-    def __init__(self, input_size, time_step, lr):
+    def __init__(self, input_size, hidden_size, num_layers, time_step, lr, initial_h_state=None):
         super(Rnn, self).__init__()
-        self.time_step = time_step
+        self.time_step = time_step  # 添加time_step属性
         self.rnn = nn.RNN(
             input_size=input_size,
-            hidden_size=32,
-            num_layers=1,
+            hidden_size=hidden_size,
+            num_layers=num_layers,
             batch_first=True
         )
-        self.out = nn.Linear(32, 1)
+        self.out = nn.Linear(hidden_size, 1)
         self.loss_func = nn.MSELoss()
         self.optimizer = torch.optim.Adam(self.parameters(), lr=lr)
-        self.h_state = None
+        self.h_state = initial_h_state
 
     def forward(self, x, h_0):
         r_out, h_n = self.rnn(x, h_0)
@@ -45,13 +47,6 @@ class Rnn(nn.Module):
             loss.backward()
             self.optimizer.step()
 
-            print(f"Step {step+1}/{steps}:")
-            print("Input (x):", x)
-            print("Target (y):", y)
-            print("Prediction:", prediction)
-            print("Loss:", loss.item())
-            print("-----------------------")
-
         return steps, y_np, prediction
 
     def plot(self, steps, y_np, prediction):
@@ -63,7 +58,12 @@ class Rnn(nn.Module):
 if __name__ == '__main__':
     TIME_STEP = 10
     INPUT_SIZE = 1
+    HIDDEN_SIZE = 32
+    NUM_LAYERS = 1
     LR = 0.02
-    model = Rnn(INPUT_SIZE, TIME_STEP, LR)
+    initial_h_state = torch.zeros(NUM_LAYERS, 1, HIDDEN_SIZE)
+    print(f"initial_h_state: {initial_h_state}")
+    model = Rnn(INPUT_SIZE, HIDDEN_SIZE, NUM_LAYERS, TIME_STEP, LR, initial_h_state)
     steps, y_np, prediction = model.train(300)
-    model.plot(steps, y_np, prediction)
+    print(f"final_h_state: {model.h_state}")
+    # model.plot(steps, y_np, prediction)
