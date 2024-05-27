@@ -48,6 +48,10 @@ dL_dh[-1] = errors[-1] @ W_y * tanh_prime(pre_activations[-1])
 num_directions = hidden_size
 delta_h_t = np.random.randn(hidden_size, num_directions) * 1e-5
 
+delta_h_t[0] = np.array([1, 0, 0])
+delta_h_t[1] = np.array([0, 1, 0])
+delta_h_t[2] = np.array([0, 0, 1])
+
 # 存储Lyapunov指数的对数累计和
 log_sum = np.zeros(num_directions)
 

@@ -28,6 +28,10 @@ h_t = np.zeros(hidden_size)
 num_directions = hidden_size
 delta_h_t = np.random.randn(hidden_size, num_directions) * 1e-5
 
+delta_h_t[0] = np.array([1, 0, 0])
+delta_h_t[1] = np.array([0, 1, 0])
+delta_h_t[2] = np.array([0, 0, 1])
+
 # 存储Lyapunov指数的对数累计和
 log_sum = np.zeros(num_directions)
 
@@ -38,13 +42,13 @@ for t in range(time_steps):
     # 计算新的隐藏状态
     pre_activation = np.dot(W_h, h_t) + np.dot(W_x, inputs[t])
     h_t = tanh(pre_activation)
-    
+
     # 计算雅可比矩阵
     J_t = tanh_prime(pre_activation)[:, np.newaxis] * W_h
     
     # 更新多个扰动向量
     delta_h_t = np.dot(J_t, delta_h_t)
-    
+
     # 保存当前扰动向量
     forward_deltas.append(delta_h_t.copy())
     
