@@ -6,12 +6,13 @@ import os
 np.random.seed(42)  # 为了结果可复现
 hidden_size = 3
 input_size = 2
-output_size = 1
-time_steps = 100
+output_size = 2
+time_steps = 3
 
 W_h = np.random.randn(hidden_size, hidden_size)
 W_x = np.random.randn(hidden_size, input_size)
-W_y = np.random.randn(output_size, hidden_size)
+W_y = W_x.copy().T
+
 
 # 激活函数及其导数
 def tanh(x):
@@ -22,7 +23,10 @@ def tanh_prime(x):
 
 # 生成随机输入序列和目标输出
 inputs = np.random.randn(time_steps, input_size)
-targets = np.random.randn(time_steps, output_size)
+targets = np.zeros((time_steps, output_size))
+for i in range(time_steps-1):
+    targets[i] = inputs[i+1]
+targets[-1] = inputs[0]
 
 # 初始化隐藏状态
 h_t = np.zeros((time_steps, hidden_size))
@@ -66,15 +70,18 @@ for t in reversed(range(time_steps - 1)):
     # 计算雅可比矩阵
     J_t = np.diag(tanh_prime(pre_activations[t])) @ W_h
     
+    old_delta_h_t = delta_h_t.copy()
+
     # 更新多个扰动向量
-    delta_h_t = J_t @ delta_h_t
+    delta_h_t = delta_h_t @ J_t
+
+    print(f"{t}: {delta_h_t} = \n {old_delta_h_t} @ \n {J_t} \n\n")
     
     # 保存当前扰动向量
     backward_deltas.append(delta_h_t.copy())
 
     # QR分解
     Q, R = qr(delta_h_t, mode='economic')
-    delta_h_t = Q
     
     # 累计对数
     log_sum += np.log(np.abs(np.diag(R)))

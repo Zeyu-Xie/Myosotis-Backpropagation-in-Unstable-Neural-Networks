@@ -6,7 +6,7 @@ import os
 np.random.seed(42)  # 为了结果可复现
 hidden_size = 3
 input_size = 2
-time_steps = 100
+time_steps = 3
 
 W_h = np.random.randn(hidden_size, hidden_size)
 W_x = np.random.randn(hidden_size, input_size)
@@ -46,6 +46,8 @@ for t in range(time_steps):
     # 计算雅可比矩阵
     J_t = tanh_prime(pre_activation)[:, np.newaxis] * W_h
     
+    old_delta_h_t = delta_h_t.copy()
+
     # 更新多个扰动向量
     delta_h_t = np.dot(J_t, delta_h_t)
 
@@ -54,10 +56,11 @@ for t in range(time_steps):
     
     # QR分解
     Q, R = qr(delta_h_t, mode='economic')
-    delta_h_t = Q
     
     # 累计对数
     log_sum += np.log(np.abs(np.diag(R)))
+
+    print(f"{t}: {delta_h_t} = \n {J_t} @ \n {old_delta_h_t} \n\n")
 
 # 计算Lyapunov指数
 lyapunov_exponents = log_sum / time_steps
