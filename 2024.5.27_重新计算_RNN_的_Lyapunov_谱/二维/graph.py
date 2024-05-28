@@ -25,16 +25,11 @@ while tot >= 0:
     backward_deltas.append(tmp)
     tot -= 2
 
-for i in range(1):
-    print(forward_deltas[i])
-    print(backward_deltas[i])
-    print("")
-
 # 创建一个二维坐标系
 fig = plt.figure(figsize=(5, 5))
 plt.title("Forward And Backward Deltas")
-plt.xlim(-1, 1)
-plt.ylim(-1, 1)
+# plt.xlim(-1, 1)
+# plt.ylim(-1, 1)
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.grid(True, ls='--')
@@ -58,4 +53,4 @@ for i in range(len(backward_deltas)):
 # 绘制点
 plt.scatter(x, y, s=5, c='b', marker='o', label='Backward Deltas')
 
-plt.show()
+plt.savefig(os.path.join(os.path.dirname(__file__), "graph.png"))
