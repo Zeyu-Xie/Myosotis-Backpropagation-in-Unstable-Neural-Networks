@@ -6,7 +6,7 @@ import os
 np.random.seed(42)  # 为了结果可复现
 hidden_size = 3
 input_size = 2
-time_steps = 5
+time_steps = 500
 
 W_h = np.random.randn(hidden_size, hidden_size)
 W_x = np.random.randn(hidden_size, input_size)
@@ -48,8 +48,6 @@ for t in range(time_steps):
 
     # 计算雅可比矩阵
     J_t = tanh_prime(pre_activation)[:, np.newaxis] * W_h
-    
-    print(J_t)
 
     old_delta_h_t = delta_h_t.copy()
 
@@ -74,9 +72,3 @@ for t in range(time_steps):
 lyapunov_exponents = log_sum / time_steps
 
 print("Forward Lyapunov Exponents:", lyapunov_exponents)
-
-# with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "w") as f:
-#     for delta in forward_deltas:
-#         for row in delta:
-#             f.write(" ".join(map(str, row)) + "\n")
-#         f.write("\n")

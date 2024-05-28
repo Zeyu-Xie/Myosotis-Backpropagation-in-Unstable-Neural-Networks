@@ -7,7 +7,7 @@ np.random.seed(42)  # 为了结果可复现
 hidden_size = 3
 input_size = 2
 output_size = 2
-time_steps = 5
+time_steps = 500
 
 W_h = np.random.randn(hidden_size, hidden_size)
 W_x = np.random.randn(hidden_size, input_size)
@@ -81,8 +81,6 @@ for t in reversed(range(time_steps)):
     
     # 计算雅可比矩阵
     J_t = np.diag(tanh_prime(pre_activations[t])) @ W_h
-
-    print(J_t.T)
     
     old_delta_h_t = delta_h_t.copy()
 
@@ -98,10 +96,6 @@ for t in reversed(range(time_steps)):
     # 累计对数
     log_sum += np.log(np.abs(np.diag(R)))
 
-    print(f"=== {t-1} ===")
-    print(delta_h_t)
-    print("")
-
     if t > 0:
         with open(os.path.join(os.path.dirname(__file__), "backward_deltas.txt"), "a") as f:
             for row in delta_h_t:
@@ -112,9 +106,3 @@ for t in reversed(range(time_steps)):
 lyapunov_exponents = log_sum / time_steps
 
 print("Backward Lyapunov Exponents:", lyapunov_exponents)
-
-# with open(os.path.join(os.path.dirname(__file__), "backward_deltas.txt"), "w") as f:
-#     for delta in backward_deltas:
-#         for row in delta:
-#             f.write(" ".join(map(str, row)) + "\n")
-#         f.write("\n")
