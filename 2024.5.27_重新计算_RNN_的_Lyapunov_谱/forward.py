@@ -6,7 +6,7 @@ import os
 np.random.seed(42)  # 为了结果可复现
 hidden_size = 3
 input_size = 2
-time_steps = 3
+time_steps = 5
 
 W_h = np.random.randn(hidden_size, hidden_size)
 W_x = np.random.randn(hidden_size, input_size)
@@ -38,6 +38,9 @@ log_sum = np.zeros(num_directions)
 # 存储扰动向量
 forward_deltas = []
 
+with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "w") as f:
+    f.write("")
+
 for t in range(time_steps):
     # 计算新的隐藏状态
     pre_activation = np.dot(W_h, h_t) + np.dot(W_x, inputs[t])
@@ -46,6 +49,8 @@ for t in range(time_steps):
     # 计算雅可比矩阵
     J_t = tanh_prime(pre_activation)[:, np.newaxis] * W_h
     
+    print(J_t)
+
     old_delta_h_t = delta_h_t.copy()
 
     # 更新多个扰动向量
@@ -60,15 +65,18 @@ for t in range(time_steps):
     # 累计对数
     log_sum += np.log(np.abs(np.diag(R)))
 
-    print(f"{t}: {delta_h_t} = \n {J_t} @ \n {old_delta_h_t} \n\n")
+    with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "a") as f:
+        for row in delta_h_t:
+            f.write(" ".join(map(str, row)) + "\n")
+        f.write("\n")
 
 # 计算Lyapunov指数
 lyapunov_exponents = log_sum / time_steps
 
 print("Forward Lyapunov Exponents:", lyapunov_exponents)
 
-with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "w") as f:
-    for delta in forward_deltas:
-        for row in delta:
-            f.write(" ".join(map(str, row)) + "\n")
-        f.write("\n")
+# with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "w") as f:
+#     for delta in forward_deltas:
+#         for row in delta:
+#             f.write(" ".join(map(str, row)) + "\n")
+#         f.write("\n")
