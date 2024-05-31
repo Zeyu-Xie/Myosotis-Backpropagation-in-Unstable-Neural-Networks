@@ -23,6 +23,8 @@
 
 \section{绪论}
 
+不稳定神经网络中，梯度爆炸问题限制了反向传播算法的有效性，
+
 \subsection{文献综述}
 
 \subsection{现有成果}
@@ -31,11 +33,48 @@
 
 \subsection{李雅普诺夫谱}
 
+\begin{definition}[李雅普诺夫常数]
+设$A$是一个$n\times n$的矩阵，$x$是一个$n$维向量。如果存在一个实数$\lambda$，使得对于任意的$x\neq 0$，都有
+\[
+\frac{\|Ax\|}{\|x\|}\leq \lambda
+\]
+则称$\lambda$是矩阵$A$的李雅普诺夫常数，记作$\lambda(A)$。
+\end{definition}
+
+\begin{definition}[李雅普诺夫谱]
+设$A$是一个$n\times n$的矩阵，$\lambda_1,\lambda_2,\ldots,\lambda_n$是$A$的特征值。则$A$的李雅普诺夫谱定义为
+\[
+\Lambda(A)=\max_{1\leq i\leq n}|\lambda_i|
+\]
+\end{definition}
+
 \subsection{李雅普诺夫向量}
+
+\begin{definition}[李雅普诺夫向量]
+设$A$是一个$n\times n$的矩阵，$x$是一个$n$维向量。如果存在一个实数$\lambda$，使得对于任意的$x\neq 0$，都有
+\[
+\frac{\|Ax\|}{\|x\|}\leq \lambda
+\]
+\end{definition}
 
 \subsection{伴随李雅普诺夫谱和对偶性}
 
+\begin{definition}[伴随李雅普诺夫谱]
+设$A$是一个$n\times n$的矩阵，$B$是一个$n\times n$的矩阵。$A$的伴随李雅普诺夫谱定义为
+\[
+\Lambda(A,B)=\max_{1\leq i\leq n}|\lambda_i|
+\]
+\end{definition}
+
 \section{梯度爆炸下的反向传播算法}
+
+首先介绍神经网络中反向传播算法的基本原理和流程。
+
+反向传播算法用到了链式法则，通过逐层计算梯度来更新网络参数。在不稳定神经网络中，梯度爆炸问题会导致梯度的指数级增长，使得参数更新过程不稳定。传统的反向传播算法在处理梯度爆炸问题时效果有限，需要引入新的方法和技术来提高算法的稳定性和收敛性。
+
+我们分别以两个例子来说明反向传播算法的具体实现。
+
+【具体介绍两个例子，传统神经网络和 RNN】
 
 \subsection{传统方法的困境}
 
