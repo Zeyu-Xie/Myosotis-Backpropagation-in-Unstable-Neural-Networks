@@ -54,3 +54,5 @@ for i in range(len(backward_deltas)):
 plt.scatter(x, y, s=5, c='b', marker='o', label='Backward Deltas')
 
 plt.savefig(os.path.join(os.path.dirname(__file__), "graph.png"))
+
+# plt.show()
