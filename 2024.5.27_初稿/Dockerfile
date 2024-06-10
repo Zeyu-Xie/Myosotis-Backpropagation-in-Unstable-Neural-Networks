@@ -1,4 +1,4 @@
-FROM acanxie/xelatex:1.0.0
+FROM acanxie/xelatex:1.1.0
 
 WORKDIR /app
 
