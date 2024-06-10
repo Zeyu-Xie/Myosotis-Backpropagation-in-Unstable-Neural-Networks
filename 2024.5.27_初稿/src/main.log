@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.3.30)  5 JUN 2024 10:02
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.3.30)  10 JUN 2024 02:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1285,13 +1285,9 @@ m/m/it/12 ^^U[]; ^^U[]; [] ; ^^U[]$
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 121.
 [5]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 156.
-
 File: ./img/gradient_explosion.jpeg Graphic file (type bmp)
 <./img/gradient_explosion.jpeg>
-[6]
+ [6]
 Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
 Missing character: There is no 說 (U+8AAA) in font [FandolSong-Regular.otf]/OT:l
@@ -1313,9 +1309,9 @@ Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:
 anguage=dflt;!
 Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
+[7]
 Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
-[7]
 Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
 Missing character: There is no φ ("3C6) in font ec-lmr12!
@@ -1380,12 +1376,9 @@ Missing character: There is no 複 (U+8907) in font [FandolSong-Regular.otf]/OT:
 anguage=dflt;!
 Missing character: There is no 複 (U+8907) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
+[8]
 Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
 Missing character: There is no 說 (U+8AAA) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
 Missing character: There is no 麼 (U+9EBC) in font [FandolSong-Regular.otf]/OT:l
@@ -1408,11 +1401,6 @@ anguage=dflt;!
 Missing character: There is no 麼 (U+9EBC) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
@@ -1422,13 +1410,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 305--306
 
  []
 
-
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 307--308
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
 
  []
 
@@ -1446,11 +1439,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2D507E2457FE8BB5EBA8361719FD80FB;2263.
+(rerunfilecheck)             Checksum: 43451D0AB7C3166C4BD70C8237F3F879;2365.
  ) 
 Here is how much of TeX's memory you used:
  25856 strings out of 474878
- 534652 string characters out of 5762516
+ 534647 string characters out of 5762516
  1944627 words of memory out of 5000000
  47305 multiletter control sequences out of 15000+600000
  617320 words of font info for 100 fonts, out of 8000000 for 9000
