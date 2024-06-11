@@ -1,4 +1,4 @@
-FROM acanxie/xelatex:1.1.0-linux-arm64
+FROM acanxie/xelatex:1.1.0
 
 WORKDIR /app
 
