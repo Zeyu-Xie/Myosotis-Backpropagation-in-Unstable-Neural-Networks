@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  11 JUN 2024 05:34
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  11 JUN 2024 06:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1370,34 +1370,14 @@ anguage=dflt;!
 Missing character: There is no 麼 (U+9EBC) in font [FandolSong-Regular.otf]/OT:l
 anguage=dflt;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
-
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+(./main.bbl
+Underfull \vbox (badness 2088) has occurred while \output is active []
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
-
- []
-
-(./main.bbl [11]) [12] (./main.aux)
+ [11])
+[12] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1416,6 +1396,6 @@ Here is how much of TeX's memory you used:
  47313 multiletter control sequences out of 15000+600000
  617320 words of font info for 100 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 101i,7n,145p,1010b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,7n,145p,1010b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ./main.pdf (12 pages).
