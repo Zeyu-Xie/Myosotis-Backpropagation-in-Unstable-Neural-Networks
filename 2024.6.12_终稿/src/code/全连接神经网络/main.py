@@ -166,9 +166,8 @@ class TwoLayerNet:
             perturbation = np.random.randn(*a1.shape) * 1e-4
             a1_perturbed = a1 + perturbation
             z1_perturbed = sigmoid(a1_perturbed)
-
             delta_z = z1_perturbed - z1
-            norms = np.linalg.norm(delta_z, axis=1)
+            norms = np.linalg.norm(delta_z.T, axis=1)
             exponents = np.log(norms)
             lyapunov_exponents.append(exponents)
 
@@ -199,7 +198,7 @@ class TwoLayerNet:
             dz1_perturbed = sigmoid_grad(a1) * da1_perturbed
 
             delta_dz = dz1_perturbed - (sigmoid_grad(a1) * np.dot(dy, W2.T))
-            norms = np.linalg.norm(delta_dz, axis=1)
+            norms = np.linalg.norm(delta_dz.T, axis=1)
             lyapunov_exponents.append(np.log(norms))
 
         return np.mean(lyapunov_exponents, axis=0)
