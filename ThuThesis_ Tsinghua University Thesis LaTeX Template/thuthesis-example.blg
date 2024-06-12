@@ -18,45 +18,45 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ref/refs.bib
 Warning--I didn't find a database entry for "sec:code"
 Warning--I didn't find a database entry for "sec:result"
-You've used 13 entries,
+You've used 10 entries,
             5374 wiz_defined-function locations,
-            1135 strings with 10047 characters,
-and the built_in function-call counts, 98231 in all, are:
-= -- 2259
-> -- 11118
-< -- 13800
-+ -- 3865
-- -- 830
-* -- 686
-:= -- 13588
-add.period$ -- 50
-call.type$ -- 13
-change.case$ -- 39
-chr.to.int$ -- 3362
-cite$ -- 13
-duplicate$ -- 324
-empty$ -- 1155
-format.name$ -- 350
-if$ -- 25627
+            1116 strings with 9647 characters,
+and the built_in function-call counts, 75564 in all, are:
+= -- 1746
+> -- 8510
+< -- 10579
++ -- 2952
+- -- 628
+* -- 539
+:= -- 10449
+add.period$ -- 41
+call.type$ -- 10
+change.case$ -- 30
+chr.to.int$ -- 2579
+cite$ -- 10
+duplicate$ -- 249
+empty$ -- 950
+format.name$ -- 249
+if$ -- 19728
 int.to.chr$ -- 1
-int.to.str$ -- 14
+int.to.str$ -- 11
 missing$ -- 0
-newline$ -- 90
-num.names$ -- 39
-pop$ -- 5018
+newline$ -- 75
+num.names$ -- 30
+pop$ -- 4004
 preamble$ -- 1
-purify$ -- 13
+purify$ -- 10
 quote$ -- 0
-skip$ -- 10288
+skip$ -- 7784
 stack$ -- 0
-substring$ -- 4764
-swap$ -- 13
-text.length$ -- 276
+substring$ -- 3701
+swap$ -- 10
+text.length$ -- 205
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 143
+type$ -- 110
 warning$ -- 0
-while$ -- 291
+while$ -- 214
 width$ -- 0
-write$ -- 201
+write$ -- 159
 (There were 2 warnings)

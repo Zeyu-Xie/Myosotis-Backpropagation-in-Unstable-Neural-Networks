@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax\else
@@ -84,23 +84,5 @@ Storm L, Linander H, Bec J, et~al.
 \newblock Finite-time lyapunov exponents of deep neural networks\allowbreak[A].
 \newblock 2023.
 \newblock arXiv: \eprint{https://arxiv.org/abs/2306.12548}{2306.12548}.
-
-\bibitem[Carlson et~al.(1981)Carlson, Taylor, Jones, and
-  Schawlow]{carlson1981two}
-Carlson N~W, Taylor A~J, Jones K~M, et~al.
-\newblock Two-step polarization-labeling spectroscopy of excited states of
-  {Na2}\allowbreak[J].
-\newblock Phys Rev A, 1981, 24: 822-834.
-
-\bibitem[Taylor et~al.(1983)Taylor, Jones, and Schawlow]{taylor1983scanning}
-Taylor A~J, Jones K~M, Schawlow A~L.
-\newblock Scanning pulsed-polarization spectrometer applied to
-  {Na2}\allowbreak[J].
-\newblock J Opt Soc Am, 1983, 73: 994-998.
-
-\bibitem[Taylor et~al.(1981)Taylor, Jones, and Schawlow]{taylor1981study}
-Taylor A~J, Jones K~M, Schawlow A~L.
-\newblock A study of the excited {1$\Sigma$g+} states in {Na2}\allowbreak[J].
-\newblock Opt Commun, 1981, 39: 47-50.
 
 \end{thebibliography}
