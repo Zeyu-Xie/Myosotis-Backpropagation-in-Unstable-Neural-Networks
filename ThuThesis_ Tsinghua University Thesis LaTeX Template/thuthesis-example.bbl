@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[Geist et~al.(1990)Geist, Parlitz, and Lauterborn]{Geist1990}
+Geist K, Parlitz U, Lauterborn W.
+\newblock {Comparison of Different Methods for Computing Lyapunov
+  Exponents}\allowbreak[J/OL].
+\newblock Progress of Theoretical Physics, 1990, 83\allowbreak (5): 875-893.
+\newblock \url{https://doi.org/10.1143/PTP.83.875}.
+
+\end{thebibliography}
