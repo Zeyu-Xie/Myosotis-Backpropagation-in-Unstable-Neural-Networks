@@ -1,0 +1,52 @@
+\begin{thebibliography}{10}
+
+\bibitem{Geist1990}
+Karlheinz Geist, Ulrich Parlitz, and Werner Lauterborn.
+\newblock {Comparison of Different Methods for Computing Lyapunov Exponents}.
+\newblock {\em Progress of Theoretical Physics}, 83(5):875--893, 05 1990.
+
+\bibitem{VONBREMEN19971}
+Hubertus~F. {von Bremen}, Firdaus~E. Udwadia, and Wlodek Proskurowski.
+\newblock An efficient qr based method for the computation of lyapunov
+  exponents.
+\newblock {\em Physica D: Nonlinear Phenomena}, 101(1):1--16, 1997.
+
+\bibitem{pascanu2013difficulty}
+Razvan Pascanu, Tomas Mikolov, and Yoshua Bengio.
+\newblock On the difficulty of training recurrent neural networks, 2013.
+
+\bibitem{ioffe2015batch}
+Sergey Ioffe and Christian Szegedy.
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift, 2015.
+
+\bibitem{vakilipourtakalou2020chaotic}
+Pourya Vakilipourtakalou and Lili Mou.
+\newblock How chaotic are recurrent neural networks?, 2020.
+
+\bibitem{Ni20191}
+Angxiu Ni and Chaitanya Talnikar.
+\newblock Adjoint sensitivity analysis on chaotic dynamical systems by
+  non-intrusive least squares adjoint shadowing (nilsas).
+\newblock {\em Journal of Computational Physics}, 395:690–709, October 2019.
+
+\bibitem{Ni20192}
+Angxiu Ni.
+\newblock Hyperbolicity, shadowing directions and sensitivity analysis of a
+  turbulent three-dimensional flow.
+\newblock {\em Journal of Fluid Mechanics}, 863:644–669, January 2019.
+
+\bibitem{ni2024backpropagation}
+Angxiu Ni.
+\newblock Backpropagation in hyperbolic chaos via adjoint shadowing, 2024.
+
+\bibitem{ni2023nopropagate}
+Angxiu Ni.
+\newblock No-propagate algorithm for linear responses of random chaotic
+  systems, 2023.
+
+\bibitem{storm2023finitetime}
+L.~Storm, H.~Linander, J.~Bec, K.~Gustavsson, and B.~Mehlig.
+\newblock Finite-time lyapunov exponents of deep neural networks, 2023.
+
+\end{thebibliography}
