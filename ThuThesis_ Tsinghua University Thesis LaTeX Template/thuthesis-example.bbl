@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax\else
@@ -17,5 +17,90 @@ Geist K, Parlitz U, Lauterborn W.
   Exponents}\allowbreak[J/OL].
 \newblock Progress of Theoretical Physics, 1990, 83\allowbreak (5): 875-893.
 \newblock \url{https://doi.org/10.1143/PTP.83.875}.
+
+\bibitem[{von Bremen} et~al.(1997){von Bremen}, Udwadia, and
+  Proskurowski]{VONBREMEN19971}
+{von Bremen} H~F, Udwadia F~E, Proskurowski W.
+\newblock An efficient qr based method for the computation of lyapunov
+  exponents\allowbreak[J/OL].
+\newblock Physica D: Nonlinear Phenomena, 1997, 101\allowbreak (1): 1-16.
+\newblock
+  \url{https://www.sciencedirect.com/science/article/pii/S0167278996002163}.
+\newblock DOI: \doi{https://doi.org/10.1016/S0167-2789(96)00216-3}.
+
+\bibitem[Pascanu et~al.(2013)Pascanu, Mikolov, and
+  Bengio]{pascanu2013difficulty}
+Pascanu R, Mikolov T, Bengio Y.
+\newblock On the difficulty of training recurrent neural
+  networks\allowbreak[A].
+\newblock 2013.
+\newblock arXiv: \eprint{https://arxiv.org/abs/1211.5063}{1211.5063}.
+
+\bibitem[Ioffe et~al.(2015)Ioffe and Szegedy]{ioffe2015batch}
+Ioffe S, Szegedy C.
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift\allowbreak[A].
+\newblock 2015.
+\newblock arXiv: \eprint{https://arxiv.org/abs/1502.03167}{1502.03167}.
+
+\bibitem[Vakilipourtakalou et~al.(2020)Vakilipourtakalou and
+  Mou]{vakilipourtakalou2020chaotic}
+Vakilipourtakalou P, Mou L.
+\newblock How chaotic are recurrent neural networks?\allowbreak[A].
+\newblock 2020.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2004.13838}{2004.13838}.
+
+\bibitem[Ni et~al.(2019)Ni and Talnikar]{Ni20191}
+Ni A, Talnikar C.
+\newblock Adjoint sensitivity analysis on chaotic dynamical systems by
+  non-intrusive least squares adjoint shadowing (nilsas)\allowbreak[J/OL].
+\newblock Journal of Computational Physics, 2019, 395: 690–709.
+\newblock \url{http://dx.doi.org/10.1016/j.jcp.2019.06.035}.
+
+\bibitem[Ni(2019)]{Ni20192}
+Ni A.
+\newblock Hyperbolicity, shadowing directions and sensitivity analysis of a
+  turbulent three-dimensional flow\allowbreak[J/OL].
+\newblock Journal of Fluid Mechanics, 2019, 863: 644–669.
+\newblock \url{http://dx.doi.org/10.1017/jfm.2018.986}.
+
+\bibitem[Ni(2024)]{ni2024backpropagation}
+Ni A.
+\newblock Backpropagation in hyperbolic chaos via adjoint
+  shadowing\allowbreak[A].
+\newblock 2024.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2207.06648}{2207.06648}.
+
+\bibitem[Ni(2023)]{ni2023nopropagate}
+Ni A.
+\newblock No-propagate algorithm for linear responses of random chaotic
+  systems\allowbreak[A].
+\newblock 2023.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2308.07841}{2308.07841}.
+
+\bibitem[Storm et~al.(2023)Storm, Linander, Bec, Gustavsson, and
+  Mehlig]{storm2023finitetime}
+Storm L, Linander H, Bec J, et~al.
+\newblock Finite-time lyapunov exponents of deep neural networks\allowbreak[A].
+\newblock 2023.
+\newblock arXiv: \eprint{https://arxiv.org/abs/2306.12548}{2306.12548}.
+
+\bibitem[Carlson et~al.(1981)Carlson, Taylor, Jones, and
+  Schawlow]{carlson1981two}
+Carlson N~W, Taylor A~J, Jones K~M, et~al.
+\newblock Two-step polarization-labeling spectroscopy of excited states of
+  {Na2}\allowbreak[J].
+\newblock Phys Rev A, 1981, 24: 822-834.
+
+\bibitem[Taylor et~al.(1983)Taylor, Jones, and Schawlow]{taylor1983scanning}
+Taylor A~J, Jones K~M, Schawlow A~L.
+\newblock Scanning pulsed-polarization spectrometer applied to
+  {Na2}\allowbreak[J].
+\newblock J Opt Soc Am, 1983, 73: 994-998.
+
+\bibitem[Taylor et~al.(1981)Taylor, Jones, and Schawlow]{taylor1981study}
+Taylor A~J, Jones K~M, Schawlow A~L.
+\newblock A study of the excited {1$\Sigma$g+} states in {Na2}\allowbreak[J].
+\newblock Opt Commun, 1981, 39: 47-50.
 
 \end{thebibliography}

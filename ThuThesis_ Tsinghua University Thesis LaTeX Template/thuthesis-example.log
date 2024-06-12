@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  12 JUN 2024 08:43
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  12 JUN 2024 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1175,31 +1175,31 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \c@thu@bookmark=\count386
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 21.
+h' as default language. on input line 20.
 
 (./thuthesis-example.aux (./bu.aux))
 \openout1 = `thuthesis-example.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1209,19 +1209,19 @@ LaTeX Font Info:    ... okay on input line 21.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
-* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
+* h-part:(L,W,R)=(91.04872pt, 421.10089pt, 85.35826pt)
+* v-part:(T,H,B)=(108.12054pt, 645.87758pt, 91.04872pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=426.79135pt
-* \textheight=674.33032pt
-* \oddsidemargin=13.08827pt
+* \textwidth=421.10089pt
+* \textheight=645.87758pt
+* \oddsidemargin=18.77873pt
 * \evensidemargin=13.08827pt
-* \topmargin=-72.26997pt
-* \headheight=76.82234pt
-* \headsep=8.5359pt
+* \topmargin=-72.26956pt
+* \headheight=54.06006pt
+* \headsep=54.06006pt
 * \topskip=12.0pt
-* \footskip=22.76228pt
+* \footskip=41.25641pt
 * \marginparwidth=56.9055pt
 * \marginparsep=14.22636pt
 * \columnsep=10.0pt
@@ -1260,25 +1260,25 @@ Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
 ))
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  TU/XITSMath-Regular(1)/m/n --> TU/texgyretermes(0)/m/n 
-on input line 21.
+on input line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/texgyretermes(0)/m/it on input line
- 21.
+ 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/texgyretermes(0)/b/n on input line 
-21.
+20.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/texgyreheros(0)/m/n on input line 2
-1.
+0.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/texgyreheros(0)/b/n on input line 
-21.
+20.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/texgyrecursor(0)/m/n on input line 
-21.
+20.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/texgyrecursor(0)/b/n on input line 
-21.
+20.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictio
 nary-english.trsl
@@ -1286,8 +1286,8 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 21.
-Package hyperref Info: Link coloring OFF on input line 21.
+or `english'. on input line 20.
+Package hyperref Info: Link coloring OFF on input line 20.
  (./thuthesis-example.out) (./thuthesis-example.out)
 \@outlinefile=\write4
 \openout4 = `thuthesis-example.out'.
@@ -1298,19 +1298,19 @@ Package hyperref Info: Link coloring OFF on input line 21.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(99.58464pt, 398.3386pt, 99.58464pt)
-* v-part:(T,H,B)=(56.9055pt, 617.42482pt, 170.71652pt)
+* h-part:(L,W,R)=(90.19518pt, 417.11752pt, 90.19518pt)
+* v-part:(T,H,B)=(72.2698pt, 700.50723pt, 72.2698pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=398.3386pt
-* \textheight=617.42482pt
-* \oddsidemargin=27.31465pt
-* \evensidemargin=27.31465pt
-* \topmargin=-100.72273pt
-* \headheight=76.82234pt
-* \headsep=8.5359pt
+* \textwidth=417.11752pt
+* \textheight=700.50723pt
+* \oddsidemargin=17.92519pt
+* \evensidemargin=17.92519pt
+* \topmargin=-108.1203pt
+* \headheight=54.06006pt
+* \headsep=54.06006pt
 * \topskip=12.0pt
-* \footskip=22.76228pt
+* \footskip=41.25641pt
 * \marginparwidth=56.9055pt
 * \marginparsep=14.22636pt
 * \columnsep=10.0pt
@@ -1324,6 +1324,8 @@ Package hyperref Info: Link coloring OFF on input line 21.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+File: tsinghua-name-bachelor.pdf Graphic file (type pdf)
+<use tsinghua-name-bachelor.pdf>
 
 Package fontspec Info: Font "FandolHei-Regular" does not contain requested
 (fontspec)             Script "CJK".
@@ -1344,18 +1346,10 @@ oldFont={*-Bold}].
 (fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 26.10027pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 22.08484pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 16.0617pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 26.0947pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 22.08012pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 16.05827pt on input line 25.
+
+Package fontspec Info: Font "FandolHei-Regular" does not contain requested
+(fontspec)             Script "CJK".
+
 
 Package fontspec Info: Font "FandolFang-Regular" does not contain requested
 (fontspec)             Script "CJK".
@@ -1373,484 +1367,193 @@ Package fontspec Info: Font family 'FandolFang(0)' created for font
 (fontspec)             <->"[FandolFang-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 14.05399pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 10.54048pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 14.05098pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 10.53824pt on input line 25.
  [1
 
 
 
 ]
-[2
+(./data/committee.tex) [2
+
 
 
 
 ]
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: xetex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
-* h-part:(L,W,R)=(96.73918pt, 404.02951pt, 96.73918pt)
-* v-part:(T,H,B)=(156.49014pt, 546.29292pt, 142.26378pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=404.02951pt
-* \textheight=546.29292pt
-* \oddsidemargin=24.4692pt
-* \evensidemargin=24.4692pt
-* \topmargin=-1.13809pt
-* \headheight=76.82234pt
-* \headsep=8.5359pt
-* \topskip=12.0pt
-* \footskip=22.76228pt
-* \marginparwidth=56.9055pt
-* \marginparsep=14.22636pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-LaTeX Font Info:    Calculating math sizes for size <20.075> on input line 25.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 20.07713pt on input line 25.
+(Font)              scaled to size 12.04628pt on input line 33.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 14.05392pt on input line 25.
+(Font)              scaled to size 9.03471pt on input line 33.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 10.03856pt on input line 25.
+(Font)              scaled to size 7.22777pt on input line 33.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 20.07285pt on input line 25.
+(Font)              scaled to size 12.0437pt on input line 33.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 14.05092pt on input line 25.
+(Font)              scaled to size 9.03278pt on input line 33.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 10.0364pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 15.05785pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 12.04628pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 9.0347pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 15.05463pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 12.0437pt on input line 25.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 9.03276pt on input line 25.
+(Font)              scaled to size 7.22623pt on input line 33.
  [3
 
-] (./data/committee.tex [4
+
+] [4
+
+] (./data/abstract.tex [1
 
 
 
+] [2
 
-]
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 9.03471pt on input line 43.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 7.22777pt on input line 43.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 9.03278pt on input line 43.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 7.22623pt on input line 43.
- [5
+] [3
 
 
-]) [6
 
+] [4])
+(./thuthesis-example.toc [5
 
-] [7
-
-
-] [8
-
-] (./data/abstract.tex
-[1
-
-
-]) [2
-
-
-] (./thuthesis-example.toc [3
 
 
 ])
 \tf@toc=\write5
 \openout5 = `thuthesis-example.toc'.
 
- [4] (./thuthesis-example.lof)
+
+
+Class thuthesis Warning: The list of figures should be placed in back matter on
+ input line 43.
+
+[6] (./thuthesis-example.lof)
 \tf@lof=\write6
 \openout6 = `thuthesis-example.lof'.
 
- [5
 
 
-]
-(./thuthesis-example.lot)
-\tf@lot=\write7
-\openout7 = `thuthesis-example.lot'.
+Class thuthesis Warning: The list of tables should be placed in back matter on 
+input line 44.
 
- (./data/denotation.tex [6
-
-
-]
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
 [7
 
 
-]) [8] (./data/chap01.tex
+] (./thuthesis-example.lot)
+\tf@lot=\write7
+\openout7 = `thuthesis-example.lot'.
+
+ (./data/denotation.tex [8
+
+
+]
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
+Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
+anguage=dflt;!
+[9
+
+
+
+]) [10] (./data/chap01.tex
 第1章
 [1
 
 
-]) (./data/chap02.tex [2] [3]
+] [2] [3] [4]) (./data/chap02.tex [5]
 第2章
+[6
 
-Package fontspec Info: Font "FandolFang-Regular" does not contain requested
-(fontspec)             Script "CJK".
+] [7] [8] [9] [10] [11] [12]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 289.
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 29
+2.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 11.04242pt on input line 292.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 7.72966pt on input line 292.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 5.5212pt on input line 292.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 11.04005pt on input line 292.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 7.728pt on input line 292.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 5.52002pt on input line 292.
 
-LaTeX Font Info:    Font shape `TU/texgyrecursor(0)/m/n' will be
-(Font)              scaled to size 12.99814pt on input line 7.
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
-File: example-image-a.pdf Graphic file (type pdf)
-<use example-image-a.pdf>
-File: example-image-b.pdf Graphic file (type pdf)
-<use example-image-b.pdf>
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 47
-.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 11.04242pt on input line 47.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 7.72966pt on input line 47.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 5.5212pt on input line 47.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 11.04005pt on input line 47.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 7.728pt on input line 47.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 5.52002pt on input line 47.
-[4
+
+Package natbib Warning: Citation `sec:code' on page 13 undefined on input line 
+334.
+
+
+Package natbib Warning: Citation `sec:result' on page 13 undefined on input lin
+e 334.
+
+[13] [14] [15]) (./data/chap03.tex [16]
+第3章
+[17
+
+] [18] [19] [20] [21] [22] [23]) (./data/chap04.tex [24]
+第4章
+) (./data/chap05.tex [25
 
 ]
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 77.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
-(Font)              scaled to size 5.00053pt on input line 77.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 77.
-LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 77.
- [5]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 123.
-) (./data/chap03.tex [6]
-第3章
-[7
-
-]) (./data/chap04.tex [8]
-第4章
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 20.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 21.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 22.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 23.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 24.
-
-
-Package natbib Warning: Citation `zhukezhen1973' on page 9 undefined on input l
-ine 24.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 36.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 37.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 38.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 39.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 40.
-
-
-Package natbib Warning: Citation `zhukezhen1973' on page 9 undefined on input l
-ine 40.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 54.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 55.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 56.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 57.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 58.
-
-
-Package natbib Warning: Citation `zhukezhen1973' on page 9 undefined on input l
-ine 58.
-
-
-Package natbib Warning: Citation `zhangkun1994' on page 9 undefined on input li
-ne 76.
-
-
-Package natbib Warning: Citation `zhukezhen1973' on page 9 undefined on input l
-ine 76.
-
-
-Package natbib Warning: Citation `dupont1974bone' on page 9 undefined on input 
-line 76.
-
-
-Package natbib Warning: Citation `zhengkaiqing1987' on page 9 undefined on inpu
-t line 76.
-
-
-Package natbib Warning: Citation `jiangxizhou1980' on page 9 undefined on input
- line 76.
-
-
-Package natbib Warning: Citation `jianduju1994' on page 9 undefined on input li
-ne 76.
-
-
-Package natbib Warning: Citation `merkt1995rotational' on page 9 undefined on i
-nput line 76.
-
-
-Package natbib Warning: Citation `mellinger1996laser' on page 9 undefined on in
-put line 76.
-
-
-Package natbib Warning: Citation `bixon1996dynamics' on page 9 undefined on inp
-ut line 76.
-
-
-Package natbib Warning: Citation `mahui1995' on page 9 undefined on input line 
-76.
-
-
-Package natbib Warning: Citation `carlson1981two' on page 9 undefined on input 
-line 76.
-
-
-Package natbib Warning: Citation `taylor1983scanning' on page 9 undefined on in
-put line 76.
-
-
-Package natbib Warning: Citation `taylor1981study' on page 9 undefined on input
- line 76.
-
-
-Package natbib Warning: Citation `shimizu1983laser' on page 9 undefined on inpu
-t line 76.
-
-
-Package natbib Warning: Citation `atkinson1982experimental' on page 9 undefined
- on input line 76.
-
-
-Package natbib Warning: Citation `kusch1975perturbations' on page 9 undefined o
-n input line 76.
-
-
-Package natbib Warning: Citation `guangxi1993' on page 9 undefined on input lin
-e 76.
-
-
-Package natbib Warning: Citation `huosini1989guwu' on page 9 undefined on input
- line 76.
-
-
-Package natbib Warning: Citation `wangfuzhi1865songlun' on page 9 undefined on 
-input line 76.
-
-
-Package natbib Warning: Citation `zhaoyaodong1998xinshidai' on page 9 undefined
- on input line 76.
-
-
-Package natbib Warning: Citation `biaozhunhua2002tushu' on page 9 undefined on 
-input line 76.
-
-
-Package natbib Warning: Citation `chubanzhuanye2004' on page 9 undefined on inp
-ut line 76.
-
-
-Package natbib Warning: Citation `who1970factors' on page 9 undefined on input 
-line 76.
-
-
-Package natbib Warning: Citation `peebles2001probability' on page 9 undefined o
-n input line 76.
-
-
-Package natbib Warning: Citation `baishunong1998zhiwu' on page 9 undefined on i
-nput line 76.
-
-
-Package natbib Warning: Citation `weinstein1974pathogenic' on page 9 undefined 
-on input line 76.
-
-
-Package natbib Warning: Citation `hanjiren1985lun' on page 9 undefined on input
- line 76.
-
-
-Package natbib Warning: Citation `dizhi1936dizhi' on page 9 undefined on input 
-line 76.
-
-
-Package natbib Warning: Citation `tushuguan1957tushuguanxue' on page 9 undefine
-d on input line 76.
-
-
-Package natbib Warning: Citation `aaas1883science' on page 9 undefined on input
- line 76.
-
-
-Package natbib Warning: Citation `fugang2000fengsha' on page 9 undefined on inp
-ut line 76.
-
-
-Package natbib Warning: Citation `xiaoyu2001chubanye' on page 9 undefined on in
-put line 76.
-
-
-Package natbib Warning: Citation `oclc2000about' on page 9 undefined on input l
-ine 76.
-
-
-Package natbib Warning: Citation `scitor2000project' on page 9 undefined on inp
-ut line 76.
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 65--57
-[]\TU/FandolSong(0)/m/n/12.045 注 意，|  引 文 参 考 文 献 的 每 条 都 要 在 正 文 中 标
- []
-
-[9
+第5章
+) [26
 
 ]
 \openout3 = `bu.aux'.
 
- (./thuthesis-example.bbl) (./data/appendix.tex (./bu.aux) [10
+ (./thuthesis-example.bbl
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 10.54048pt on input line 19.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 7.00075pt on input line 19.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(2)/m/n' will be
+(Font)              scaled to size 5.00053pt on input line 19.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 10.53824pt on input line 19.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 19.
+LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 19.
+) (./data/acknowledgements.tex [27
 
 
+
+] [28
 
 ]
+[29
+
+
+] [30]) [31
+
+
+
+
+] [32
+
+] (./data/appendix.tex
 附录 A
 File: example-image-a.pdf Graphic file (type pdf)
 <use example-image-a.pdf>
-[11
-
-] (./thuthesis-example-appendix-a.aux)
-\openout3 = `thuthesis-example-appendix-a.aux'.
-
-
-
-Package natbib Warning: Citation `carlson1981two' on page 12 undefined on input
- line 57.
-
-
-Package natbib Warning: Citation `carlson1981two' on page 12 undefined on input
- line 57.
-
-
-Package natbib Warning: Citation `taylor1983scanning' on page 12 undefined on i
-nput line 57.
-
-
-Package natbib Warning: Citation `taylor1981study' on page 12 undefined on inpu
-t line 57.
-
-No file thuthesis-example-appendix-a.bbl.
-) (./data/acknowledgements.tex (./bu.aux) [12]) (./bu.aux) [13
-
-
-]
-(./data/resume.tex (./bu.aux) [14
-
-
-]) (./data/comments.tex (./bu.aux) [15
-
-
-]
-[16
-
-]) (./data/resolution.tex (./bu.aux) [17
-
-
-])
+)
 
 Package natbib Warning: There were undefined citations.
 
-(./bu.aux) (./thuthesis-example.aux (./bu.aux))
+[33
+
+] [34] (./thuthesis-example.aux (./bu.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
 Package rerunfilecheck Info: File `thuthesis-example.out' has not changed.
-(rerunfilecheck)             Checksum: E158C63F58373B749867E4D7BF57BE9C;4616.
+(rerunfilecheck)             Checksum: 9A86130A7808DC1D749EA1718E912348;7483.
  ) 
 Here is how much of TeX's memory you used:
- 31837 strings out of 474878
- 709540 string characters out of 5762516
- 1939627 words of memory out of 5000000
- 53318 multiletter control sequences out of 15000+600000
- 570928 words of font info for 210 fonts, out of 8000000 for 9000
+ 31337 strings out of 474878
+ 680199 string characters out of 5762516
+ 1943627 words of memory out of 5000000
+ 52875 multiletter control sequences out of 15000+600000
+ 565365 words of font info for 165 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 106i,16n,132p,1424b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 106i,12n,132p,1424b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ./thuthesis-example.pdf (33 pages).
+Output written on ./thuthesis-example.pdf (48 pages).

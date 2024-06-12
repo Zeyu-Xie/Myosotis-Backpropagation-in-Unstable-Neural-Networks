@@ -2924,8 +2924,8 @@
     \thu@info@item{专业}{}{\thu@discipline}%
     \thu@info@item{姓名}{\thu@name@title}{\thu@author}%
     \thu@info@item{指导教师}{\thu@name@title}{\thu@supervisor}%
-    \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
-    \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
+    % \thu@info@item{辅导教师}{\thu@name@title}{\thu@associate@supervisor}%
+    % \thu@info@item{联合指导教师}{\thu@name@title}{\thu@co@supervisor}%
   \endgroup
   \vskip 1.4cm%
   \begingroup
