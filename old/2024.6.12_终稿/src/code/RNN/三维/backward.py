@@ -1,8 +1,6 @@
 import numpy as np
 from scipy.linalg import qr
 import os
-import matplotlib.pyplot as plt
-import math
 
 # 初始化RNN参数
 np.random.seed(42)  # 为了结果可复现
@@ -72,11 +70,6 @@ with open(os.path.join(os.path.dirname(__file__), "backward_deltas.txt"), "w") a
         f.write(" ".join(map(str, row)) + "\n")
     f.write("\n")
 
-y_1 = []
-y_2 = []
-y_3 = []
-mod = 0
-x = list(reversed(range(1,500)))
 
 # 反向传播
 for t in reversed(range(time_steps)):
@@ -106,63 +99,10 @@ for t in reversed(range(time_steps)):
     if t > 0:
         with open(os.path.join(os.path.dirname(__file__), "backward_deltas.txt"), "a") as f:
             for row in delta_h_t:
-                # 计算模长
-                length = np.linalg.norm(row)
-                try:
-                    length = math.log(length)
-                    if mod == 0:
-                        y_1.append(length)
-                    elif mod == 1:
-                        y_2.append(length)
-                    else:
-                        y_3.append(length)
-                except:
-                    length = 0
-                    if len(y_3) == 0:
-                        if mod == 0:
-                            y_1.append(0)
-                        elif mod == 1:
-                            y_2.append(0)
-                        else:
-                            y_3.append(0)
-                        continue
-                    if mod == 0:
-                        y_1.append(y_1[-1])
-                    elif mod == 1:
-                        y_2.append(y_2[-1])
-                    else:
-                        y_3.append(y_3[-1])
-                print(length)
-                mod = (mod + 1) % 3
+                f.write(" ".join(map(str, row)) + "\n")
+            f.write("\n")
 
 # 计算Lyapunov指数
 lyapunov_exponents = log_sum / time_steps
 
 print("Backward Lyapunov Exponents:", lyapunov_exponents)
-
-# 创建一个figure对象，并获取子图
-fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(12, 4), subplot_kw={'aspect': 'equal'})
-
-# 绘制第一个图形
-axes[0].set_xlabel("Time Step")
-axes[0].set_ylabel("log(ɛ_l^1)")
-axes[0].plot(x, y_1)
-axes[0].set_title("Vector Length of ɛ^1")
-
-# 绘制第二个图形
-axes[1].set_xlabel("Time Step")
-axes[1].set_ylabel("log(ɛ_l^2)")
-axes[1].plot(x, y_2)
-axes[1].set_title("Vector Length of ɛ^2")
-
-# 绘制第三个图形
-axes[2].set_xlabel("Time Step")
-axes[2].set_ylabel("log(ɛ_l^3)")
-axes[2].plot(x, y_3)
-axes[2].set_title("Vector Length of ɛ^3")
-
-# 调整子图之间的间距
-plt.tight_layout()
-
-# 显示图形
-plt.show()

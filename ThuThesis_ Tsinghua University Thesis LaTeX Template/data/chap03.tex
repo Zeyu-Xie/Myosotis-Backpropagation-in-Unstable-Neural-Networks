@@ -408,6 +408,13 @@
 
 为了验证正向传播和反向传播的李雅普诺夫谱对偶性，我们对上述全连接神经网络和循环神经网络进行了进一步的实验. 我们在正向传播和反向传播过程中分别计算李雅普诺夫向量，将相同时间步的正向传播和反向传播的李雅普诺夫向量进行比较，可以发现，它们的内积为定值. 
 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.7\textwidth]{figures/inner_product.png}
+   \caption{李雅普诺夫向量内积}
+   \label{fig:example}
+ \end{figure}
+
 事实上，对于循环神经网络，该性质可以如下证明：
 
 设正向传播的雅可比矩阵为 \(\mathbf{J}_t\)，反向传播的雅可比矩阵为 \(\mathbf{J}_t^T\)，则有：
