@@ -1,8 +1,9 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces 全连接神经网络}}{9}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces 循环神经网络}}{12}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces 正向传播时的李雅普诺夫向量长度（取对数）}}{14}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces 反向传播时的李雅普诺夫向量长度（取对数）}}{15}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces 李雅普诺夫向量内积}}{16}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 隐藏层李雅普诺夫指数分布}}{12}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 循环神经网络}}{13}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 正向传播时的李雅普诺夫向量长度（取对数）}}{15}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 反向传播时的李雅普诺夫向量长度（取对数）}}{15}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 李雅普诺夫向量内积}}{17}{figure.caption.24}%
 \let \contentsline \ttl@gobblecontents 
 \contentsfinish 
 \contentsfinish 

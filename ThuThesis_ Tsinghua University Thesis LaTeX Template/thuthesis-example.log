@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  13 JUN 2024 01:36
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  13 JUN 2024 04:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1190,6 +1190,9 @@ LaTeX Warning: Label `fig:example' multiply defined.
 
 LaTeX Warning: Label `fig:example' multiply defined.
 
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
 (./bu.aux))
 \openout1 = `thuthesis-example.aux'.
 
@@ -1451,18 +1454,12 @@ input line 44.
  (./data/denotation.tex [8
 
 
-]
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
-Missing character: There is no 噁 (U+5641) in font [FandolSong-Regular.otf]/OT:l
-anguage=dflt;!
-[9
+] [9
 
 
 
-]) [10] (./data/chap01.tex
+]) [10]
+(./data/chap01.tex
 第1章
 [1
 
@@ -1492,30 +1489,36 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 ]
 File: figures/nn.jpeg Graphic file (type bmp)
 <figures/nn.jpeg>
- [8] [9] [10] [11]
+ [8] [9] [10]
+Overfull \hbox (16.33487pt too wide) detected at line 218
+[]
+ []
+
+File: figures/nn_lyapunov_exponents.png Graphic file (type bmp)
+<figures/nn_lyapunov_exponents.png>
+[11]
 File: figures/rnn.jpeg Graphic file (type bmp)
 <figures/rnn.jpeg>
- [12]
+ [12] [13]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 282.
+put line 312.
 
 
-Package natbib Warning: Citation `sec:code' on page 13 undefined on input line 
-327.
+Package natbib Warning: Citation `sec:code' on page 14 undefined on input line 
+357.
 
 
-Package natbib Warning: Citation `sec:result' on page 13 undefined on input lin
-e 327.
+Package natbib Warning: Citation `sec:result' on page 14 undefined on input lin
+e 357.
 
 File: figures/forward_vector_length.png Graphic file (type bmp)
 <figures/forward_vector_length.png>
-[13]
 File: figures/backward_vector_length.png Graphic file (type bmp)
 <figures/backward_vector_length.png>
- [14] [15]
+[14] [15] [16]
 File: figures/inner_product.png Graphic file (type bmp)
 <figures/inner_product.png>
- [16]) (./data/chap04.tex [17] [18]
+ [17]) (./data/chap04.tex [18]
 第4章
 [19
 
@@ -1573,14 +1576,14 @@ L3 programming layer <2022/08/05>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `thuthesis-example.out' has not changed.
-(rerunfilecheck)             Checksum: FF69F5988412FABD6CD28361E919AD8D;6265.
+(rerunfilecheck)             Checksum: F49047E23D4BC1B0AC4BFB6046CFBF0D;6885.
  ) 
 Here is how much of TeX's memory you used:
- 31274 strings out of 474878
- 674581 string characters out of 5762516
- 1943627 words of memory out of 5000000
- 52805 multiletter control sequences out of 15000+600000
- 565365 words of font info for 165 fonts, out of 8000000 for 9000
+ 31283 strings out of 474878
+ 674840 string characters out of 5762516
+ 1950627 words of memory out of 5000000
+ 52814 multiletter control sequences out of 15000+600000
+ 565357 words of font info for 164 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  106i,12n,132p,1424b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 

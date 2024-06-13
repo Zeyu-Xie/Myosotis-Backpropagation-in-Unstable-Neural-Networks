@@ -12,9 +12,13 @@
 \contentsline {section}{\numberline {3.2}理论分析}{7}{section.3.2}%
 \contentsline {section}{\numberline {3.3}实验分析}{8}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}全连接神经网络}{8}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}循环神经网络}{11}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}对偶性的验证}{16}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}结论}{17}{section.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.1.1}网络结构}{8}{subsubsection.3.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.2}训练过程}{9}{subsubsection.3.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.3.1.3}李雅普诺夫谱计算}{10}{subsubsection.3.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.3.1.4}运行结果}{11}{subsubsection.3.3.1.4}%
+\contentsline {subsection}{\numberline {3.3.2}循环神经网络}{12}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}对偶性的验证}{17}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}结论}{18}{section.3.4}%
 \contentsline {chapter}{\numberline {第4章}梯度爆炸下的反向传播算法}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}例子}{19}{section.4.1}%
 \contentsline {section}{\numberline {4.2}传统方法的困境}{20}{section.4.2}%
@@ -38,9 +42,9 @@
 \contentsline {section}{\numberline {4.5}结论}{26}{section.4.5}%
 \contentsline {chapter}{\numberline {第5章}总结}{27}{chapter.5}%
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{参考文献}{28}{section*.23}%
-\contentsline {chapter}{致\hskip 2em\relax 谢}{29}{section*.25}%
-\contentsline {chapter}{声\hspace {2em}明}{31}{section*.27}%
+\contentsline {chapter}{参考文献}{28}{section*.25}%
+\contentsline {chapter}{致\hskip 2em\relax 谢}{29}{section*.27}%
+\contentsline {chapter}{声\hspace {2em}明}{31}{section*.29}%
 \setcounter {tocdepth}{0}
 \contentsline {chapter}{\numberline {附录 A}文献翻译}{33}{appendix.A}%
 \contentsfinish 
