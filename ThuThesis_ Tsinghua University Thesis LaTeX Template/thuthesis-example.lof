@@ -1,3 +1,7 @@
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 全连接神经网络}}{9}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 循环神经网络}}{12}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 正向传播时的李雅普诺夫向量长度（取对数）}}{14}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 反向传播时的李雅普诺夫向量长度（取对数）}}{15}{figure.caption.21}%
 \let \contentsline \ttl@gobblecontents 
 \contentsfinish 
 \contentsfinish 

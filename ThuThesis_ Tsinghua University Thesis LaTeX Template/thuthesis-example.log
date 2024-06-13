@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  12 JUN 2024 19:31
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  13 JUN 2024 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1177,7 +1177,17 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package translations Info: No language package found. I am going to use `englis
 h' as default language. on input line 20.
 
-(./thuthesis-example.aux (./bu.aux))
+(./thuthesis-example.aux
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+
+LaTeX Warning: Label `fig:example' multiply defined.
+
+(./bu.aux))
 \openout1 = `thuthesis-example.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -1476,25 +1486,36 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 5.52002pt on input line 13.
 [7
 
-] [8] [9] [10] [11]
+]
+File: figures/nn.jpeg Graphic file (type bmp)
+<figures/nn.jpeg>
+ [8] [9] [10] [11]
+File: figures/rnn.jpeg Graphic file (type bmp)
+<figures/rnn.jpeg>
+ [12]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 268.
+put line 282.
 
 
-Package natbib Warning: Citation `sec:code' on page 12 undefined on input line 
-313.
+Package natbib Warning: Citation `sec:code' on page 13 undefined on input line 
+327.
 
 
-Package natbib Warning: Citation `sec:result' on page 12 undefined on input lin
-e 313.
+Package natbib Warning: Citation `sec:result' on page 13 undefined on input lin
+e 327.
 
-[12] [13] [14] [15]) (./data/chap04.tex [16]
+File: figures/forward_vector_length.png Graphic file (type bmp)
+<figures/forward_vector_length.png>
+[13]
+File: figures/backward_vector_length.png Graphic file (type bmp)
+<figures/backward_vector_length.png>
+ [14] [15] [16]) (./data/chap04.tex [17]
 第4章
-[17
+[18
 
-] [18] [19] [20] [21] [22] [23]) (./data/chap05.tex [24]
+] [19] [20] [21] [22] [23] [24]) (./data/chap05.tex [25]
 第5章
-) [25
+) [26
 
 ]
 \openout3 = `bu.aux'.
@@ -1512,21 +1533,22 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 19.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 19.
-) (./data/acknowledgements.tex [26
+) (./data/acknowledgements.tex [27
 
 
 
-] [27
-
-
+] [28
 
 ]
-[28]) [29
+[29
+
+
+] [30]) [31
 
 
 
 
-] [30
+] [32
 
 ] (./data/appendix.tex
 附录 A
@@ -1534,23 +1556,27 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 
 Package natbib Warning: There were undefined citations.
 
-[31
+[33
 
 ] (./thuthesis-example.aux (./bu.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `thuthesis-example.out' has not changed.
-(rerunfilecheck)             Checksum: 757B26E3424E68713AE492215D8BCB98;6265.
+(rerunfilecheck)             Checksum: B1BC7E55A714CAC026501F9FF680BF82;6265.
  ) 
 Here is how much of TeX's memory you used:
- 31221 strings out of 474878
- 673150 string characters out of 5762516
- 1947627 words of memory out of 5000000
- 52760 multiletter control sequences out of 15000+600000
+ 31265 strings out of 474878
+ 674316 string characters out of 5762516
+ 1943627 words of memory out of 5000000
+ 52797 multiletter control sequences out of 15000+600000
  565365 words of font info for 165 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  106i,12n,132p,1424b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ./thuthesis-example.pdf (45 pages).
+Output written on ./thuthesis-example.pdf (47 pages).

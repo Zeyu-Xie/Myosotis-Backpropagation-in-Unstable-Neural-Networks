@@ -13,34 +13,34 @@
 \contentsline {section}{\numberline {3.3}实验分析}{8}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}全连接神经网络}{8}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}循环神经网络}{11}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}对偶性的验证}{15}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}结论}{16}{section.3.4}%
-\contentsline {chapter}{\numberline {第4章}梯度爆炸下的反向传播算法}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}例子}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}传统方法的困境}{18}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Xavier初始化}{18}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}He初始化}{18}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}其他权重初始化方法}{19}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}权重初始化的数值分析}{19}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}实验验证}{20}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}结论}{20}{subsection.4.2.6}%
-\contentsline {section}{\numberline {4.3}通过伴随阴影进行反向传播}{20}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}理论背景}{21}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}伴随变量的引入}{21}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}梯度计算的调整}{21}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}李雅普诺夫方程的求解}{21}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}具体算法实现}{22}{subsection.4.3.5}%
-\contentsline {subsection}{\numberline {4.3.6}数值稳定性分析}{22}{subsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.3.7}实验验证}{22}{subsection.4.3.7}%
-\contentsline {subsubsection}{\numberline {4.3.7.1}理论分析}{23}{subsubsection.4.3.7.1}%
-\contentsline {subsection}{\numberline {4.3.8}结论}{23}{subsection.4.3.8}%
-\contentsline {section}{\numberline {4.4}核微分方法}{23}{section.4.4}%
-\contentsline {section}{\numberline {4.5}结论}{24}{section.4.5}%
-\contentsline {chapter}{\numberline {第5章}总结}{25}{chapter.5}%
+\contentsline {subsection}{\numberline {3.3.3}对偶性的验证}{16}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}结论}{17}{section.3.4}%
+\contentsline {chapter}{\numberline {第4章}梯度爆炸下的反向传播算法}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}例子}{18}{section.4.1}%
+\contentsline {section}{\numberline {4.2}传统方法的困境}{19}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Xavier初始化}{19}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}He初始化}{19}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}其他权重初始化方法}{20}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}权重初始化的数值分析}{20}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}实验验证}{21}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}结论}{21}{subsection.4.2.6}%
+\contentsline {section}{\numberline {4.3}通过伴随阴影进行反向传播}{21}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}理论背景}{22}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}伴随变量的引入}{22}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}梯度计算的调整}{22}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}李雅普诺夫方程的求解}{22}{subsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.3.5}具体算法实现}{23}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}数值稳定性分析}{23}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}实验验证}{23}{subsection.4.3.7}%
+\contentsline {subsubsection}{\numberline {4.3.7.1}理论分析}{24}{subsubsection.4.3.7.1}%
+\contentsline {subsection}{\numberline {4.3.8}结论}{24}{subsection.4.3.8}%
+\contentsline {section}{\numberline {4.4}核微分方法}{24}{section.4.4}%
+\contentsline {section}{\numberline {4.5}结论}{25}{section.4.5}%
+\contentsline {chapter}{\numberline {第5章}总结}{26}{chapter.5}%
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{参考文献}{26}{section*.18}%
-\contentsline {chapter}{致\hskip 2em\relax 谢}{27}{section*.20}%
-\contentsline {chapter}{声\hspace {2em}明}{29}{section*.22}%
+\contentsline {chapter}{参考文献}{27}{section*.22}%
+\contentsline {chapter}{致\hskip 2em\relax 谢}{29}{section*.24}%
+\contentsline {chapter}{声\hspace {2em}明}{31}{section*.26}%
 \setcounter {tocdepth}{0}
-\contentsline {chapter}{\numberline {附录 A}文献翻译}{31}{appendix.A}%
+\contentsline {chapter}{\numberline {附录 A}文献翻译}{33}{appendix.A}%
 \contentsfinish 

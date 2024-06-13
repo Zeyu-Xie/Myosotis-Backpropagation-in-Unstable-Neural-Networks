@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.linalg import qr
 import os
+import math
+import matplotlib.pyplot as plt
 
 # 初始化RNN参数
 np.random.seed(42)  # 为了结果可复现
@@ -41,6 +43,12 @@ forward_deltas = []
 with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "w") as f:
     f.write("")
 
+y_1 = []
+y_2 = []
+y_3 = []
+mod = 0
+x = range(1, 501)
+
 for t in range(time_steps):
     # 计算新的隐藏状态
     pre_activation = np.dot(W_h, h_t) + np.dot(W_x, inputs[t])
@@ -63,12 +71,75 @@ for t in range(time_steps):
     # 累计对数
     log_sum += np.log(np.abs(np.diag(R)))
 
-    with open(os.path.join(os.path.dirname(__file__), "forward_deltas.txt"), "a") as f:
+    with open(os.path.join(os.path.dirname(__file__), "forward_deltas_test.txt"), "a") as f:
         for row in delta_h_t:
+            # 计算模长
+            length = np.linalg.norm(row)
+            try:
+                length = math.log(length)
+                if mod == 0:
+                    y_1.append(length)
+                elif mod == 1:
+                    y_2.append(length)
+                else:
+                    y_3.append(length)
+            except:
+                length = 0
+                if mod == 0:
+                    y_1.append(y_1[-1])
+                elif mod == 1:
+                    y_2.append(y_2[-1])
+                else:
+                    y_3.append(y_3[-1])
+            print(length)
+            mod = (mod + 1) % 3
+
             f.write(" ".join(map(str, row)) + "\n")
         f.write("\n")
+
+print(len(y_3))
 
 # 计算Lyapunov指数
 lyapunov_exponents = log_sum / time_steps
 
 print("Forward Lyapunov Exponents:", lyapunov_exponents)
+
+# 定义 x 和 y 数据
+
+# # 绘制折线图
+# plt.plot(x, y_1)
+
+# # 添加标题和轴标签
+# plt.title("Lyapunov Vectors' Length Line Chart")
+# plt.xlabel("Time Step")
+# plt.ylabel("log(e_l^i)")
+
+# # 显示图形
+# plt.show()
+
+# 创建一个figure对象，并获取子图
+fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(12, 4), subplot_kw={'aspect': 'equal'})
+
+# 绘制第一个图形
+axes[0].set_xlabel("Time Step")
+axes[0].set_ylabel("log(e_l^1)")
+axes[0].plot(x, y_1)
+axes[0].set_title("Vector Length of e^1")
+
+# 绘制第二个图形
+axes[1].set_xlabel("Time Step")
+axes[1].set_ylabel("log(e_l^2)")
+axes[1].plot(x, y_2)
+axes[1].set_title("Vector Length of e^2")
+
+# 绘制第三个图形
+axes[2].set_xlabel("Time Step")
+axes[2].set_ylabel("log(e_l^3)")
+axes[2].plot(x, y_3)
+axes[2].set_title("Vector Length of e^3")
+
+# 调整子图之间的间距
+plt.tight_layout()
+
+# 显示图形
+plt.show()

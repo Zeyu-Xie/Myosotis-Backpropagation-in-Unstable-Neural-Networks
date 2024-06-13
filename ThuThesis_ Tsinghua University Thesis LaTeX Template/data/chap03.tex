@@ -78,6 +78,13 @@
   \item 输出层：维度为 10，激活函数为 Softmax. 
 \end{enumerate}
 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.5\textwidth]{figures/nn.jpeg}
+   \caption{全连接神经网络}
+   \label{fig:example}
+ \end{figure}
+
 我们旨在通过记录每一层的 Jacobi 矩阵，并通过 QR 分解计算出李雅普诺夫谱，从而分析网络的动态行为和稳定性. 
 
 首先，我们定义网络的具体结构和每层的参数：
@@ -204,6 +211,13 @@
    \item 输出层：维度为 2，激活函数为 Softmax
 \end{enumerate}
 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.5\textwidth]{figures/rnn.jpeg}
+   \caption{循环神经网络}
+   \label{fig:example}
+ \end{figure}
+
 我们旨在通过记录每一层的雅可比矩阵，并通过 QR 分解计算出李雅普诺夫谱，从而分析网络的动态行为和稳定性. 
 
 首先，我们定义网络的具体结构和每层的参数：
@@ -321,6 +335,20 @@
 \end{table}
 
 根据运行结果显示，正向传播和反向传播的李雅普诺夫指数均远小于 0，表明其动态行为快速收敛. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=1\textwidth]{figures/forward_vector_length.png}
+   \caption{正向传播时的李雅普诺夫向量长度（取对数）}
+   \label{fig:example}
+ \end{figure}
+
+ \begin{figure}[htbp]
+   \centering
+   \includegraphics[width=1\textwidth]{figures/backward_vector_length.png}
+   \caption{反向传播时的李雅普诺夫向量长度（取对数）}
+   \label{fig:example}
+ \end{figure}
 
 \begin{enumerate}
    \item 正向传播：所有李雅普诺夫指数均小于 0，表明网络在所有方向上都具有稳定性，对输入的扰动响应会随时间指数级衰减，形成“梯度消失”. 
