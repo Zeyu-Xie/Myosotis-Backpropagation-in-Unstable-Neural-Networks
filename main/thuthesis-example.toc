@@ -1,0 +1,86 @@
+\contentsline {chapter}{\numberline {第1章}引言}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}问题背景及意义}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}文献综述}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}论文框架}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {第2章}李雅普诺夫谱和李雅普诺夫谱的计算}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}李雅普诺夫谱}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}连续时间的李雅普诺夫谱}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}离散时间的李雅普诺夫谱}{5}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}计算方法}{5}{section.2.2}%
+\contentsline {chapter}{\numberline {第3章}不稳定神经网络}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}梯度爆炸}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}权重初始化}{7}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Xavier 初始化}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}He 初始化}{8}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}伴随噪声法}{9}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}理论背景}{9}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}伴随变量的引入}{9}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}梯度计算的调整}{9}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}李雅普诺夫方程的求解}{10}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.4}核微分方法}{10}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}方法简介}{10}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}核函数选取}{10}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {第4章}神经网络中的李雅普诺夫谱}{12}{chapter.4}%
+\contentsline {section}{\numberline {4.1}符号约定}{12}{section.4.1}%
+\contentsline {section}{\numberline {4.2}理论分析}{12}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}研究方案}{12}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}对偶性的定义及理论证明}{13}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}实验分析}{13}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}全连接神经网络}{13}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}网络结构}{13}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}训练过程}{15}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}李雅普诺夫谱计算}{15}{subsubsection.4.3.1.3}%
+\contentsline {subsubsection}{\numberline {4.3.1.4}运行结果}{15}{subsubsection.4.3.1.4}%
+\contentsline {subsection}{\numberline {4.3.2}循环神经网络}{17}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}网络结构}{17}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}训练过程}{18}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}李雅普诺夫谱计算}{19}{subsubsection.4.3.2.3}%
+\contentsline {subsubsection}{\numberline {4.3.2.4}运行结果 - 无输入情形}{20}{subsubsection.4.3.2.4}%
+\contentsline {subsubsection}{\numberline {4.3.2.5}运行结果 - 有输入情形}{20}{subsubsection.4.3.2.5}%
+\contentsline {subsection}{\numberline {4.3.3}对偶性的验证}{22}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}结论}{22}{section.4.4}%
+\contentsline {chapter}{\numberline {第5章}总结}{25}{chapter.5}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{插图索引}{26}{section*.22}%
+\contentsline {chapter}{表格索引}{27}{section*.24}%
+\contentsline {chapter}{参考文献}{28}{section*.26}%
+\contentsline {chapter}{致\hskip 2em\relax 谢}{29}{section*.28}%
+\contentsline {chapter}{声\hspace {2em}明}{31}{section*.30}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{\numberline {附录 A}文献翻译 - 关于训练循环神经网络的困难性}{33}{appendix.A}%
+\contentsline {section}{\numberline {A.1}关于训练循环神经网络的困难性}{33}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}基本信息}{33}{subsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.1.1}作者}{33}{subsubsection.A.1.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.1.2}引用}{33}{subsubsection.A.1.1.2}%
+\contentsline {subsection}{\numberline {A.1.2}摘要}{33}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}介绍}{33}{subsection.A.1.3}%
+\contentsline {subsubsection}{\numberline {A.1.3.1}训练神经网络}{34}{subsubsection.A.1.3.1}%
+\contentsline {subsection}{\numberline {A.1.4}梯度爆炸和梯度消失}{36}{subsection.A.1.4}%
+\contentsline {subsubsection}{\numberline {A.1.4.1}机制}{36}{subsubsection.A.1.4.1}%
+\contentsline {subsubsection}{\numberline {A.1.4.2}绘制动态系统的相似性}{37}{subsubsection.A.1.4.2}%
+\contentsline {subsubsection}{\numberline {A.1.4.3}几何解释}{40}{subsubsection.A.1.4.3}%
+\contentsline {subsection}{\numberline {A.1.5}梯度爆炸和梯度消失的处理}{41}{subsection.A.1.5}%
+\contentsline {subsubsection}{\numberline {A.1.5.1}先前的方案}{41}{subsubsection.A.1.5.1}%
+\contentsline {subsubsection}{\numberline {A.1.5.2}梯度下降}{43}{subsubsection.A.1.5.2}%
+\contentsline {subsubsection}{\numberline {A.1.5.3}梯度消失的正规化}{43}{subsubsection.A.1.5.3}%
+\contentsline {subsection}{\numberline {A.1.6}实验与结果}{44}{subsection.A.1.6}%
+\contentsline {subsubsection}{\numberline {A.1.6.1}病态合成问题}{44}{subsubsection.A.1.6.1}%
+\contentsline {paragraph}{时间序列问题}{45}{paragraph*.37}%
+\contentsline {paragraph}{其它病理性任务}{45}{paragraph*.39}%
+\contentsline {subsubsection}{\numberline {A.1.6.2}自然问题}{46}{subsubsection.A.1.6.2}%
+\contentsline {subsection}{\numberline {A.1.7}5. 总结和结论}{47}{subsection.A.1.7}%
+\contentsline {subsection}{\numberline {A.1.8}致谢}{47}{subsection.A.1.8}%
+\contentsline {subsection}{\numberline {A.1.9}参考文献}{47}{subsection.A.1.9}%
+\contentsline {subsection}{\numberline {A.1.10}从分析的角度分析梯度爆炸和梯度消失}{47}{subsection.A.1.10}%
+\contentsline {subsection}{\numberline {A.1.11}实验准备}{48}{subsection.A.1.11}%
+\contentsline {subsubsection}{\numberline {A.1.11.1}病态合成任务}{48}{subsubsection.A.1.11.1}%
+\contentsline {paragraph}{求和问题}{49}{paragraph*.41}%
+\contentsline {paragraph}{乘积问题}{49}{paragraph*.42}%
+\contentsline {paragraph}{时间序列问题}{49}{paragraph*.43}%
+\contentsline {paragraph}{3 位时间顺序问题}{50}{paragraph*.44}%
+\contentsline {paragraph}{随机排列问题}{50}{paragraph*.45}%
+\contentsline {paragraph}{去噪声记忆问题}{50}{paragraph*.46}%
+\contentsline {subsubsection}{\numberline {A.1.11.2}自然任务}{50}{subsubsection.A.1.11.2}%
+\contentsline {paragraph}{复调音乐预测}{50}{paragraph*.47}%
+\contentsline {paragraph}{语言建模}{51}{paragraph*.48}%
+\contentsfinish 

@@ -1,0 +1,114 @@
+% !TeX root = ../thuthesis-example.tex
+
+\chapter{李雅普诺夫谱和李雅普诺夫谱的计算}
+
+\section{李雅普诺夫谱}
+
+在这一章中，我们将重点探讨不稳定神经网络的动态特性，特别关注李雅普诺夫谱、李雅普诺夫指数和“中间向量”对偶性。所涉及的概念和方法对于分析和理解神经网络的稳定性与动态行为具有重要的参考价值。
+
+李雅普诺夫谱用于量化动力系统中轨迹对初始误差的敏感性。它通过记录系统在各个方向上的误差指数增长率，揭示系统的混沌程度和稳定性。对于神经网络，如果我们将某部分隐藏层参数视为“状态”，并将正向传播和反向传播视为动力系统的规则，则可以从动力系统的角度理解整个训练过程。
+
+首先，我们将回顾李雅普诺夫向量的定义及其计算方法。
+
+\subsection{连续时间的李雅普诺夫谱}
+
+令连续时间动力系统的状态由向量 \(\mathbf{x}(t)\) 描述，其具有下面的演化方程：
+\begin{equation}
+      \frac{d\mathbf{x}}{dt} = \mathbf{f}(\mathbf{x}, t) \quad t\geq 0.
+\end{equation}
+
+李雅普诺夫指数 \(\lambda_i\) 可以通过对初始状态的微小扰动进行分析得到。首先，我们给定一个微小扰动 \(\delta \mathbf{x}(t)\)，并用下式描述其演化：
+\begin{equation}
+      \frac{d (\delta \mathbf{x})}{dt} = \mathbf{J}(\mathbf{x}, t) \delta \mathbf{x}.
+\end{equation}
+
+其中，系统的雅可比矩阵 \(\mathbf{J}(\mathbf{x}, t)\) 定义为：
+\begin{equation}
+      \mathbf{J}(\mathbf{x}, t) = \frac{\partial \mathbf{f}}{\partial \mathbf{x}}.
+\end{equation}
+
+李雅普诺夫指数通过分析扰动向量 \(\delta \mathbf{x}(t)\) 的指数增长率定义为：
+\begin{equation}
+      \lambda_i = \lim_{t \to \infty} \frac{1}{t} \ln \frac{||\delta \mathbf{x}_i(t)||}{||\delta \mathbf{x}_i(0)||}.
+\end{equation}
+
+连续时间的李雅普诺夫谱通常用于分析微分方程等连续性系统的稳定性和混沌性，本文之后将不涉及这一部分内容。
+
+\subsection{离散时间的李雅普诺夫谱}
+
+离散时间的李雅普诺夫谱的定义与连续时间的情况大致相同。设定离散时间动力系统的状态向量为 \(\mathbf{x}_n\)，其演化方程为：
+\begin{equation}
+      \mathbf{x}_{n+1} = \mathbf{f}(\mathbf{x}_n, n) \quad n \geq 0.
+\end{equation}
+
+李雅普诺夫指数 \(\lambda_i\) 可以通过分析系统状态的微小扰动来获得。考虑微小扰动 \(\delta \mathbf{x}_n\)，其演化由以下公式描述：
+\begin{equation}
+      \delta \mathbf{x}_{n+1} = \mathbf{J}(\mathbf{x}_n, n) \delta \mathbf{x}_n.
+\end{equation}
+
+\(\mathbf{J}(\mathbf{x}_n, n)\) 是系统的雅可比矩阵，定义为：
+\begin{equation}
+      \mathbf{J}(\mathbf{x}_n, n) = \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \bigg|_{\mathbf{x} = \mathbf{x}_n}.
+\end{equation}
+
+离散时间的李雅普诺夫指数通过分析扰动向量 \(\delta \mathbf{x}_n\) 的指数增长率定义为：
+\begin{equation}
+      \lambda_i = \lim_{n \to \infty} \frac{1}{n} \ln \frac{||\delta \mathbf{x}_i(n)||}{||\delta \mathbf{x}_i(0)||}.
+\end{equation}
+
+而从伴随李雅普诺夫向量（CLV）的视角来看，一个伴随李雅普诺夫向量 $\zeta(t)$ 是一个齐次切向解，其范数表现为时间的指数函数。存在 $C_1, C_2 > 0$ 和 $\lambda \in \mathbb{R}$，使得对于任意 $t$，
+\begin{equation}
+      C_1 e^{\lambda t} \|\delta \mathbf{x}_i(0)\| \leq \|\delta \mathbf{x}_i(t)\| \leq C_2 e^{\lambda t} \|\delta \mathbf{x}_i(0)\|.
+\end{equation}
+
+其中范数为 $\mathbb{R}^m$ 中的欧几里得范数，而 $\lambda$ 就定义为与该向量对应的李雅普诺夫指数。指数为正称为不稳定，为负被称为稳定，而零李雅普诺夫指数的方向被称为中性。
+
+离散时间的李雅普诺夫谱是我们分析神经网络参数所需要的，下文中提到的“李雅普诺夫指数”及“李雅普诺夫谱”等均指离散时间的情况。
+
+\section{计算方法}
+
+李雅普诺夫谱的计算有 Jacobi 法、QR 法等，本节我们参考 Ni（2019） \cite{Ni20192}，总结计算李雅普诺夫向量的步骤如下：
+
+\begin{enumerate}\label{alg:lyapunov}
+
+\item 计算方程的原初解，足够长的时间使得轨迹落在吸引子上，然后设 $t = 0$，并设定原初系统的初始条件，$u_0(0)$。
+
+\item 随机生成一个 $m \times M$ 的正交矩阵 $Q_0 = [q_{01}, \ldots, q_{0M}]$。这个 $Q_0$ 将被用作齐次切向解的初始条件。
+
+\item 对于 $i = 0$ 到 $K - 1$，在第 $i$ 段时间内，$t \in [t_i, t_{i+1}]$，进行以下步骤：
+
+\begin{enumerate}
+
+\item 从 $t_i$ 到 $t_{i+1}$ 计算原初解 $u_i(t)$。
+
+\item 计算齐次切向解 $W_i(t) = [w_{i1}(t), \ldots, w_{iM}(t)]$。
+
+\begin{enumerate}
+
+\item 对于每个齐次切向解 $w_{ij}$，$j = 1, \ldots, M$，从初始条件 $w_{ij}(t_i) = q_{ij}$ 开始，积分方程 (3.2) 从 $t_i$ 到 $t_{i+1}$。
+
+\item 进行 QR 分解：$W_i(t_{i+1}) = Q_{i+1} R_{i+1}$，其中 $Q_{i+1} = [q_{i+1,1}, \ldots, q_{i+1,M}]$。
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item 第 $j$ 大的李雅普诺夫指数（LE），$\lambda_j$，通过下式近似：
+\begin{equation}
+      \lambda_j = \frac{1}{K \Delta T} \sum_{i=1}^K \log |D_{ij}|.
+\end{equation}
+
+其中 $D_{ij}$ 是 $R_i$ 中的第 $j$ 个对角元素。随着 $T$ 变大，这个公式中的 $\lambda_j$ 收敛到真实值。
+
+\item 我们定义一个 $m \times M$ 的矩阵 $V(t)$ 为：
+\begin{equation}
+      V(t) = W_i(t) R^{-1}_{i+1} \cdots R^{-1}_K , \quad t \in [t_i, t_{i+1}].
+\end{equation}
+
+当 $t$ 和 $T - t$ 都变大时，$V(t)$ 的第 $j$ 列收敛到第 $j$ 个共轭李雅普诺夫向量（CLV）的方向。注意，虽然 $V(t)$ 在不同的时间段上有不同的表达式，但它的各列在所有时间段上是连续的。
+
+\end{enumerate}
+
+通过以上步骤，我们可以用数值方法得到一个动力系统的李雅普诺夫谱。因为，粗略地说，QR 分解中的 Q 矩阵总是单位体积的高位正方体，所以 R 矩阵的对角元素记录了高维立方体体积的增长速率。
+
+虽然理论上该算法也能够计算李雅普诺夫向量，但本文中不会涉及此概念。

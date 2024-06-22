@@ -1,0 +1,18 @@
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 全连接神经网络}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 隐藏层李雅普诺夫指数分布}}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 循环神经网络}}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 正向传播收敛情况}}{20}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 反向传播收敛情况}}{21}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 有输入情形下的李雅普诺夫指数}}{22}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces 无输入情形下的中间向量 $q_{ij}$ 内积}}{23}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 有输入情形下的中间向量 $q_{ij}$ 内积}}{23}{figure.caption.21}%
+\let \contentsline \ttl@gobblecontents 
+\contentsline {figure}{\numberline {A.1}{\ignorespaces 一个循环神经网络的示意图。隐藏层的循环连接允许信息从一个输入持续保存到另一个输入。}}{34}{figure.caption.31}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces 通过为每个时间步长创建一个模型的副本，及时展开递归神经网络。我们使用 \(x_t\) 表示网络在 \(t\) 时刻的隐藏状态，用 \(u_t\) 表示时间 \(t\) 时网络的输入，用 \(\mitepsilon _t\) 表示截止 \(t\) 时刻的累计误差。}}{35}{figure.caption.32}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces 单个隐藏单元 RNN 的分叉图（混合循环权重为 5.0，可调偏差 \(b\)，为 Doya（1993 年）介绍的例子），参见文本}}{38}{figure.caption.33}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces 这个折线图预测了 \(x_t\) 的变化，即 \(\mitDelta x_t\) 可能会产生于一个值较小的 \(\mitDelta x_0\). 蓝色与红色（左边和右边）的对比由相同的映射 \(F_1, F_2, ...\) 产生，不同之处仅在于初始状态。}}{39}{figure.caption.34}%
+\contentsline {figure}{\numberline {A.5}{\ignorespaces 描述如何分解 \(F_1, ..., F_t\) 为一个常值映射 \(\widetilde {F}\) 和映射 \(U_1, U_2, ..., U_t\). 这个虚竖线代表盆地喜好之间的边界，直虚箭头在边界上指向 \(\widetilde {F}\) 映射的方向，这个图像是图 \ref {fig:map} 的扩展。}}{39}{figure.caption.35}%
+\contentsline {figure}{\numberline {A.6}{\ignorespaces 我们绘制了单个隐单元循环网络的误差面，突出了高曲率壁的存在。实线描述了梯度下降可能遵循的标准轨迹。使用虚线箭头，图表显示了当梯度的范数超过一个阈值时，如果梯度被重新缩放到一个混合的大小会发生什么。}}{40}{figure.caption.36}%
+\contentsline {figure}{\numberline {A.7}{\ignorespaces 解决时间顺序的成功率问题与序列长度的关系图。详情参见文本。}}{45}{figure.caption.38}%
+\contentsfinish 
+\contentsfinish 
