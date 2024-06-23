@@ -7,7 +7,7 @@ import sys
 import os
 
 num = 13
-is_forward = False
+is_forward = True
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
