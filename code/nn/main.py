@@ -162,60 +162,35 @@ if __name__ == "__main__":
         dy_dz = np.dot(W2, softmax_grad(y))
         dz_dx = np.dot(W1, sigmoid_grad(z))
 
-        Q0 = np.linalg.qr(np.random.randn(784, 10))[0]
-
         K = 2
         delta_t = 1.0
         D_forward = []
         D_backward = []
 
+        Q0 = np.linalg.qr(np.random.randn(784, 10))[0]
         v0 = Q0
-        v1 = np.dot(dz_dx.T, v0)
-        v2 = np.dot(dy_dz.T, v1)
-
-        Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
-
-        nu_2 = Q2
-        nu_1 = np.dot(dy_dz, nu_2)
-        nu_0 = np.dot(dz_dx, nu_1)
 
         # Forward - 1st time step - v0 to v1
-        _W1 = np.zeros((784, 10))
-        for j in range(10):
-            w0j = Q0[:, j]
-            w1j = np.dot(v0[:,j], w0j)
-            _W1[:, j] = w1j
-        Q1, R1 = np.linalg.qr(_W1)
+        v1 = np.dot(dz_dx.T, v0)
+        Q1, R1 = np.linalg.qr(v1)
         D_forward.append(np.diag(R1))
 
         # Forward - 2nd time step - v1 to v2
-        _W2 = np.zeros((10, 10))
-        for j in range(10):
-            w1j = Q1[:50, j]
-            w2j = np.dot(v1[:,j], w1j)
-            _W2[:, j] = w2j
-        Q2, R2 = np.linalg.qr(_W2)
+        v2 = np.dot(dy_dz.T, Q1)
+        _, R2 = np.linalg.qr(v2)
         D_forward.append(np.diag(R2))
 
         Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
-        dy = np.random.randn(10)
+        nu_2 = Q2
 
         # Backward - 2nd time step - nu_2 to nu_1
-        _W2 = np.zeros((50, 10))
-        for j in range(10):
-            w2j = Q2[:, j]
-            w1j = np.dot(nu_2[:, j], w2j)
-            _W2[:, j] = w1j
-        Q1, R1 = np.linalg.qr(_W2)
+        nu_1 = np.dot(dy_dz, nu_2)
+        Q1, R1 = np.linalg.qr(nu_1)
         D_backward.append(np.diag(R1))
 
         # Backward - 1st time step - nu_1 to nu_0
-        _W1 = np.zeros((784, 10))
-        for j in range(10):
-            w1j = Q1[:, j]
-            w0j = np.dot(nu_1[:, j], w1j)
-            _W1[:, j] = w0j
-        Q0, R0 = np.linalg.qr(_W1)
+        nu_0 = np.dot(dz_dx, Q1)
+        _, R0 = np.linalg.qr(nu_0)
         D_backward.append(np.diag(R0))
 
         # Lyapunov Exponents
