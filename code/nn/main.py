@@ -210,15 +210,15 @@ if __name__ == "__main__":
             backward_lambdas_s.append(lambdas)
 
     if is_forward:
-        x = range(len(forward_lambdas_s[0]))
+        plot_x = range(len(forward_lambdas_s[0]))
         for i in range(len(forward_lambdas_s)):
             print(forward_lambdas_s[i])
-            plt.scatter(x, forward_lambdas_s[i], marker=".")
+            plt.scatter(plot_x, forward_lambdas_s[i], marker=".")
     else:
-        x = range(len(backward_lambdas_s[0]))
+        plot_x = range(len(backward_lambdas_s[0]))
         for i in range(len(backward_lambdas_s)):
             print(backward_lambdas_s[i])
-            plt.scatter(x, backward_lambdas_s[i], marker=".")
+            plt.scatter(plot_x, backward_lambdas_s[i], marker=".")
 
     if is_forward:
         plt.title("Forward Lyapunov Exponents")
