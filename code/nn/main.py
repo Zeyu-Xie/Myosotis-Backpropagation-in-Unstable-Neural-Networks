@@ -23,7 +23,7 @@ def softmax(x):
         x = x - np.max(x, axis=0)
         y = np.exp(x) / np.sum(np.exp(x), axis=0)
         return y.T
-    x = x - np.max(x)  # 溢出对策
+    x = x - np.max(x)
     return np.exp(x) / np.sum(np.exp(x))
 
 def softmax_grad(x):
@@ -141,30 +141,14 @@ if __name__ == "__main__":
     def f2(z):
         return softmax(np.dot(z.T, W2) + b2).flatten()
 
-    def f1_grad(x, dz):
-        x = x.reshape(1, x.shape[0])
-        # t = t.reshape(1, t.shape[0])
-        a = np.dot(x, W1) + b1
-        # z = sigmoid(a)
-        # dz = np.eye(a.shape[1])
-        da = np.dot(dz, np.diag(sigmoid_grad(a[0])))
-        dx = np.dot(da, W1.T)
+    def f1_grad(dz):
+        dx = np.dot(W1, sigmoid_grad(dz))
         return dx
 
-    def f2_grad(z):
-        # z - value of the hidden layer
-        z = z.reshape(1, z.shape[0])
-        # t - target value
-        # t = t.reshape(1, t.shape[0])
-        # batch_num = z.shape[0]
-
-        a2 = np.dot(z, W2) + b2
-        # y = softmax(a2)
-        dy = np.random.randn(10)
-        # dy = np.diag((y - t).flatten() / batch_num)
-        dy = dy.reshape(1, dy.shape[0])
-        dz = np.dot(softmax_grad(dy), W2.T)
+    def f2_grad(dy):
+        dz = np.dot(W2, softmax_grad(dy))
         return dz
+        
 
     forward_lambdas_s = []
     backward_lambdas_s = []
@@ -203,26 +187,25 @@ if __name__ == "__main__":
         Q2, R2 = qr(_W2)
         D_forward.append(np.diag(R2))
 
-        y_theory = t_train[idx]
-        dy = y_theory - y
         Q2 = np.linalg.qr(np.random.randn(50, 10))[0]
+        dy = np.random.randn(10)
 
         # Backward - 2nd time step
-        _W2 = np.zeros((784, 50))
+        dz = f2_grad(dy)
+        _W2 = np.zeros((50, 10))
         for j in range(10):
-            w2j = Q2[:50, j]
-            w1j = f2_grad(z) @ w2j
+            w2j = Q2[:, j]
+            w1j = f2_grad(dy)
             _W2[:, j] = w1j
         Q1, R1 = qr(_W2)
         D_backward.append(np.diag(R1))
 
-        dz = _W2
-
-        # Backward - 1st time step
-        _W1 = np.zeros((784, 784))
+        # Forward - 1st time step
+        dx = f1_grad(dz)
+        _W1 = np.zeros((784, 50))
         for j in range(50):
-            w1j = Q1[:784, j]
-            w0j = f1_grad(x, sigmoid_grad(dz)) @ w1j
+            w1j = Q1[:, j]
+            w0j = f1_grad(dz)
             _W1[:, j] = w0j
         Q0, R0 = qr(_W1)
         D_backward.append(np.diag(R0))
