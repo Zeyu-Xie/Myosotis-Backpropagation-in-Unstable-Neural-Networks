@@ -2,18 +2,18 @@ import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.linalg import qr
 import matplotlib.pylab as plt
-from mnist import load_mnist  # 假设你已经安装并配置好了 MNIST 数据加载工具
+from mnist import load_mnist
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from lyapunov_spectrum import lyapunov_spectrum
 
-# Sigmoid 函数和其梯度
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+
 def sigmoid_grad(x):
     return (1.0 - sigmoid(x)) * sigmoid(x)
+
 
 def softmax(x):
     if x.ndim == 2:
@@ -23,6 +23,7 @@ def softmax(x):
         return y.T
     x = x - np.max(x)  # 溢出对策
     return np.exp(x) / np.sum(np.exp(x))
+
 
 def cross_entropy_error(y, t):
     if y.ndim == 1:
@@ -36,12 +37,15 @@ def cross_entropy_error(y, t):
     batch_size = y.shape[0]
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
+
 class TwoLayerNet:
     def __init__(self, input_size, hidden_size, output_size, weight_init_std=0.01):
         self.params = {}
-        self.params['W1'] = weight_init_std * np.random.randn(input_size, hidden_size)
+        self.params['W1'] = weight_init_std * \
+            np.random.randn(input_size, hidden_size)
         self.params['b1'] = np.zeros(hidden_size)
-        self.params['W2'] = weight_init_std * np.random.randn(hidden_size, output_size)
+        self.params['W2'] = weight_init_std * \
+            np.random.randn(hidden_size, output_size)
         self.params['b2'] = np.zeros(output_size)
 
     def predict(self, x):
@@ -91,6 +95,7 @@ class TwoLayerNet:
         z1 = sigmoid(a1)
         return z1
 
+
 def get_parameters():
 
     dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "train")
@@ -110,12 +115,14 @@ def get_parameters():
 
     return W1, b1, W2, b2
 
-# 主程序
-if __name__ == "__main__":
-    # 加载数据
-    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
 
-    # 初始化网络
+if __name__ == "__main__":
+
+    # Load MNIST data
+    (x_train, t_train), (x_test, t_test) = load_mnist(
+        normalize=True, one_hot_label=True)
+
+    # Initialize network
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
     network.params['W1'], network.params['b1'], network.params['W2'], network.params['b2'] = get_parameters()
 
@@ -124,109 +131,111 @@ if __name__ == "__main__":
     W2 = network.params['W2']
     b2 = network.params['b2']
 
-    # 定义正向传播函数
-    f_1 = lambda x: sigmoid(np.dot(x, W1) + b1)
-    f_2 = lambda z: softmax(np.dot(z, W2) + b2)
+    def f1(x):
+        return sigmoid(np.dot(x.T, W1) + b1).flatten()
 
-    # 定义反向传播函数
-    def f_1_grad(x, t):
+    def f2(z):
+        return softmax(np.dot(z.T, W2) + b2).flatten()
+
+    def f1_grad(x, t):
+        x = x.reshape(1, x.shape[0])
+        t = t.reshape(1, t.shape[0])
         a = np.dot(x, W1) + b1
         # z = sigmoid(a)
         dz = np.eye(a.shape[1])
         da = np.dot(dz, np.diag(sigmoid_grad(a[0])))
         dx = np.dot(da, W1.T)
         return dx
-    def f_2_grad(z, t):
+
+    def f2_grad(z, t):
+        z = z.reshape(1, z.shape[0])
+        t = t.reshape(1, t.shape[0])
         batch_num = z.shape[0]
         a2 = np.dot(z, W2) + b2
         y = softmax(a2)
         dy = np.diag((y - t).flatten() / batch_num)
         dz = np.dot(dy, W2.T)
         return dz
-    
-    def f1(x):
-        return f_1(x.T).flatten()
-    def f2(z):
-        return f_2(z.T).flatten()
-    def f1_grad(x, t):
-        x = x.reshape(1, x.shape[0])
-        t = t.reshape(1, t.shape[0])
-        return f_1_grad(x, t)
-    def f2_grad(z, t):
-        z = z.reshape(1, z.shape[0])
-        t = t.reshape(1, t.shape[0])
-        return f_2_grad(z, t)
-
-    x = x_train[:1].flatten()
-    z = f1(x)
-    y = f2(z)
-    x_grad = f1_grad(x, t_train[:1].flatten())
-    z_grad = f2_grad(z, t_train[:1].flatten())
-
-    t_span = (0, 1)
-    u0 = x_train[t_span[0]:t_span[1]].flatten()
-    m = u0.shape[0]
-    M = f1(u0).shape[0]
-    K = 1
-    delta_t = (t_span[1] - t_span[0]) / K
 
     lambdas_s = []
+    num = 10
+    is_forward = False
 
-    def random_input(time_steps):
+    for tot in range(num):
 
-        if time_steps == 0:
-            return
+        if tot > num - 1:
+            break
 
-        # 初始条件
-        u0 = np.random.randn(784)
+        idx = np.random.randint(0, 60000)
+        u0 = x_train[idx].flatten()
         Q0 = np.linalg.qr(np.random.randn(784, 50))[0]
 
-        # 时间步数量
         K = 2
-        # 每个时间步的时间长度
         delta_t = 1.0
-
-        # 存储R的对角元素
         D = []
 
-        # 第一时间步
-        u1 = f1(u0)
-        _W1 = np.zeros((50, 50))
-        for j in range(50):
-            w0j = Q0[:, j]
-            w1j = f1_grad(u0, t_train[0]) @ w0j
-            _W1[:, j] = w1j
+        if is_forward:
+            # Forward - 1st time step
+            u1 = f1(u0)
+            _W1 = np.zeros((50, 50))
+            for j in range(50):
+                w0j = Q0[:, j]
+                w1j = f1_grad(u0, t_train[idx]) @ w0j
+                _W1[:, j] = w1j
+            Q1, R1 = qr(_W1)
+            D.append(np.diag(R1))
 
-        Q1, R1 = qr(_W1)
-        D.append(np.diag(R1))
+            # Forward - 2nd time step
+            u2 = f2(u1)
+            _W2 = np.zeros((10, 10))
+            for j in range(10):
+                w1j = Q1[:50, j]
+                w2j = f2_grad(u1, t_train[idx]) @ w1j  # 使用雅可比矩阵计算梯度
+                _W2[:, j] = w2j
+            Q2, R2 = qr(_W2)
+            D.append(np.diag(R2))
 
-        # 第二时间步
-        u2 = f2(u1)
-        _W2 = np.zeros((10, 10))
-        for j in range(10):
-            w1j = Q1[:50, j]
-            w2j = f2_grad(u1, t_train[0]) @ w1j  # 使用雅可比矩阵计算梯度
-            _W2[:, j] = w2j
+        else:
+            # Backward - 2nd time step
+            u1 = f1(u0)
+            _W2 = np.zeros((10, 10))
+            for j in range(10):
+                w2j = Q2[:10, j]
+                w1j = f2_grad(u1, t_train[idx]) @ w2j
+                _W2[:, j] = w1j
+            Q1, R1 = qr(_W2)
+            D.append(np.diag(R1))
 
-        Q2, R2 = qr(_W2)
-        D.append(np.diag(R2))
+            # Backward - 1st time step
+            u0 = f1(u0)
+            _W1 = np.zeros((50, 50))
+            for j in range(50):
+                w1j = Q1[:10, j]
+                w0j = f1_grad(u0, t_train[idx]) @ w1j
+                _W1[:, j] = w0j
+            Q0, R0 = qr(_W1)
+            D.append(np.diag(R0))
 
-        # 计算李雅普诺夫指数
+        # Lyapunov Exponents
         lambdas = []
         for j in range(10):
-            lambda_j = sum(np.log(np.abs(D[i][j])) for i in range(K)) / (K * delta_t)
+            lambda_j = sum(np.log(np.abs(D[i][j]))
+                           for i in range(K)) / (K * delta_t)
             lambdas.append(lambda_j.item())
 
         lambdas_s.append(lambdas)
 
-        random_input(time_steps-1)
-
-    random_input(10)
-
+    x = range(len(lambdas_s[0]))
     for i in range(len(lambdas_s)):
         print(lambdas_s[i])
-        plt.plot(lambdas_s[i], marker="o")
-    
+        plt.scatter(x, lambdas_s[i], marker=".")
+
+    if is_forward:
+        plt.title("Forward Lyapunov Exponents")
+    else:
+        plt.title("Backward Lyapunov Exponents")
+
     plt.xlabel("Index")
     plt.ylabel("Lyapunov Exponent")
+    plt.savefig(os.path.join(os.path.dirname(__file__), "lyapunov.png"))
     plt.show()
