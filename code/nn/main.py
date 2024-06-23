@@ -156,16 +156,39 @@ if __name__ == "__main__":
         batch_num = z.shape[0]
         a2 = np.dot(z, W2) + b2
         y = softmax(a2)
-        dy = np.diag(((y - t) / batch_num)[0])
+        dy = np.diag((y - t).flatten() / batch_num)
         dz = np.dot(dy, W2.T)
         return dz
     
-    # 测试反向传播函数
-    x = x_train[:1]
-    z = f_1(x)
-    t = t_train[:1]
-    dz = f_2_grad(z, t)
-    print(dz.shape)
+    def f1(x):
+        return f_1(x.T).flatten()
+    def f2(z):
+        return f_2(z.T).flatten()
+    def f1_grad(x, t):
+        x = x.reshape(1, x.shape[0])
+        t = t.reshape(1, t.shape[0])
+        return f_1_grad(x, t).T
+    def f2_grad(z, t):
+        z = z.reshape(1, z.shape[0])
+        t = t.reshape(1, t.shape[0])
+        return f_2_grad(z, t).T
+
+    # 第一步 Lyapunov 谱
+    t_span = (0, 1)
+    u0 = x_train[t_span[0]:t_span[1]]
+    print(u0.shape)
+    m = u0.shape[1]
+    M = f_1(u0).shape[1]
+    K = 1
+    delta_t = (t_span[1] - t_span[0]) / K
+
+    ans_forward = lyapunov_spectrum(
+        lambda u: f_1(u),
+        lambda u: f_1_grad(u, t_train[:1]),
+        t_span, u0, m, M, K, delta_t
+    )
+
+    print(ans_forward["exponents"])
 
     # # 设置参数
     # t_span = (0, 10)
