@@ -1,9 +1,7 @@
 import numpy as np
-from scipy.integrate import solve_ivp
 from scipy.linalg import qr
 import matplotlib.pylab as plt
 from mnist import load_mnist
-import sys
 import os
 
 num = 13
@@ -14,7 +12,7 @@ def sigmoid(x):
 
 
 def sigmoid_grad(x):
-    return (1.0 - sigmoid(x)) * sigmoid(x)
+    return np.dot(sigmoid(x), (1 - sigmoid(x)))
 
 
 def softmax(x):
@@ -27,7 +25,7 @@ def softmax(x):
     return np.exp(x) / np.sum(np.exp(x))
 
 def softmax_grad(x):
-    return softmax(x) * (1 - softmax(x))
+    return np.dot(softmax(x).T, (1 - softmax(x)))
 
 def cross_entropy_error(y, t):
     if y.ndim == 1:
@@ -135,21 +133,6 @@ if __name__ == "__main__":
     W2 = network.params['W2']
     b2 = network.params['b2']
 
-    def f1(x):
-        return sigmoid(np.dot(x.T, W1) + b1).flatten()
-
-    def f2(z):
-        return softmax(np.dot(z.T, W2) + b2).flatten()
-
-    def f1_grad(dz):
-        dx = np.dot(W1, sigmoid_grad(dz))
-        return dx
-
-    def f2_grad(dy):
-        dz = np.dot(W2, softmax_grad(dy))
-        return dz
-        
-
     forward_lambdas_s = []
     backward_lambdas_s = []
 
@@ -160,6 +143,11 @@ if __name__ == "__main__":
 
         idx = np.random.randint(0, 60000)
         x = x_train[idx].flatten()
+        z = sigmoid(np.dot(x.T, W1) + b1).flatten()
+        y = softmax(np.dot(z.T, W2) + b2).flatten()
+        dy_dz = np.dot(W2, softmax_grad(y))
+        dz_dx = np.dot(W1, sigmoid_grad(z))
+
         Q0 = np.linalg.qr(np.random.randn(784, 50))[0]
 
         K = 2
@@ -167,22 +155,29 @@ if __name__ == "__main__":
         D_forward = []
         D_backward = []
 
+        v0 = np.random.randn(784)
+        v1 = np.dot(v0, dz_dx)
+        v2 = np.dot(v1, dy_dz)
+
+        nu_2 = np.random.randn(10)
+        nu_1 = np.dot(nu_2, dy_dz.T)
+        nu_0 = np.dot(nu_1, dz_dx.T)
+
         # Forward - 1st time step
-        z = f1(x)
         _W1 = np.zeros((50, 50))
         for j in range(50):
             w0j = Q0[:, j]
-            w1j = f1(x)
+            w1j = np.dot(v0, dz_dx)
             _W1[:, j] = w1j
         Q1, R1 = qr(_W1)
         D_forward.append(np.diag(R1))
 
         # Forward - 2nd time step
-        y = f2(z)
+        v2 = np.dot(v1, dy_dz)
         _W2 = np.zeros((10, 10))
         for j in range(10):
             w1j = Q1[:50, j]
-            w2j = f2(z)
+            w2j = np.dot(v1, dy_dz)
             _W2[:, j] = w2j
         Q2, R2 = qr(_W2)
         D_forward.append(np.diag(R2))
@@ -191,21 +186,21 @@ if __name__ == "__main__":
         dy = np.random.randn(10)
 
         # Backward - 2nd time step
-        dz = f2_grad(dy)
+        nu_1 = np.dot(nu_2, dy_dz.T)
         _W2 = np.zeros((50, 10))
         for j in range(10):
             w2j = Q2[:, j]
-            w1j = f2_grad(dy)
+            w1j = np.dot(nu_2, dy_dz.T)
             _W2[:, j] = w1j
         Q1, R1 = qr(_W2)
         D_backward.append(np.diag(R1))
 
-        # Forward - 1st time step
-        dx = f1_grad(dz)
+        # Backward - 1st time step
+        nu_0 = np.dot(nu_1, dz_dx.T)
         _W1 = np.zeros((784, 50))
         for j in range(50):
             w1j = Q1[:, j]
-            w0j = f1_grad(dz)
+            w0j = np.dot(nu_1, dz_dx.T)
             _W1[:, j] = w0j
         Q0, R0 = qr(_W1)
         D_backward.append(np.diag(R0))
