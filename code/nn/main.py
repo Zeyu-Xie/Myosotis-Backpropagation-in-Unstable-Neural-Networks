@@ -92,16 +92,22 @@ class TwoLayerNet:
         return z1
 
 def get_parameters():
-    with open("W1.txt", "r") as f:
+
+    dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "train")
+
+    with open(os.path.join(dir, "W1.txt"), "r") as f:
         W1 = np.array([list(map(float, line.strip().split())) for line in f])
         W1.shape = (784, 50)
-    with open("b1.txt", "r") as f:
+    with open(os.path.join(dir, "b1.txt"), "r") as f:
         b1 = np.array(list(map(float, f)))
-    with open("W2.txt", "r") as f:
+    with open(os.path.join(dir, "W2.txt"), "r") as f:
         W2 = np.array([list(map(float, line.strip().split())) for line in f])
         W2.shape = (50, 10)
-    with open("b2.txt", "r") as f:
+    with open(os.path.join(dir, "b2.txt"), "r") as f:
         b2 = np.array(list(map(float, f)))
+
+    print(W1.shape, b1.shape, W2.shape, b2.shape)
+
     return W1, b1, W2, b2
 
 # 主程序
