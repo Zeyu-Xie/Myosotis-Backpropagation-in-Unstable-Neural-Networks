@@ -13,7 +13,7 @@ def sigmoid(x):
 
 
 def sigmoid_grad(x):
-    return np.dot(sigmoid(x), (1 - sigmoid(x)))
+    return np.diag(sigmoid(x) * (1 - sigmoid(x)))
 
 
 def softmax(x):
@@ -169,29 +169,30 @@ if __name__ == "__main__":
         D_forward = []
         D_backward = []
 
-        v0 = np.random.randn(784)
-        v1 = np.dot(v0, dz_dx)
-        v2 = np.dot(v1, dy_dz)
+        v0 = Q0
+        v1 = np.dot(dz_dx.T, v0)
+        v2 = np.dot(dy_dz.T, v1)
 
-        nu_2 = np.random.randn(10)
-        nu_1 = np.dot(nu_2, dy_dz.T)
-        nu_0 = np.dot(nu_1, dz_dx.T)
+        Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
+
+        nu_2 = Q2
+        nu_1 = np.dot(dy_dz, nu_2)
+        nu_0 = np.dot(dz_dx, nu_1)
 
         # Forward - 1st time step - v0 to v1
-        _W1 = np.zeros((50, 10))
+        _W1 = np.zeros((784, 10))
         for j in range(10):
             w0j = Q0[:, j]
-            w1j = np.dot(v0, w0j)
+            w1j = np.dot(v0[:,j], w0j)
             _W1[:, j] = w1j
         Q1, R1 = np.linalg.qr(_W1)
         D_forward.append(np.diag(R1))
 
         # Forward - 2nd time step - v1 to v2
-        v2 = np.dot(v1, dy_dz)
         _W2 = np.zeros((10, 10))
         for j in range(10):
             w1j = Q1[:50, j]
-            w2j = np.dot(v1, w1j)
+            w2j = np.dot(v1[:,j], w1j)
             _W2[:, j] = w2j
         Q2, R2 = np.linalg.qr(_W2)
         D_forward.append(np.diag(R2))
@@ -200,21 +201,19 @@ if __name__ == "__main__":
         dy = np.random.randn(10)
 
         # Backward - 2nd time step - nu_2 to nu_1
-        nu_1 = np.dot(nu_2, dy_dz.T)
         _W2 = np.zeros((50, 10))
         for j in range(10):
             w2j = Q2[:, j]
-            w1j = np.dot(nu_2, w2j)
+            w1j = np.dot(nu_2[:, j], w2j)
             _W2[:, j] = w1j
         Q1, R1 = np.linalg.qr(_W2)
         D_backward.append(np.diag(R1))
 
         # Backward - 1st time step - nu_1 to nu_0
-        nu_0 = np.dot(nu_1, dz_dx.T)
         _W1 = np.zeros((784, 10))
         for j in range(10):
             w1j = Q1[:, j]
-            w0j = np.dot(nu_1, w1j)
+            w0j = np.dot(nu_1[:, j], w1j)
             _W1[:, j] = w0j
         Q0, R0 = np.linalg.qr(_W1)
         D_backward.append(np.diag(R0))
