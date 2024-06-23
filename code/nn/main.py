@@ -154,10 +154,8 @@ if __name__ == "__main__":
     x = x_train[:1].flatten()
     z = f1(x)
     y = f2(z)
-    print(x.shape, z.shape, y.shape)
     x_grad = f1_grad(x, t_train[:1].flatten())
     z_grad = f2_grad(z, t_train[:1].flatten())
-    print(x_grad.shape, z_grad.shape)
 
     t_span = (0, 1)
     u0 = x_train[t_span[0]:t_span[1]].flatten()
@@ -166,44 +164,63 @@ if __name__ == "__main__":
     K = 1
     delta_t = (t_span[1] - t_span[0]) / K
 
-    # 初始条件
-    u0 = np.random.randn(784)
-    Q0 = np.linalg.qr(np.random.randn(784, 50))[0]
+    lambdas_s = []
 
-    # 时间步数量
-    K = 2
-    # 每个时间步的时间长度
-    delta_t = 1.0
+    def random_input(time_steps):
 
-    # 存储R的对角元素
-    D = []
+        if time_steps == 0:
+            return
 
-    # 第一时间步
-    u1 = f1(u0)
-    _W1 = np.zeros((50, 50))
-    for j in range(50):
-        w0j = Q0[:, j]
-        w1j = f1_grad(u0, t_train[0]) @ w0j
-        _W1[:, j] = w1j
+        # 初始条件
+        u0 = np.random.randn(784)
+        Q0 = np.linalg.qr(np.random.randn(784, 50))[0]
 
-    Q1, R1 = qr(_W1)
-    D.append(np.diag(R1))
+        # 时间步数量
+        K = 2
+        # 每个时间步的时间长度
+        delta_t = 1.0
 
-    # 第二时间步
-    u2 = f2(u1)
-    _W2 = np.zeros((10, 10))
-    for j in range(10):
-        w1j = Q1[:50, j]
-        w2j = f2_grad(u1, t_train[0]) @ w1j  # 使用雅可比矩阵计算梯度
-        _W2[:, j] = w2j
+        # 存储R的对角元素
+        D = []
 
-    Q2, R2 = qr(_W2)
-    D.append(np.diag(R2))
+        # 第一时间步
+        u1 = f1(u0)
+        _W1 = np.zeros((50, 50))
+        for j in range(50):
+            w0j = Q0[:, j]
+            w1j = f1_grad(u0, t_train[0]) @ w0j
+            _W1[:, j] = w1j
 
-    # 计算李雅普诺夫指数
-    lambdas = []
-    for j in range(10):
-        lambda_j = sum(np.log(np.abs(D[i][j])) for i in range(K)) / (K * delta_t)
-        lambdas.append(lambda_j.item())
+        Q1, R1 = qr(_W1)
+        D.append(np.diag(R1))
 
-    print("李雅普诺夫指数:", lambdas)
+        # 第二时间步
+        u2 = f2(u1)
+        _W2 = np.zeros((10, 10))
+        for j in range(10):
+            w1j = Q1[:50, j]
+            w2j = f2_grad(u1, t_train[0]) @ w1j  # 使用雅可比矩阵计算梯度
+            _W2[:, j] = w2j
+
+        Q2, R2 = qr(_W2)
+        D.append(np.diag(R2))
+
+        # 计算李雅普诺夫指数
+        lambdas = []
+        for j in range(10):
+            lambda_j = sum(np.log(np.abs(D[i][j])) for i in range(K)) / (K * delta_t)
+            lambdas.append(lambda_j.item())
+
+        lambdas_s.append(lambdas)
+
+        random_input(time_steps-1)
+
+    random_input(10)
+
+    for i in range(len(lambdas_s)):
+        print(lambdas_s[i])
+        plt.plot(lambdas_s[i], marker="o")
+    
+    plt.xlabel("Index")
+    plt.ylabel("Lyapunov Exponent")
+    plt.show()
