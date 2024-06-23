@@ -5,7 +5,8 @@ from mnist import load_mnist
 import os
 
 num = 13
-is_forward = False
+is_forward = True
+
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
@@ -24,19 +25,21 @@ def softmax(x):
     x = x - np.max(x)
     return np.exp(x) / np.sum(np.exp(x))
 
+
 def softmax_grad(x):
     n = len(x)
     softmax = np.exp(x) / np.sum(np.exp(x))
     jacobi = np.zeros((n, n))
-    
+
     for i in range(n):
         for j in range(n):
             if i == j:
                 jacobi[i, j] = softmax[i] * (1 - softmax[i])
             else:
                 jacobi[i, j] = -softmax[i] * softmax[j]
-    
+
     return jacobi
+
 
 def cross_entropy_error(y, t):
     if y.ndim == 1:
@@ -159,7 +162,7 @@ if __name__ == "__main__":
         dy_dz = np.dot(W2, softmax_grad(y))
         dz_dx = np.dot(W1, sigmoid_grad(z))
 
-        Q0 = np.linalg.qr(np.random.randn(50, 50))[0]
+        Q0 = np.linalg.qr(np.random.randn(784, 10))[0]
 
         K = 2
         delta_t = 1.0
@@ -174,47 +177,46 @@ if __name__ == "__main__":
         nu_1 = np.dot(nu_2, dy_dz.T)
         nu_0 = np.dot(nu_1, dz_dx.T)
 
-        # Forward - 1st time step
-        _W1 = np.zeros((50, 50))
-        for j in range(50):
+        # Forward - 1st time step - v0 to v1
+        _W1 = np.zeros((50, 10))
+        for j in range(10):
             w0j = Q0[:, j]
-            print(w0j.shape)
-            w1j = np.dot(v0, dz_dx) @ w0j
+            w1j = np.dot(v0, w0j)
             _W1[:, j] = w1j
-        Q1, R1 = qr(_W1)
+        Q1, R1 = np.linalg.qr(_W1)
         D_forward.append(np.diag(R1))
 
-        # Forward - 2nd time step
+        # Forward - 2nd time step - v1 to v2
         v2 = np.dot(v1, dy_dz)
         _W2 = np.zeros((10, 10))
         for j in range(10):
             w1j = Q1[:50, j]
-            w2j = np.dot(v1, dy_dz) @ w1j
+            w2j = np.dot(v1, w1j)
             _W2[:, j] = w2j
-        Q2, R2 = qr(_W2)
+        Q2, R2 = np.linalg.qr(_W2)
         D_forward.append(np.diag(R2))
 
-        Q2 = np.linalg.qr(np.random.randn(50, 10))[0]
+        Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
         dy = np.random.randn(10)
 
-        # Backward - 2nd time step
+        # Backward - 2nd time step - nu_2 to nu_1
         nu_1 = np.dot(nu_2, dy_dz.T)
         _W2 = np.zeros((50, 10))
         for j in range(10):
             w2j = Q2[:, j]
-            w1j = np.dot(nu_2, dy_dz.T) @ w2j
+            w1j = np.dot(nu_2, w2j)
             _W2[:, j] = w1j
-        Q1, R1 = qr(_W2)
+        Q1, R1 = np.linalg.qr(_W2)
         D_backward.append(np.diag(R1))
 
-        # Backward - 1st time step
+        # Backward - 1st time step - nu_1 to nu_0
         nu_0 = np.dot(nu_1, dz_dx.T)
-        _W1 = np.zeros((784, 50))
-        for j in range(50):
+        _W1 = np.zeros((784, 10))
+        for j in range(10):
             w1j = Q1[:, j]
-            w0j = np.dot(nu_1, dz_dx.T) @ w1j
+            w0j = np.dot(nu_1, w1j)
             _W1[:, j] = w0j
-        Q0, R0 = qr(_W1)
+        Q0, R0 = np.linalg.qr(_W1)
         D_backward.append(np.diag(R0))
 
         # Lyapunov Exponents
