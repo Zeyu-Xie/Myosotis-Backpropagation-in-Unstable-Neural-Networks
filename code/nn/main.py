@@ -26,6 +26,8 @@ def softmax(x):
     x = x - np.max(x)  # 溢出对策
     return np.exp(x) / np.sum(np.exp(x))
 
+def softmax_grad(x):
+    return softmax(x) * (1 - softmax(x))
 
 def cross_entropy_error(y, t):
     if y.ndim == 1:
@@ -139,26 +141,29 @@ if __name__ == "__main__":
     def f2(z):
         return softmax(np.dot(z.T, W2) + b2).flatten()
 
-    def f1_grad(x, t):
+    def f1_grad(x, dz):
         x = x.reshape(1, x.shape[0])
-        t = t.reshape(1, t.shape[0])
+        # t = t.reshape(1, t.shape[0])
         a = np.dot(x, W1) + b1
         # z = sigmoid(a)
-        dz = np.eye(a.shape[1])
+        # dz = np.eye(a.shape[1])
         da = np.dot(dz, np.diag(sigmoid_grad(a[0])))
         dx = np.dot(da, W1.T)
         return dx
 
-    def f2_grad(z, t):
+    def f2_grad(z):
         # z - value of the hidden layer
         z = z.reshape(1, z.shape[0])
         # t - target value
-        t = t.reshape(1, t.shape[0])
-        batch_num = z.shape[0]
+        # t = t.reshape(1, t.shape[0])
+        # batch_num = z.shape[0]
+
         a2 = np.dot(z, W2) + b2
-        y = softmax(a2)
-        dy = np.diag((y - t).flatten() / batch_num)
-        dz = np.dot(dy, W2.T)
+        # y = softmax(a2)
+        dy = np.random.randn(10)
+        # dy = np.diag((y - t).flatten() / batch_num)
+        dy = dy.reshape(1, dy.shape[0])
+        dz = np.dot(softmax_grad(dy), W2.T)
         return dz
 
     forward_lambdas_s = []
@@ -183,7 +188,7 @@ if __name__ == "__main__":
         _W1 = np.zeros((50, 50))
         for j in range(50):
             w0j = Q0[:, j]
-            w1j = f1_grad(x, t_train[idx]) @ w0j
+            w1j = f1(x)
             _W1[:, j] = w1j
         Q1, R1 = qr(_W1)
         D_forward.append(np.diag(R1))
@@ -193,31 +198,31 @@ if __name__ == "__main__":
         _W2 = np.zeros((10, 10))
         for j in range(10):
             w1j = Q1[:50, j]
-            w2j = f2_grad(z, t_train[idx]) @ w1j  # 使用雅可比矩阵计算梯度
+            w2j = f2(z)
             _W2[:, j] = w2j
         Q2, R2 = qr(_W2)
         D_forward.append(np.diag(R2))
 
         y_theory = t_train[idx]
         dy = y_theory - y
-        Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
+        Q2 = np.linalg.qr(np.random.randn(50, 10))[0]
 
         # Backward - 2nd time step
-        _W2 = np.zeros((50, 50))
+        _W2 = np.zeros((784, 50))
         for j in range(10):
-            w2j = Q2[:10, j]
-            w1j = f2_grad(z, t_train[idx]).T @ w2j
-            print(w1j.shape)
-            print(_W2.shape)
+            w2j = Q2[:50, j]
+            w1j = f2_grad(z) @ w2j
             _W2[:, j] = w1j
         Q1, R1 = qr(_W2)
         D_backward.append(np.diag(R1))
 
+        dz = _W2
+
         # Backward - 1st time step
         _W1 = np.zeros((784, 784))
         for j in range(50):
-            w1j = Q1[:50, j]
-            w0j = f1_grad(x, t_train[idx]).T @ w1j
+            w1j = Q1[:784, j]
+            w0j = f1_grad(x, sigmoid_grad(dz)) @ w1j
             _W1[:, j] = w0j
         Q0, R0 = qr(_W1)
         D_backward.append(np.diag(R0))
