@@ -6,6 +6,8 @@ from mnist import load_mnist
 import sys
 import os
 
+num = 13
+is_forward = False
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
@@ -23,6 +25,7 @@ def softmax(x):
         return y.T
     x = x - np.max(x)  # 溢出对策
     return np.exp(x) / np.sum(np.exp(x))
+
 
 def cross_entropy_error(y, t):
     if y.ndim == 1:
@@ -160,8 +163,6 @@ if __name__ == "__main__":
 
     forward_lambdas_s = []
     backward_lambdas_s = []
-    num = 10
-    is_forward = False
 
     for tot in range(num):
 
@@ -257,8 +258,10 @@ if __name__ == "__main__":
     plt.ylabel("Lyapunov Exponent")
 
     if is_forward:
-        plt.savefig(os.path.join(os.path.dirname(__file__), "forward_lyapunov.png"))
+        plt.savefig(os.path.join(os.path.dirname(
+            __file__), "forward_lyapunov.png"))
     else:
-        plt.savefig(os.path.join(os.path.dirname(__file__), "backward_lyapunov.png"))
+        plt.savefig(os.path.join(os.path.dirname(
+            __file__), "backward_lyapunov.png"))
 
     plt.show()
