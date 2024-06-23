@@ -24,7 +24,6 @@ def softmax(x):
     x = x - np.max(x)  # 溢出对策
     return np.exp(x) / np.sum(np.exp(x))
 
-
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
@@ -148,7 +147,9 @@ if __name__ == "__main__":
         return dx
 
     def f2_grad(z, t):
+        # z - value of the hidden layer
         z = z.reshape(1, z.shape[0])
+        # t - target value
         t = t.reshape(1, t.shape[0])
         batch_num = z.shape[0]
         a2 = np.dot(z, W2) + b2
@@ -157,7 +158,8 @@ if __name__ == "__main__":
         dz = np.dot(dy, W2.T)
         return dz
 
-    lambdas_s = []
+    forward_lambdas_s = []
+    backward_lambdas_s = []
     num = 10
     is_forward = False
 
@@ -167,68 +169,84 @@ if __name__ == "__main__":
             break
 
         idx = np.random.randint(0, 60000)
-        u0 = x_train[idx].flatten()
+        x = x_train[idx].flatten()
         Q0 = np.linalg.qr(np.random.randn(784, 50))[0]
 
         K = 2
         delta_t = 1.0
-        D = []
+        D_forward = []
+        D_backward = []
 
-        if is_forward:
-            # Forward - 1st time step
-            u1 = f1(u0)
-            _W1 = np.zeros((50, 50))
-            for j in range(50):
-                w0j = Q0[:, j]
-                w1j = f1_grad(u0, t_train[idx]) @ w0j
-                _W1[:, j] = w1j
-            Q1, R1 = qr(_W1)
-            D.append(np.diag(R1))
+        # Forward - 1st time step
+        z = f1(x)
+        _W1 = np.zeros((50, 50))
+        for j in range(50):
+            w0j = Q0[:, j]
+            w1j = f1_grad(x, t_train[idx]) @ w0j
+            _W1[:, j] = w1j
+        Q1, R1 = qr(_W1)
+        D_forward.append(np.diag(R1))
 
-            # Forward - 2nd time step
-            u2 = f2(u1)
-            _W2 = np.zeros((10, 10))
-            for j in range(10):
-                w1j = Q1[:50, j]
-                w2j = f2_grad(u1, t_train[idx]) @ w1j  # 使用雅可比矩阵计算梯度
-                _W2[:, j] = w2j
-            Q2, R2 = qr(_W2)
-            D.append(np.diag(R2))
+        # Forward - 2nd time step
+        y = f2(z)
+        _W2 = np.zeros((10, 10))
+        for j in range(10):
+            w1j = Q1[:50, j]
+            w2j = f2_grad(z, t_train[idx]) @ w1j  # 使用雅可比矩阵计算梯度
+            _W2[:, j] = w2j
+        Q2, R2 = qr(_W2)
+        D_forward.append(np.diag(R2))
 
-        else:
-            # Backward - 2nd time step
-            u1 = f1(u0)
-            _W2 = np.zeros((10, 10))
-            for j in range(10):
-                w2j = Q2[:10, j]
-                w1j = f2_grad(u1, t_train[idx]) @ w2j
-                _W2[:, j] = w1j
-            Q1, R1 = qr(_W2)
-            D.append(np.diag(R1))
+        y_theory = t_train[idx]
+        dy = y_theory - y
+        Q2 = np.linalg.qr(np.random.randn(10, 10))[0]
 
-            # Backward - 1st time step
-            u0 = f1(u0)
-            _W1 = np.zeros((50, 50))
-            for j in range(50):
-                w1j = Q1[:10, j]
-                w0j = f1_grad(u0, t_train[idx]) @ w1j
-                _W1[:, j] = w0j
-            Q0, R0 = qr(_W1)
-            D.append(np.diag(R0))
+        # Backward - 2nd time step
+        _W2 = np.zeros((50, 50))
+        for j in range(10):
+            w2j = Q2[:10, j]
+            w1j = f2_grad(z, t_train[idx]).T @ w2j
+            print(w1j.shape)
+            print(_W2.shape)
+            _W2[:, j] = w1j
+        Q1, R1 = qr(_W2)
+        D_backward.append(np.diag(R1))
+
+        # Backward - 1st time step
+        _W1 = np.zeros((784, 784))
+        for j in range(50):
+            w1j = Q1[:50, j]
+            w0j = f1_grad(x, t_train[idx]).T @ w1j
+            _W1[:, j] = w0j
+        Q0, R0 = qr(_W1)
+        D_backward.append(np.diag(R0))
 
         # Lyapunov Exponents
         lambdas = []
         for j in range(10):
+            if is_forward:
+                D = D_forward
+            else:
+                D = D_backward
             lambda_j = sum(np.log(np.abs(D[i][j]))
                            for i in range(K)) / (K * delta_t)
             lambdas.append(lambda_j.item())
 
-        lambdas_s.append(lambdas)
+        if is_forward:
+            forward_lambdas_s.append(lambdas)
+        else:
+            backward_lambdas_s.append(lambdas)
 
-    x = range(len(lambdas_s[0]))
-    for i in range(len(lambdas_s)):
-        print(lambdas_s[i])
-        plt.scatter(x, lambdas_s[i], marker=".")
+    if is_forward:
+        x = range(len(forward_lambdas_s[0]))
+        for i in range(len(forward_lambdas_s)):
+            print(forward_lambdas_s[i])
+            plt.scatter(x, forward_lambdas_s[i], marker=".")
+    else:
+        x = range(len(backward_lambdas_s[0]))
+        for i in range(len(backward_lambdas_s)):
+            print(backward_lambdas_s[i])
+            plt.scatter(x, backward_lambdas_s[i], marker=".")
 
     if is_forward:
         plt.title("Forward Lyapunov Exponents")
@@ -237,5 +255,10 @@ if __name__ == "__main__":
 
     plt.xlabel("Index")
     plt.ylabel("Lyapunov Exponent")
-    plt.savefig(os.path.join(os.path.dirname(__file__), "lyapunov.png"))
+
+    if is_forward:
+        plt.savefig(os.path.join(os.path.dirname(__file__), "forward_lyapunov.png"))
+    else:
+        plt.savefig(os.path.join(os.path.dirname(__file__), "backward_lyapunov.png"))
+
     plt.show()
