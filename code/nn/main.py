@@ -92,26 +92,39 @@ class TwoLayerNet:
         return z1
 
 # 定义 system 和 jacobian 函数
-def system(t, u, net, x):
-    u = u.reshape(-1, net.params['W1'].shape[1])
-    z1 = net.hidden_layer_activations(x)
-    return z1.flatten()
+# def system(t, u, net, x):
+#     u = u.reshape(-1, net.params['W1'].shape[1])
+#     z1 = net.hidden_layer_activations(x)
+#     return z1.flatten()
 
-def jacobian(u, net, x):
-    W1 = net.params['W1']
-    a1 = np.dot(x, W1) + net.params['b1']
-    grad = sigmoid_grad(a1)
-    return np.diag(grad.flatten())
+# def jacobian(u, net, x):
+#     W1 = net.params['W1']
+#     a1 = np.dot(x, W1) + net.params['b1']
+#     grad = sigmoid_grad(a1)
+#     return np.diag(grad.flatten())
 
-def backpropagation_system(t, u, net, x, t_target):
-    u = u.reshape(-1, net.params['W1'].shape[1])
-    grads = net.gradient(x, t_target)
-    return grads['W1'].flatten()
+# def backpropagation_system(t, u, net, x, t_target):
+#     u = u.reshape(-1, net.params['W1'].shape[1])
+#     grads = net.gradient(x, t_target)
+#     return grads['W1'].flatten()
 
-def backpropagation_jacobian(u, net, x, t_target):
-    W1 = net.params['W1']
-    grad = sigmoid_grad(np.dot(x, W1) + net.params['b1'])
-    return np.diag(grad.flatten())
+# def backpropagation_jacobian(u, net, x, t_target):
+#     W1 = net.params['W1']
+#     grad = sigmoid_grad(np.dot(x, W1) + net.params['b1'])
+#     return np.diag(grad.flatten())
+
+def get_parameters():
+    with open("W1.txt", "r") as f:
+        W1 = np.array([list(map(float, line.strip().split())) for line in f])
+        W1.shape = (784, 50)
+    with open("b1.txt", "r") as f:
+        b1 = np.array(list(map(float, f)))
+    with open("W2.txt", "r") as f:
+        W2 = np.array([list(map(float, line.strip().split())) for line in f])
+        W2.shape = (50, 10)
+    with open("b2.txt", "r") as f:
+        b2 = np.array(list(map(float, f)))
+    return W1, b1, W2, b2
 
 # 主程序
 if __name__ == "__main__":
@@ -120,67 +133,100 @@ if __name__ == "__main__":
 
     # 初始化网络
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
+    network.params['W1'], network.params['b1'], network.params['W2'], network.params['b2'] = get_parameters()
 
-    # 设置参数
-    t_span = (0, 10)
-    u0 = network.hidden_layer_activations(x_train[:1]).flatten()
-    m = u0.size
-    M = m
-    K = 100
-    delta_t = (t_span[1] - t_span[0]) / K
+    W1 = network.params['W1']
+    b1 = network.params['b1']
+    W2 = network.params['W2']
+    b2 = network.params['b2']
 
-    # 计算 Lyapunov 谱（正向传播）
-    ans_forward = lyapunov_spectrum(
-        lambda t, u: system(t, u, network, x_train[:1]),
-        lambda u: jacobian(u, network, x_train[:1]),
-        t_span, u0, m, M, K, delta_t
-    )
-    print("Forward Lyapunov Exponents:")
-    tmp = ""
-    for i, exponent in enumerate(ans_forward["exponents"]):
-        tmp += f"{round(exponent, 4)}"
-        if (i + 1) % 5 == 0:
-            tmp += " \\\\ \n"
-        else :
-            tmp += " & "
-    print(tmp)
+    # 定义正向传播函数
+    f_1 = lambda x: sigmoid(np.dot(x, W1) + b1)
+    f_2 = lambda z: softmax(np.dot(z, W2) + b2)
+
+    # 定义反向传播函数
+    def f_1_grad(x, t):
+        a = np.dot(x, W1) + b1
+        # z = sigmoid(a)
+        dz = np.eye(a.shape[1])
+        da = np.dot(dz, np.diag(sigmoid_grad(a[0])))
+        dx = np.dot(da, W1.T)
+        return dx
+    def f_2_grad(z, t):
+        batch_num = z.shape[0]
+        a2 = np.dot(z, W2) + b2
+        y = softmax(a2)
+        dy = np.diag(((y - t) / batch_num)[0])
+        dz = np.dot(dy, W2.T)
+        return dz
     
-    # 计算 Lyapunov 谱（反向传播）
-    u0_backprop = network.gradient(x_train[:1], t_train[:1])['W1'].flatten()
-    ans_backward = lyapunov_spectrum(
-        lambda t, u: backpropagation_system(t, u, network, x_train[:1], t_train[:1]),
-        lambda u: backpropagation_jacobian(u, network, x_train[:1], t_train[:1]),
-        t_span, u0_backprop, m, M, K, delta_t
-    )
-    print("Backward Lyapunov Exponents:")
-    tmp = ""
-    for i, exponent in enumerate(ans_backward["exponents"]):
-        tmp += f"{round(exponent, 4)}"
-        if (i + 1) % 5 == 0:
-            tmp += " \\\\ \n"
-        else :
-            tmp += " & "
-    print(tmp)
+    # 测试反向传播函数
+    x = x_train[:1]
+    z = f_1(x)
+    t = t_train[:1]
+    dz = f_2_grad(z, t)
+    print(dz.shape)
 
-    # 创建一个具有两个子图的图形窗口，1行2列
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12,6))
-    y1 = ans_forward["exponents"]
-    y2 = ans_backward["exponents"]
-    x = np.arange(M)
+    # # 设置参数
+    # t_span = (0, 10)
+    # u0 = network.hidden_layer_activations(x_train[:1]).flatten()
+    # m = u0.size
+    # M = m
+    # K = 100
+    # delta_t = (t_span[1] - t_span[0]) / K
 
-    # 在ax1子图中绘制图形
-    ax1.plot(x, y1, 'o', color='b', label='Forward')
-    ax1.set_title('Forward Lyapunov Exponents')
-    ax1.set_xlabel("Index")
-    ax1.set_ylabel("Exponents")
-    ax1.legend()
+    # # 计算 Lyapunov 谱（正向传播）
+    # ans_forward = lyapunov_spectrum(
+    #     lambda t, u: system(t, u, network, x_train[:1]),
+    #     lambda u: jacobian(u, network, x_train[:1]),
+    #     t_span, u0, m, M, K, delta_t
+    # )
+    # print("Forward Lyapunov Exponents:")
+    # tmp = ""
+    # for i, exponent in enumerate(ans_forward["exponents"]):
+    #     tmp += f"{round(exponent, 4)}"
+    #     if (i + 1) % 5 == 0:
+    #         tmp += " \\\\ \n"
+    #     else :
+    #         tmp += " & "
+    # print(tmp)
+    
+    # # 计算 Lyapunov 谱（反向传播）
+    # u0_backprop = network.gradient(x_train[:1], t_train[:1])['W1'].flatten()
+    # ans_backward = lyapunov_spectrum(
+    #     lambda t, u: backpropagation_system(t, u, network, x_train[:1], t_train[:1]),
+    #     lambda u: backpropagation_jacobian(u, network, x_train[:1], t_train[:1]),
+    #     t_span, u0_backprop, m, M, K, delta_t
+    # )
+    # print("Backward Lyapunov Exponents:")
+    # tmp = ""
+    # for i, exponent in enumerate(ans_backward["exponents"]):
+    #     tmp += f"{round(exponent, 4)}"
+    #     if (i + 1) % 5 == 0:
+    #         tmp += " \\\\ \n"
+    #     else :
+    #         tmp += " & "
+    # print(tmp)
 
-    # 在ax2子图中绘制图形
-    ax2.plot(x, y2, 'o', color='r', label='Backward')
-    ax2.set_title('Backward Lyapunov Exponents')
-    ax2.set_xlabel("Index")
-    ax2.set_ylabel("Exponents")
-    ax2.legend()
+    # # 创建一个具有两个子图的图形窗口，1行2列
+    # fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12,6))
+    # y1 = ans_forward["exponents"]
+    # y2 = ans_backward["exponents"]
+    # x = np.arange(M)
 
-    # 显示图形
-    plt.savefig(os.path.join(os.path.dirname(__file__), "lyapunov_exponents.png"))
+    # # 在ax1子图中绘制图形
+    # ax1.plot(x, y1, 'o', color='b', label='Forward')
+    # ax1.set_title('Forward Lyapunov Exponents')
+    # ax1.set_xlabel("Index")
+    # ax1.set_ylabel("Exponents")
+    # ax1.legend()
+
+    # # 在ax2子图中绘制图形
+    # ax2.plot(x, y2, 'o', color='r', label='Backward')
+    # ax2.set_title('Backward Lyapunov Exponents')
+    # ax2.set_xlabel("Index")
+    # ax2.set_ylabel("Exponents")
+    # ax2.legend()
+
+    # # 显示图形
+    # plt.savefig(os.path.join(os.path.dirname(__file__), "lyapunov_exponents.png"))
