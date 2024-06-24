@@ -129,86 +129,96 @@
 
 \subsubsection{训练过程}
 
-对上一节规定好的全连接神经网络进行训练，中间使用交叉熵损失函数和随机梯度下降法（SGD）进行优化。训练的具体步骤如下：
+训练该神经网络用到 60000 组学习数据和 10000 组测试数据，这些数据从 MNIST 数据集中导入，满足归一化条件，即 784 个像素的灰度值均用 $[0, 1]$ 区间内的实数表示。
 
-\begin{enumerate}
-  \item 前向传播：计算网络的输出 \(\mathbf{y}\)：
-        \begin{equation}
-          \mathbf{y} = \text{Softmax}(\mathbf{W}_2 \mathbf{h} + \mathbf{b}_2).
-        \end{equation}
-  \item 计算损失：使用交叉熵损失函数 \(\mathcal{L}\)：
-        \begin{equation}
-          \mathcal{L} = -\sum_{i} y_i \log \hat{y}_i.
-        \end{equation}
-  \item 反向传播：计算每层的梯度，并更新权重：
-        \begin{equation}
-          \frac{\partial \mathcal{L}}{\partial \mathbf{W}_1}, \frac{\partial \mathcal{L}}{\partial \mathbf{b}_1}, \frac{\partial \mathcal{L}}{\partial \mathbf{W}_2}, \frac{\partial \mathcal{L}}{\partial \mathbf{b}_2}.
-        \end{equation}
-\end{enumerate}
-
-\subsubsection{李雅普诺夫谱计算}
-
-考虑训练好的全连接神经网络作为动力系统，将随机数据输入并依次进行正向、反向传播，使用算法 \ref{alg:lyapunov} 计算每层数值和梯度的李雅普诺夫谱。
-
-全链接神经网络不能随时间无限延伸，正向和反向的传播均只进行两步，但可以通过多组输入来发现一般规律。
-
-\subsubsection{运行结果}
-
-李雅普诺夫指数的个数由节点数目最少的输出层决定，在该网络中为 10 个。使用散点图来展现它们的一般规律，选取横轴范围为 1 至 10
-
-实验结果显示，隐藏层的 50 个李雅普诺夫指数的计算结果如下：（$T = 300$ 步时的收敛结果，并非准确值）
-
-\begin{enumerate}
-  \item 正向传播：
-        \[
-          \begin{array}{cccccccccc}
-            0.2491 & 0.25 & 0.2493 & 0.2499 & 0.2489 \\ 
-            0.25 & 0.25 & 0.2486 & 0.2498 & 0.2494 \\ 
-            0.2493 & 0.25 & 0.2495 & 0.25 & 0.2496 \\ 
-            0.2499 & 0.25 & 0.2499 & 0.2497 & 0.2494 \\ 
-            0.249 & 0.2475 & 0.2497 & 0.2499 & 0.25 \\ 
-            0.25 & 0.2492 & 0.249 & 0.2496 & 0.25 \\ 
-            0.25 & 0.2497 & 0.2499 & 0.2479 & 0.2474 \\ 
-            0.25 & 0.2497 & 0.25 & 0.2482 & 0.25 \\ 
-            0.25 & 0.249 & 0.25 & 0.2499 & 0.2493 \\ 
-            0.25 & 0.2494 & 0.2499 & 0.2483 & 0.2494 \\ 
-          \end{array}
-        \]
-  \item 反向传播：
-        \[
-          \begin{array}{cccccccccc}
-            0.2491 & 0.25 & 0.2493 & 0.2499 & 0.2489 \\ 
-            0.25 & 0.25 & 0.2486 & 0.2498 & 0.2494 \\ 
-            0.2493 & 0.25 & 0.2495 & 0.25 & 0.2496 \\ 
-            0.2499 & 0.25 & 0.2499 & 0.2497 & 0.2494 \\ 
-            0.249 & 0.2475 & 0.2497 & 0.2499 & 0.25 \\ 
-            0.25 & 0.2492 & 0.249 & 0.2496 & 0.25 \\ 
-            0.25 & 0.2497 & 0.2499 & 0.2479 & 0.2474 \\ 
-            0.25 & 0.2497 & 0.25 & 0.2482 & 0.25 \\ 
-            0.25 & 0.249 & 0.25 & 0.2499 & 0.2493 \\ 
-            0.25 & 0.2494 & 0.2499 & 0.2483 & 0.2494 \\   
-          \end{array}
-        \]
-\end{enumerate}
-
-将其画成如下两幅散点图：
+令总迭代次数为 10000 次，每个 batch 包含 100 组学习数据，设定学习率为 0.1，然后开始训练。下图展示了训练过程中神经网络的准确率变化。
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=1\textwidth]{figures/nn_lyapunov_exponents.png}
-  \caption{隐藏层李雅普诺夫指数分布}
+  \includegraphics[width=1\textwidth]{figures/output.png}
+  \caption{准确率变化折线图}
   \label{fig:nn_lyapunov_exponents}
 \end{figure}
 
-根据计算结果和图 \ref{fig:nn_lyapunov_exponents}，可以得到如下的明显结论：
+训练完成后，保存所有参数并在下一节中使用。
+
+\subsubsection{李雅普诺夫谱计算}
+
+读取上一节保存的参数，使神经网络恢复到训练完成的状态。随机选取输入值 $x$ 和随机梯度，得到确定的状态 $x$、$h$、$y$ 和梯度 $\frac{\partial y}{\partial h}$、$\frac{\partial h}{\partial x}$.
+
+矩阵 $Q_0$ 为随机矩阵 QR 分解后的结果，记 $v_0 = Q_0$，其含义为 10 个不同方向的输入层向量。
+
+正向传播：
+
+\begin{equation}
+  \left\{
+    \begin{aligned}
+      v_1 &= \frac{\partial h}{\partial x} v_0 \\
+      v_2 &= \frac{\partial y}{\partial h} v_1
+    \end{aligned}
+  \right.
+\end{equation}
+
+反向传播：
+
+\begin{equation}
+  \left\{
+    \begin{aligned}
+      \nu_1 &= \frac{\partial h}{\partial x} \nu_0 \\
+      \nu_2 &= \frac{\partial y}{\partial h} \nu_1
+    \end{aligned}
+  \right.
+\end{equation}
+
+计算正向和反向传播的同时，使用算法 \ref{alg:lyapunov} 计算 $v$ 和 $\nu$ 的李雅普诺夫谱。
+
+全连接神经网络不能随时间无限延伸，正向和反向的传播均只进行两步，但可以通过多组输入来发现一般规律。
+
+尝试 20 组不同的 $x$ 输入，得到 20 组不同的李雅普诺夫谱，每组有 10 个指数，总体上呈现下降趋势：
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/forward_lyapunov.png}
+  \caption{正向传播的李雅普诺夫指数}
+  \label{fig:nn_lyapunov_exponents}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/backward_lyapunov.png}
+  \caption{反向传播的李雅普诺夫指数}
+  \label{fig:nn_lyapunov_exponents}
+\end{figure}
+
+将多组数据取平均，得到如下散点图：
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/forward_lyapunov_avg.png}
+  \caption{正向传播的平均李雅普诺夫指数}
+  \label{fig:nn_lyapunov_exponents}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/backward_lyapunov_avg.png}
+  \caption{反向传播的平均李雅普诺夫指数}
+  \label{fig:nn_lyapunov_exponents}
+\end{figure}
+
+\subsubsection{结果分析}
+
+李雅普诺夫指数的个数由节点数目最少的输出层决定，在该网络中为 10 个。由上一小节的散点图，可以发现如下规律：
 
 \begin{enumerate}
-  \item 50 个李雅普诺夫指数均小于 0.25，但越靠近 0.25 指数分布越密集，反之越稀疏。
-  \item 最小的指数也大于 0.248，说明 50 个指数的分布范围较小，分布区间及其相似。
-  \item 该网络正向和反向传播的李雅普诺夫谱相同，推测可能与全连接神经网络的结构有关。
+  \item 10 个李雅普诺夫指数均小于 0，说明该神经网络代表的动力系统是稳定的，不会出现梯度爆炸。
+  \item 绝大多数方向的李雅普诺夫指数接近 0，意味着一般情况下，神经网络的梯度不会发生显著的梯度消失。
+  \item $x=9$ 上的李雅普诺夫指数明显远小于其他方向，在这个方向上的梯度可能出现明显的梯度消失。
 \end{enumerate}
 
 至此已经完成了算法 \ref{alg:lyapunov} 的运行，但考虑到该全连接神经网络中间层的维数偏多，若验证对偶性将花费过长时间，因此我们将在下一节中考虑隐藏层维数较小的循环神经网络（RNN）。
+
+\clearpage
 
 \subsection{循环神经网络}\label{sec:rnn}
 

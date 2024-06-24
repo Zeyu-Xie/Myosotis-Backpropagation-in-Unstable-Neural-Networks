@@ -24,45 +24,45 @@ Warning--"{Jour" isn't a brace-balanced string for entry Ni20192
 while executing--line 2449 of file thuthesis-numeric.bst
 Warning--"{Jour" isn't a brace-balanced string for entry Ni20191
 while executing--line 2449 of file thuthesis-numeric.bst
-You've used 10 entries,
+You've used 13 entries,
             5374 wiz_defined-function locations,
-            1116 strings with 9647 characters,
-and the built_in function-call counts, 75525 in all, are:
-= -- 1744
-> -- 8510
-< -- 10579
-+ -- 2952
-- -- 628
-* -- 536
-:= -- 10447
-add.period$ -- 40
-call.type$ -- 10
-change.case$ -- 30
-chr.to.int$ -- 2579
-cite$ -- 10
-duplicate$ -- 250
-empty$ -- 938
-format.name$ -- 249
-if$ -- 19708
+            1131 strings with 10050 characters,
+and the built_in function-call counts, 88837 in all, are:
+= -- 2046
+> -- 9948
+< -- 12433
++ -- 3493
+- -- 700
+* -- 629
+:= -- 12285
+add.period$ -- 50
+call.type$ -- 13
+change.case$ -- 38
+chr.to.int$ -- 3025
+cite$ -- 13
+duplicate$ -- 323
+empty$ -- 1147
+format.name$ -- 301
+if$ -- 23235
 int.to.chr$ -- 1
-int.to.str$ -- 11
+int.to.str$ -- 14
 missing$ -- 0
-newline$ -- 74
-num.names$ -- 30
-pop$ -- 4001
+newline$ -- 90
+num.names$ -- 39
+pop$ -- 4698
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 13
 quote$ -- 0
-skip$ -- 7786
+skip$ -- 9141
 stack$ -- 0
-substring$ -- 3702
-swap$ -- 10
-text.length$ -- 205
+substring$ -- 4285
+swap$ -- 13
+text.length$ -- 253
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 110
+type$ -- 143
 warning$ -- 0
-while$ -- 214
+while$ -- 266
 width$ -- 0
-write$ -- 160
+write$ -- 201
 (There were 4 warnings)

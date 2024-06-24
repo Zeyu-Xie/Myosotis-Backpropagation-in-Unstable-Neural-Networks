@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax\else
@@ -83,5 +83,23 @@ Ni A, Talnikar C.
   non-intrusive least squares adjoint shadowing (nilsas)\allowbreak[J/OL].
 \newblock {Journal of Computational Physics}, 2019, 395: 690–709.
 \newblock \url{http://dx.doi.org/10.1016/j.jcp.2019.06.035}.
+
+\bibitem[Ni et~al.(2023)Ni and Tong]{ni2023recursive}
+Ni A, Tong Y.
+\newblock Recursive divergence formulas for perturbing unstable transfer
+  operators and physical measures\allowbreak[J].
+\newblock Journal of Statistical Physics, 2023, 190\allowbreak (126).
+
+\bibitem[Ni(2023)]{ni2023fast}
+Ni A.
+\newblock Fast adjoint algorithm for linear responses of hyperbolic
+  chaos\allowbreak[J].
+\newblock SIAM Journal on Applied Dynamical Systems, 2023, 22: 2792-2824.
+
+\bibitem[Ni(2020)]{ni2020fast}
+Ni A.
+\newblock Fast differentiation of chaos\allowbreak[EB/OL].
+\newblock 2020.
+\newblock \url{https://arxiv.org/abs/2009.00595}.
 
 \end{thebibliography}

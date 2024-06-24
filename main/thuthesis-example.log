@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.10)  22 JUN 2024 09:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.11)  24 JUN 2024 01:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1179,6 +1179,18 @@ h' as default language. on input line 20.
 
 (./thuthesis-example.aux
 
+LaTeX Warning: Label `fig:nn_lyapunov_exponents' multiply defined.
+
+
+LaTeX Warning: Label `fig:nn_lyapunov_exponents' multiply defined.
+
+
+LaTeX Warning: Label `fig:nn_lyapunov_exponents' multiply defined.
+
+
+LaTeX Warning: Label `fig:nn_lyapunov_exponents' multiply defined.
+
+
 LaTeX Warning: Label `fig:example' multiply defined.
 
 
@@ -1446,7 +1458,7 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 第3章
 [7
 
-] [8] [9]) (./data/chap04.tex [10] [11]
+] [8] [9] [10]) (./data/chap04.tex [11]
 第4章
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 13
 .
@@ -1467,44 +1479,55 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 ]
 File: figures/nn.jpeg Graphic file (type bmp)
 <figures/nn.jpeg>
- [13] [14] [15]
-File: figures/nn_lyapunov_exponents.png Graphic file (type bmp)
-<figures/nn_lyapunov_exponents.png>
- [16]
+ [13] [14]
+File: figures/output.png Graphic file (type bmp)
+<figures/output.png>
+ [15]
+File: figures/forward_lyapunov.png Graphic file (type bmp)
+<figures/forward_lyapunov.png>
+File: figures/backward_lyapunov.png Graphic file (type bmp)
+<figures/backward_lyapunov.png>
+File: figures/forward_lyapunov_avg.png Graphic file (type bmp)
+<figures/forward_lyapunov_avg.png>
+File: figures/backward_lyapunov_avg.png Graphic file (type bmp)
+<figures/backward_lyapunov_avg.png>
+ [16] [17] [18] [19]
 File: figures/rnn.jpeg Graphic file (type bmp)
 <figures/rnn.jpeg>
- [17] [18]
+ [20
+
+] [21]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 282.
- [19
+put line 294.
+ [22
 
 ]
 File: figures/lyapunov_exponents_forward.png Graphic file (type bmp)
 <figures/lyapunov_exponents_forward.png>
 File: figures/lyapunov_exponents_backward.png Graphic file (type bmp)
 <figures/lyapunov_exponents_backward.png>
- [20
+ [23
 
 ]
 File: figures/lyapunov_exponents_forward_with_input.png Graphic file (type bmp)
 
 <figures/lyapunov_exponents_forward_with_input.png>
- [21]
+ [24]
 File: figures/lyapunov_exponents_inner_product.png Graphic file (type bmp)
 <figures/lyapunov_exponents_inner_product.png>
 File: figures/lyapunov_exponents_inner_product_with_input.png Graphic file (typ
 e bmp)
 <figures/lyapunov_exponents_inner_product_with_input.png>
-) (./data/chap05.tex [22]
-[23] [24]
+)
+(./data/chap05.tex [25] [26] [27]
 第5章
-) [25
+) [28
 
 ] (./thuthesis-example.lof)
 \tf@lof=\write6
 \openout6 = `thuthesis-example.lof'.
 
- [26
+ [29
 
 
 
@@ -1515,7 +1538,7 @@ e bmp)
 \openout3 = `bu.aux'.
 
 
-(./thuthesis-example.bbl [27
+(./thuthesis-example.bbl [30
 
 
 ]
@@ -1531,14 +1554,16 @@ LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 19.
 LaTeX Font Info:    Font shape `TU/XITSMath-Regular(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 19.
-) (./data/acknowledgements.tex [28
+) (./data/acknowledgements.tex [31
 
 
-] [29
+] [32
+
+] [33
 
 
-
-] [30
+]
+[34
 
 ])
 File: figures/scan-statement.pdf Graphic file (type pdf)
@@ -1555,40 +1580,39 @@ File: figures/scan-statement.pdf Graphic file (type pdf)
 <use figures/scan-statement.pdf, page 1>
 File: figures/scan-statement.pdf Graphic file (type pdf)
 <use figures/scan-statement.pdf, page 1>
+ [35
 
-[31
 
-
-] [32
+] [36
 
 ] (./data/appendix.tex
 附录 A
-[33
+[37
 
 ]
 File: figures/image-20240305130953312.png Graphic file (type bmp)
 <figures/image-20240305130953312.png>
 File: figures/IMG_0429.jpg Graphic file (type bmp)
 <figures/IMG_0429.jpg>
- [34] [35] [36]
+ [38] [39] [40]
 File: figures/IMG_85238686FD5A-1.jpeg Graphic file (type bmp)
 <figures/IMG_85238686FD5A-1.jpeg>
- [37]
+ [41]
 File: figures/IMG_E030C30FCBC0-1.jpeg Graphic file (type bmp)
 <figures/IMG_E030C30FCBC0-1.jpeg>
 File: figures/IMG_F89255872C0E-1.jpeg Graphic file (type bmp)
 <figures/IMG_F89255872C0E-1.jpeg>
- [38] [39]
+ [42] [43]
 File: figures/IMG_AF85DFCD0BC3-1.jpeg Graphic file (type bmp)
 <figures/IMG_AF85DFCD0BC3-1.jpeg>
- [40] [41] [42] [43] [44]
+ [44] [45] [46] [47] [48]
 File: figures/IMG_739B2EF41C1E-1.jpeg Graphic file (type bmp)
 <figures/IMG_739B2EF41C1E-1.jpeg>
- [45]
+ [49]
 File: figures/IMG_C79A75F13077-1.jpeg Graphic file (type bmp)
 <figures/IMG_C79A75F13077-1.jpeg>
- [46] [47]
-[48] [49] [50]) [51] (./thuthesis-example.aux (./bu.aux))
+ [50] [51]
+[52] [53] [54]) [55] (./thuthesis-example.aux (./bu.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1598,15 +1622,15 @@ L3 programming layer <2022/08/05>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `thuthesis-example.out' has not changed.
-(rerunfilecheck)             Checksum: 8EF58EDF8C2A357867840576D17FB473;11195.
+(rerunfilecheck)             Checksum: 45526A9A0CC0C498EB2ECFFBFCD7CA5A;11195.
  ) 
 Here is how much of TeX's memory you used:
- 31681 strings out of 474878
- 695484 string characters out of 5762516
+ 31712 strings out of 474878
+ 696027 string characters out of 5762516
  1950627 words of memory out of 5000000
- 53197 multiletter control sequences out of 15000+600000
+ 53225 multiletter control sequences out of 15000+600000
  565365 words of font info for 165 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  106i,17n,132p,1424b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ./thuthesis-example.pdf (63 pages).
+Output written on ./thuthesis-example.pdf (67 pages).

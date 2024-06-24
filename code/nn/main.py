@@ -4,8 +4,8 @@ import matplotlib.pylab as plt
 from mnist import load_mnist
 import os
 
-num = 13
-is_forward = True
+num = 20
+is_forward = False
 
 
 def sigmoid(x):
@@ -236,3 +236,26 @@ if __name__ == "__main__":
             __file__), "backward_lyapunov.png"))
 
     plt.show()
+    plt.close()
+
+    # 平均值
+
+    if is_forward:
+        
+        forward_lambdas = np.mean(forward_lambdas_s, axis=0)
+        print(forward_lambdas)
+        plt.scatter(plot_x, forward_lambdas, marker=".")
+        plt.title("Forward Lyapunov Exponents")
+        plt.xlabel("Index")
+        plt.ylabel("Lyapunov Exponent")
+        plt.savefig(os.path.join(os.path.dirname(
+            __file__), "forward_lyapunov_avg.png"))
+    else:
+        backward_lambdas = np.mean(backward_lambdas_s, axis=0)
+        print(backward_lambdas)
+        plt.scatter(plot_x, backward_lambdas, marker=".")
+        plt.title("Backward Lyapunov Exponents")
+        plt.xlabel("Index")
+        plt.ylabel("Lyapunov Exponent")
+        plt.savefig(os.path.join(os.path.dirname(
+            __file__), "backward_lyapunov_avg.png"))
