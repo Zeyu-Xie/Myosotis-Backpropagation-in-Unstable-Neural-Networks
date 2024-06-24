@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.11)  24 JUN 2024 02:30
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.11)  24 JUN 2024 03:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1511,7 +1511,7 @@ File: figures/rnn.jpeg Graphic file (type bmp)
 
 ]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 286.
+put line 288.
  [22]
 File: figures/lyapunov_exponents_forward.png Graphic file (type bmp)
 <figures/lyapunov_exponents_forward.png>
@@ -1526,7 +1526,7 @@ File: figures/lyapunov_exponents_forward_with_input.png Graphic file (type bmp)
 
 
 LaTeX Warning: Reference `sec:rnn_training' on page 24 undefined on input line 
-403.
+405.
 
 [24] [25]
 File: figures/lyapunov_exponents_inner_product.png Graphic file (type bmp)
