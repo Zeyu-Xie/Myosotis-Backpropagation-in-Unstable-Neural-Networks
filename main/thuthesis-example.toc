@@ -29,16 +29,15 @@
 \contentsline {subsection}{\numberline {4.3.1}全连接神经网络}{13}{subsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.1.1}网络结构}{13}{subsubsection.4.3.1.1}%
 \contentsline {subsubsection}{\numberline {4.3.1.2}训练过程}{15}{subsubsection.4.3.1.2}%
-\contentsline {subsubsection}{\numberline {4.3.1.3}李雅普诺夫谱计算}{15}{subsubsection.4.3.1.3}%
-\contentsline {subsubsection}{\numberline {4.3.1.4}结果分析}{17}{subsubsection.4.3.1.4}%
-\contentsline {subsection}{\numberline {4.3.2}循环神经网络}{20}{subsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.2.1}网络结构}{20}{subsubsection.4.3.2.1}%
-\contentsline {subsubsection}{\numberline {4.3.2.2}训练过程}{21}{subsubsection.4.3.2.2}%
-\contentsline {subsubsection}{\numberline {4.3.2.3}李雅普诺夫谱计算}{22}{subsubsection.4.3.2.3}%
-\contentsline {subsubsection}{\numberline {4.3.2.4}运行结果 - 无输入情形}{23}{subsubsection.4.3.2.4}%
-\contentsline {subsubsection}{\numberline {4.3.2.5}运行结果 - 有输入情形}{23}{subsubsection.4.3.2.5}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}李雅普诺夫谱计算}{16}{subsubsection.4.3.1.3}%
+\contentsline {subsubsection}{\numberline {4.3.1.4}结果分析}{16}{subsubsection.4.3.1.4}%
+\contentsline {subsection}{\numberline {4.3.2}循环神经网络}{21}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}网络结构}{21}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}李雅普诺夫谱计算}{22}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}运行结果 - 无输入情形}{23}{subsubsection.4.3.2.3}%
+\contentsline {subsubsection}{\numberline {4.3.2.4}运行结果 - 有输入情形}{23}{subsubsection.4.3.2.4}%
 \contentsline {subsection}{\numberline {4.3.3}对偶性的验证}{25}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}结论}{25}{section.4.4}%
+\contentsline {section}{\numberline {4.4}结论}{27}{section.4.4}%
 \contentsline {chapter}{\numberline {第5章}总结}{28}{chapter.5}%
 \setcounter {tocdepth}{0}
 \contentsline {chapter}{插图索引}{29}{section*.26}%

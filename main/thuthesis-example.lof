@@ -1,15 +1,15 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces 全连接神经网络}}{14}{figure.caption.13}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces 准确率变化折线图}}{15}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 正向传播的李雅普诺夫指数}}{16}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 反向传播的李雅普诺夫指数}}{17}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 正向传播的平均李雅普诺夫指数}}{18}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 反向传播的平均李雅普诺夫指数}}{19}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces 循环神经网络}}{20}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 正向传播的李雅普诺夫指数}}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 反向传播的李雅普诺夫指数}}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 正向传播的平均李雅普诺夫指数}}{19}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 反向传播的平均李雅普诺夫指数}}{20}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces 循环神经网络}}{21}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.8}{\ignorespaces 正向传播收敛情况}}{23}{figure.caption.21}%
 \contentsline {figure}{\numberline {4.9}{\ignorespaces 反向传播收敛情况}}{24}{figure.caption.22}%
 \contentsline {figure}{\numberline {4.10}{\ignorespaces 有输入情形下的李雅普诺夫指数}}{25}{figure.caption.23}%
 \contentsline {figure}{\numberline {4.11}{\ignorespaces 无输入情形下的中间向量 $q_{ij}$ 内积}}{26}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces 有输入情形下的中间向量 $q_{ij}$ 内积}}{26}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces 有输入情形下的中间向量 $q_{ij}$ 内积}}{27}{figure.caption.25}%
 \let \contentsline \ttl@gobblecontents 
 \contentsline {figure}{\numberline {A.1}{\ignorespaces 一个循环神经网络的示意图。隐藏层的循环连接允许信息从一个输入持续保存到另一个输入。}}{38}{figure.caption.35}%
 \contentsline {figure}{\numberline {A.2}{\ignorespaces 通过为每个时间步长创建一个模型的副本，及时展开递归神经网络。我们使用 \(x_t\) 表示网络在 \(t\) 时刻的隐藏状态，用 \(u_t\) 表示时间 \(t\) 时网络的输入，用 \(\mitepsilon _t\) 表示截止 \(t\) 时刻的累计误差。}}{39}{figure.caption.36}%

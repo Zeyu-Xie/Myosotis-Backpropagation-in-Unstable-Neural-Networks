@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.11)  24 JUN 2024 01:19
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2024.6.11)  24 JUN 2024 02:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1504,17 +1504,15 @@ File: figures/forward_lyapunov_avg.png Graphic file (type bmp)
 <figures/forward_lyapunov_avg.png>
 File: figures/backward_lyapunov_avg.png Graphic file (type bmp)
 <figures/backward_lyapunov_avg.png>
- [16] [17] [18] [19]
+ [16] [17] [18] [19] [20]
 File: figures/rnn.jpeg Graphic file (type bmp)
 <figures/rnn.jpeg>
- [20
-
-] [21]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 294.
- [22
+ [21
 
 ]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 286.
+ [22]
 File: figures/lyapunov_exponents_forward.png Graphic file (type bmp)
 <figures/lyapunov_exponents_forward.png>
 File: figures/lyapunov_exponents_backward.png Graphic file (type bmp)
@@ -1525,14 +1523,23 @@ File: figures/lyapunov_exponents_backward.png Graphic file (type bmp)
 File: figures/lyapunov_exponents_forward_with_input.png Graphic file (type bmp)
 
 <figures/lyapunov_exponents_forward_with_input.png>
- [24]
+
+
+LaTeX Warning: Reference `sec:rnn_training' on page 24 undefined on input line 
+403.
+
+[24] [25]
 File: figures/lyapunov_exponents_inner_product.png Graphic file (type bmp)
 <figures/lyapunov_exponents_inner_product.png>
+ [26
+
+]
 File: figures/lyapunov_exponents_inner_product_with_input.png Graphic file (typ
 e bmp)
 <figures/lyapunov_exponents_inner_product_with_input.png>
-)
-(./data/chap05.tex [25] [26] [27]
+) (./data/chap05.tex [27
+
+]
 第5章
 ) [28
 
@@ -1632,10 +1639,13 @@ L3 programming layer <2022/08/05>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `thuthesis-example.out' has not changed.
-(rerunfilecheck)             Checksum: 45526A9A0CC0C498EB2ECFFBFCD7CA5A;11195.
+(rerunfilecheck)             Checksum: 94A31C4FFF84BDB75DC639BB7679733F;11048.
  ) 
 Here is how much of TeX's memory you used:
  31721 strings out of 474878

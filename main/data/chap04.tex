@@ -142,9 +142,23 @@
 
 训练完成后，保存所有参数并在下一节中使用。
 
+本文后续还将用到循环神经网络（RNN），RNN 的训练方法在此一并提及。
+
+RNN 的训练可使用差值作为损失函数，并通过随机梯度下降法（SGD）对神经网络进行训练。具体步骤如下：
+
+\begin{enumerate}
+  \item 前向传播：计算每个时间步的隐藏状态和最终输出 \(\mathbf{y}\).
+  \item 计算损失：使用差值作为损失函数 \(\mathcal{L}\).
+  \item 反向传播：计算每层的梯度，并更新权重。在训练完成后，我们固定神经网络的参数，之后不再变动。
+\end{enumerate}
+
+\begin{equation}
+  \mathbf{J}_t = \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}}.
+\end{equation}
+
 \subsubsection{李雅普诺夫谱计算}
 
-读取上一节保存的参数，使神经网络恢复到训练完成的状态。随机选取输入值 $x$ 和随机梯度，得到确定的状态 $x$、$h$、$y$ 和梯度 $\frac{\partial y}{\partial h}$、$\frac{\partial h}{\partial x}$.
+回到全连接神经网络，读取上一节保存的参数，使神经网络恢复到训练完成的状态。随机选取输入值 $x$ 和随机梯度，得到确定的状态 $x$、$h$、$y$ 和梯度 $\frac{\partial y}{\partial h}$、$\frac{\partial h}{\partial x}$.
 
 矩阵 $Q_0$ 为随机矩阵 QR 分解后的结果，记 $v_0 = Q_0$，其含义为 10 个不同方向的输入层向量。
 
@@ -170,11 +184,11 @@
   \right.
 \end{equation}
 
-计算正向和反向传播的同时，使用算法 \ref{alg:lyapunov} 计算 $v$ 和 $\nu$ 的李雅普诺夫谱。
+计算正向和反向传播的同时，使用算法 \ref{alg:lyapunov} 计算 $v$ 和 $\nu$ 在大量轨道（因输入数据不同）和大量 $\frac{v_0}{\nu_0}$ 意义下的李雅普诺夫谱。
 
 全连接神经网络不能随时间无限延伸，正向和反向的传播均只进行两步，但可以通过多组输入来发现一般规律。
 
-尝试 20 组不同的 $x$ 输入，得到 20 组不同的李雅普诺夫谱，每组有 10 个指数，总体上呈现下降趋势：
+尝试 20 组不同的 $x$ 输入，得到 20 组不同的李雅普诺夫谱，每组有 10 个指数，由于网络长度有限，并且各层的宽度和结构不同，所以正向和反向的李雅普诺夫指数不能直接比较。但是他们各自的趋势仍有比较意义，也就是说正向和反向的李雅普诺夫谱会相差一个常数倍数。总体上呈现下降趋势：
 
 \begin{figure}[htbp]
   \centering
@@ -263,28 +277,6 @@ RNN 在处理序列数据方面具有显著优势，能够捕捉时间步长上�
         其中，\(\mathbf{W}_{hy} \in \mathbb{R}^{3 \times 3}\) 为权重矩阵，\(\mathbf{b}_y \in \mathbb{R}^{3}\) 为偏置向量。
 
 \end{enumerate}
-
-\subsubsection{训练过程}\label{sec:rnn_training}
-
-训练过程开始，我们简单地使用差值作为损失函数，并通过随机梯度下降法（SGD）对神经网络进行训练。具体步骤如下：
-
-\begin{enumerate}
-  \item 前向传播：计算每个时间步的隐藏状态和最终输出 \(\mathbf{y}\).
-  \item 计算损失：使用差值作为损失函数 \(\mathcal{L}\).
-  \item 反向传播：计算每层的梯度，并更新权重。
-\end{enumerate}
-
-为了分析网络的动态行为，我们在训练过程中记录每一层的雅可比矩阵。假设 \(\mathbf{J}_t\) 是第 \(t\) 个时间步的雅可比矩阵，则其定义为：
-\begin{equation}
-  \mathbf{J}_t = \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}}.
-\end{equation}
-
-在训练的每个时间步，我们需要参考算法 \ref{alg:lyapunov}，记录所有的中间变量 $q_{i,1}, q_{i, 2}, q_{i, 3}$，它们来源于 QR 分解的结果：
-\begin{equation}
-  Q_i = [q_{i,1}, q_{i,2}, q_{i,3}].
-\end{equation}
-
-\clearpage
 
 \subsubsection{李雅普诺夫谱计算}
 
@@ -412,6 +404,8 @@ RNN 在处理序列数据方面具有显著优势，能够捕捉时间步长上�
 
 下图形象展示了正向和反向传播的中间向量的内积，横轴表示时间步，可以发现，除去最边缘的极少数时间步，内积图像为一条直线，这表明正向和反向传播的中间向量的内积是一个常数，三条线的纵坐标即为三个方向对应的内积值。
 
+\clearpage
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/lyapunov_exponents_inner_product.png}
@@ -423,6 +417,8 @@ RNN 在处理序列数据方面具有显著优势，能够捕捉时间步长上�
 
 使用相同方法，有输入时的中间向量内积如下图所示：
 
+\clearpage
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/lyapunov_exponents_inner_product_with_input.png}
@@ -430,7 +426,7 @@ RNN 在处理序列数据方面具有显著优势，能够捕捉时间步长上�
   \label{fig:inner_product_with_input}
 \end{figure}
 
-有输入的情形下正反两边的李雅普诺夫谱不再完全相同，但对偶性得到了保留，说明该性质与输入无关，是神经网络本身的特性，由其结构决定。
+有输入的情形下对偶性得到了保留，说明该性质与输入无关，是神经网络本身的特性，由其结构决定。
 
 \section{结论}
 
